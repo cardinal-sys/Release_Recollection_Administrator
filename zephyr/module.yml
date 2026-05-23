@@ -1,0 +1,4 @@
+name: Release_Recollection_Administrator
+build:
+  settings:
+    board_root: config
