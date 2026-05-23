@@ -1,0 +1,9 @@
+file_format: "1"
+id: Administrator
+name: Administrator
+type: shield
+url: https://github.com/administ-rator/Release_Recollection_Administrator.git
+requires: [xiao_ble/nrf52840/zmk]
+features:
+  - keys
+  - sensors

@@ -1,0 +1,5 @@
+config SHIELD_NIGHT_SKY_SWORD
+    def_bool $(shields_list_contains,Night_Sky_Sword)
+
+config SHIELD_BLUE_ROSE_SWORD
+    def_bool $(shields_list_contains,Blue_Rose_Sword)

@@ -1,0 +1,22 @@
+if SHIELD_NIGHT_SKY_SWORD
+
+config ZMK_KEYBOARD_NAME
+    default "Night Sky Sword"
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_BLUE_ROSE_SWORD
+
+config ZMK_KEYBOARD_NAME
+    default "Blue Rose Sword"
+
+config ZMK_SPLIT
+    default y
+
+endif
