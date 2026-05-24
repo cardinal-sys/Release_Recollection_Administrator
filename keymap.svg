@@ -422,7 +422,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">&amp;td_enter</tspan></text>
@@ -501,8 +501,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -777,7 +777,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -857,8 +857,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -1105,7 +1105,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -1183,8 +1183,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -1456,7 +1456,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">ENTER</text>
@@ -1534,8 +1534,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -1828,7 +1828,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 88%">&amp;drag_on</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
@@ -1908,8 +1908,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -2188,7 +2188,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <tspan x="0" dy="-0.6em">UP</tspan><tspan x="0" dy="1.2em">ARROW</tspan>
 </text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
@@ -2268,8 +2268,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -2526,7 +2526,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -2606,8 +2606,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -2865,7 +2865,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -2943,8 +2943,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -3202,7 +3202,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -3280,8 +3280,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -3539,7 +3539,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -3617,8 +3617,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -3876,7 +3876,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -3954,8 +3954,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -4213,7 +4213,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -4291,8 +4291,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -4550,7 +4550,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -4628,8 +4628,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -4887,7 +4887,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -4965,8 +4965,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -5224,7 +5224,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key trans keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key trans keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
@@ -5302,8 +5302,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -5589,7 +5589,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">ENTER</text>
@@ -5670,8 +5670,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
@@ -5959,7 +5959,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
-<g transform="translate(545, 144) rotate(-10.0)" class="key keypos-48">
+<g transform="translate(553, 245) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">ENTER</text>
@@ -6039,8 +6039,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 </text>
 </g>
 <g class="combo combopos-13">
-<rect rx="6" ry="6" x="497" y="171" width="36" height="32" class="combo"/>
-<text x="515" y="187" class="combo tap">ESCAPE</text>
+<rect rx="6" ry="6" x="501" y="221" width="36" height="32" class="combo"/>
+<text x="519" y="237" class="combo tap">ESCAPE</text>
 </g>
 </g>
 </g>
