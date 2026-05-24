@@ -246,7 +246,7 @@ async function connectBleTauri() {
   const devices = await tauriInvoke('ble_scan');
   log(`Found ${devices.length} BLE device(s)`);
 
-  // Elucidator 風の name を優先、無ければモーダルから選択
+  // Night_Sky_Sword 風の name を優先、無ければモーダルから選択
   let target = devices.find((d) => /elucidator/i.test(d.name || ''));
   if (!target) {
     const candidates = devices; // Filter removed to show unnamed devices
@@ -363,7 +363,7 @@ async function tryReconnectKnownDevice() {
     const known = await navigator.bluetooth.getDevices();
     log(`getDevices() returned ${known.length} known device(s)`);
     if (known.length === 0) return null;
-    // 名前が Elucidator っぽい / もしくは前回接続したものを優先
+    // 名前が Night_Sky_Sword っぽい / もしくは前回接続したものを優先
     const target = known.find((d) => /elucidator/i.test(d.name || ''))
                 || known[0];
     log(`Reusing known device: ${target.name || '(no name)'}`);
