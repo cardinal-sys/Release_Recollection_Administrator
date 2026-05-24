@@ -7,7 +7,7 @@ NUM_SMART {
     &trans  &kp KP_NUMBER_5  &kp KP_NUMBER_4  &kp KP_NUMBER_3  &kp KP_NUMBER_2  &kp KP_NUMBER_1  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &trans
     &trans  &kp KP_NUMBER_0  &kp KP_NUMBER_9  &kp KP_NUMBER_8  &kp KP_NUMBER_7  &kp KP_NUMBER_6  &trans  &kp EQUAL  &kp KP_NUMBER_6  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_NUMBER_0  &trans
     &trans  &mt LEFT_SHIFT COMMA  &kp PERIOD  &kp SLASH  &kp ASTERISK  &kp MINUS  &kp PLUS  &kp PLUS  &kp MINUS  &kp ASTERISK  &kp SLASH  &kp PERIOD  &kp COMMA  &trans
-    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp BACKSPACE  &kp ENTER  &trans  &tog 16
+    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp BACKSPACE  &kp ENTER  &tog 16  &trans
     >;
 
     sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP>;
