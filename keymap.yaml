@@ -50,8 +50,8 @@ layers:
   - '&mkp MB1'
   - BACKSPACE
   - '&td_enter'
-  - DEL
   - {t: DELETE, h: LEFT ALT}
+  - DEL
   FUNCTION:
   - {t: ▽, type: trans}
   - F5
@@ -102,8 +102,8 @@ layers:
   - Gui+BACKSPACE
   - BACKSPACE
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - Sft+Gui+4
+  - {t: ▽, type: trans}
   SIGN:
   - {t: ▽, type: trans}
   - '%'
@@ -206,8 +206,8 @@ layers:
   - {t: ▽, type: trans}
   - BACKSPACE
   - ENTER
-  - {t: ▽, type: trans}
   - Gui+Z
+  - {t: ▽, type: trans}
   MOUSE:
   - {t: ▽, type: trans}
   - '&mmv MOVE_LEFT'
@@ -362,8 +362,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - BT CLR ALL
+  - {t: ▽, type: trans}
   GESTURE_E:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -830,8 +830,8 @@ layers:
   - '&mkp MB1'
   - BACKSPACE
   - {t: ENTER, h: FUNCTION}
-  - {t: ▽, type: trans}
   - {t: DELETE, h: LEFT ALT}
+  - {t: ▽, type: trans}
   NUM_SMART:
   - {t: ▽, type: trans}
   - KP 5
@@ -882,8 +882,8 @@ layers:
   - {t: ▽, type: trans}
   - BACKSPACE
   - ENTER
-  - {t: ▽, type: trans}
   - {t: NUM_SMART, h: toggle}
+  - {t: ▽, type: trans}
 combos:
 - p: [8, 9]
   k: {t: SCROLL, h: toggle}
