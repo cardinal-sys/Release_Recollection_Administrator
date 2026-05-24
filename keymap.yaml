@@ -42,9 +42,9 @@ layers:
   - {t: +, h: LEFT CONTROL}
   - RSHFT
   - LCTRL
-  - LCTRL
   - LEFT GUI
   - LEFT ALT
+  - Ctl+SPACE
   - {t: ESC, h: SIGN}
   - {t: SPACE, h: NUM}
   - '&mkp MB1'
