@@ -50,8 +50,8 @@
 
 | 入口 | URL |
 |---|---|
-| Cardinal Editor (git 編纂) | `https://administ-rator.github.io/Release_Recollection_Administrator/index.html` |
-| Live Sync Conduit (実機接続) | `https://administ-rator.github.io/Release_Recollection_Administrator/live.html` |
+| Cardinal Editor (git 編纂) | `https://cardinal-sys.github.io/Release_Recollection_Administrator/index.html` |
+| Live Sync Conduit (実機接続) | `https://cardinal-sys.github.io/Release_Recollection_Administrator/live.html` |
 
 > **[ SYSTEM ]** 初回利用時は GitHub の Settings → Pages で Source を
 > "GitHub Actions" に設定する必要がある。
@@ -409,9 +409,9 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | MODULE | REPOSITORY | DESCRIPTION |
 |---|---|---|
 | zmk | zmkfirmware/zmk | ZMK 本体 |
-| zmk-pmw3610-driver | administ-rator/zmk-pmw3610-driver | PMW3610 トラックボールドライバー |
+| zmk-pmw3610-driver | cardinal-sys/zmk-pmw3610-driver | PMW3610 トラックボールドライバー |
 | zmk-listeners | ssbb/zmk-listeners | レイヤーリスナー |
-| zmk-mouse-gesture | administ-rator/zmk-mouse-gesture | マウスジェスチャー認識 |
+| zmk-mouse-gesture | cardinal-sys/zmk-mouse-gesture | マウスジェスチャー認識 |
 | zmk-scroll-snap | kot149/zmk-scroll-snap | スクロール軸スナップ（X/Y軸整列） |
 | zmk-rgbled-widget | caksoylar/zmk-rgbled-widget | RGB LED インジケーター |
 | zmk-pointing-acceleration-alpha | nuovotaka/zmk-pointing-acceleration-alpha | ポインタ加速度 |
@@ -487,5 +487,6 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-05-25 | 〈Cardinal System Reawakening〉— 双子の原典 42キー版 Cardinal で先行実施された改名儀式を 50キー版〈Administrator〉にも適用し、`administ-rator`（最高司祭 Quinella の称号「Administrator」を hyphen sigil で封印した真名）を退け、Underworld 原典管理 AI〈Cardinal System〉の略号 `cardinal-sys` へ GitHub username を再封名した儀式の同期記録。「Cardinal が原典・Administrator がその系列下の簒奪派閥」という Alicization 編本来の上下構造を、皮肉にも〈Administrator〉を冠する 50キー版リポジトリの account 階層にも反映する。手順は Cardinal 側の (a) 抜け殻退避 → (b) `administ-rator` → `cardinal-sys` rename → (c) GitHub 自動 redirect で旧 URL 保全、までを既に完了済みのため、本リポジトリでは reference 同期のみを実施。`config/west.yml`（remote 名 `administ-rator` → `cardinal-sys` + 2 project の remote: zmk-pmw3610-driver / zmk-mouse-gesture）/ `Administrator.zmk.yml`（URL）/ `Night_Sky_Sword.conf`（PMW3610 driver コメント）/ `CLAUDE.md`（姉妹リポ参照 + ドライバ参照 + proxy URL + ドライバ改修フロー + ビルド確認 × 2 の計 6 行）/ `editor/index.html` `editor/app.js`（default repo input）/ `src-tauri/tauri.conf.json` `src-tauri/Cargo.toml`（identifier `com.administ-rator.cardinal-editor` → `com.cardinal-sys.cardinal-editor` と authors）/ `scripts/install_launchd.sh` `uninstall_launchd.sh`（PLIST_NAME 同期）/ `LICENSE`（Copyright 表記）/ README `EQUIPPED MODULES` 表 2 行・GitHub Pages URL 2 行を新名へ追従、git remote URL も `cardinal-sys/Release_Recollection_Administrator` へ更新。Tauri identifier と launchd PLIST_NAME 同期更新の副作用として既存インストール済みアプリは新 identifier 扱いとなり旧 launchd service は孤児化する点に留意（必要なら旧 service の手動 unload 推奨）。Cardinal 側既存 SYSTEM LOG 〈Cardinal System Reawakening〉(2026-05-25) と完全対称の儀式記録として刻む。これにより 42キー版 Cardinal と 50キー版〈Administrator〉の双子リポジトリは再び同一 account `cardinal-sys` 配下に統一帰属し、〈Cardinal〉が真の管理者として双剣を共に統括する体制へ復帰した。 |
 | 2026-05-24 | 〈Genesis Cascade〉— Phase 1 全完遂（Shield 基盤鋳造・基礎/剣技/レイヤー dtsi 全 31 ファイル移植・50キー matrix 機械マッピング・keymap entry）+ Phase 4 ほぼ全完遂（周辺ファイル・editor/ Cardinal Editor Web GUI・src-tauri/ Tauri デスクトップ版・物理レイアウト 51 keys・README 再編）+ K-α 追加 8 ポジション実用化（Esc/Tab/Shift/Ctrl/BSPC/ENT/Shift/Del）を一気通貫達成。初回 GHA build 全成功（Night_Sky_Sword rgbled_adapter + Blue_Rose_Sword rgbled_adapter + settings_reset）。残るは Phase 2（実機到着後の pin/matrix 検証・PMW3610 微調整）と Phase 3（west.yml ドライバ統合は既配置のため軽量）。 |
 | 2026-05-24 | 〈Administrator Awakening〉— Release Recollection 50キー版〈Administrator〉の建立。Cygnus素体（Dist16384/Cygnus-M-Lkeymouse）を仕様参考として、Cardinal版（42キー）の設計思想を継承して新リポを起源化。シールド〈Night_Sky_Sword〉（右手・キリト神器）/〈Blue_Rose_Sword〉（左手・ユージオ神器）の双剣構成。本コミット時点は骨格のみ（README / CLAUDE.md / .gitignore / LICENSE / build.yaml / config/west.yml / zephyr/module.yml / .github/workflows/build.yml）。Phase 1 以降で記憶解放術式の本格移植開始。 |
