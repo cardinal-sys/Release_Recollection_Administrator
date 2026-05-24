@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《 Cardinal Editor 》— Release Recollection</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CodeMirror 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/dracula.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/yaml/yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/selection/active-line.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/search/searchcursor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/search/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/dialog/dialog.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/dialog/dialog.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</head>
+<body>
+  <!-- HUD Effects -->
+  <div class="sao-hud-overlay">
+    <div class="sao-hud-scanlines"></div>
+    <div class="sao-hud-vignette"></div>
+  </div>
+
+  <!-- Main System Window Wrapper -->
+  <div class="sao-system-wrapper" id="sao-window">
+    <!-- Decorative HUD Texts -->
+    <div class="sao-sys-text top-left">SYSTEM CALL</div>
+    <div class="sao-sys-text top-right">AUTHORITY LEVEL: ADMIN</div>
+    <div class="sao-sys-text bottom-left">GENERATING ELEMENTS...</div>
+    <div class="sao-sys-text bottom-right">ID: CARDINAL_SYSTEM</div>
+
+    <div class="sao-window-inner">
+      <header class="cardinal-header">
+    <div class="header-left">
+      <h1>《 CARDINAL EDITOR 》</h1>
+      <p class="subtitle">— Release Recollection 記憶書換術式 —</p>
+    </div>
+    <div class="header-right">
+      <span id="tauri-badge" class="tauri-badge hidden" title="Tauri Native BLE 接続可能">[ Native Embodiment Active ]</span>
+      <a href="live.html" class="nav-link" title="ライブ接続 (Web Bluetooth)">⚡ Live Sync</a>
+      <span id="status-indicator" class="status-idle">[ IDLE ]</span>
+      <span id="status-text">Awaiting authentication...</span>
+    </div>
+  </header>
+
+  <!-- ◆ AUTHENTICATION GATE ─ 認証関門 -->
+  <section id="auth-section" class="auth-bar">
+    <div class="auth-form">
+      <input type="password" id="pat-input" placeholder="GitHub PAT (ghp_xxx, repo scope)" autocomplete="off">
+      <input type="text" id="repo-input" value="administ-rator/Release_Recollection_Administrator" placeholder="owner/repo">
+      <input type="text" id="branch-input" value="main" placeholder="branch">
+      <button id="auth-btn" class="btn-primary">〈 Authenticate 〉</button>
+    </div>
+    <label class="auth-remember">
+      <input type="checkbox" id="remember-pat">
+      <span>[ Persist PAT across sessions ]</span>
+    </label>
+    <p class="auth-hint">
+      既定では <strong>sessionStorage</strong> に一時保存（タブを閉じると破棄）。
+      上のチェックを入れると localStorage に永続化。<code>repo</code> スコープが必要です。
+    </p>
+  </section>
+
+  <!-- ◆ MAIN EDITOR SHELL ─ -->
+  <main id="editor-shell" class="editor-shell hidden">
+
+    <!-- ◆ SIDEBAR ─ ファイル一覧 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>◆ FILE TREE</h2>
+        <button id="reload-tree-btn" class="btn-tiny" title="Reload file list">↻</button>
+      </div>
+      <div id="file-tree" class="file-tree">
+        <p class="hint">Authenticate to load files...</p>
+      </div>
+      <div class="sidebar-footer">
+        <h3>◆ MODIFIED</h3>
+        <ul id="modified-list" class="modified-list">
+          <li class="hint">No changes</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ◆ EDITOR AREA ─ -->
+    <section class="editor-main">
+      <!-- Tab Bar -->
+      <div id="tab-bar" class="tab-bar"></div>
+
+      <!-- View Mode Switch (keymap.yaml only) -->
+      <div id="view-switch" class="view-switch hidden">
+        <button id="view-code" class="view-btn active">[ Code ]</button>
+        <button id="view-visual" class="view-btn">[ Visual Editor ]</button>
+        <button id="view-conf" class="view-btn">[ Settings Editor ]</button>
+        <button id="view-combos" class="view-btn">[ Combos Editor ]</button>
+        <button id="view-gestures" class="view-btn">[ Gestures Editor ]</button>
+        <button id="view-macros" class="view-btn">[ Macros Editor ]</button>
+        <button id="view-behaviors" class="view-btn">[ Behaviors Editor ]</button>
+      </div>
+
+      <!-- Code Editor -->
+      <div id="code-editor-wrap" class="code-editor-wrap">
+        <div id="code-editor"></div>
+        <div id="empty-state" class="empty-state">
+          <p>《 No file open 》</p>
+          <p class="hint">サイドバーからファイルを選択してください。</p>
+        </div>
+      </div>
+
+      <!-- Gestures Editor (40-47_*.dtsi) -->
+      <div id="gestures-editor" class="combos-editor hidden">
+        <div class="visual-toolbar">
+          <h3 style="font-size: 0.85rem; letter-spacing: 0.15em; color: var(--accent-cyan);">◆ Gestures Editor — 剣技の編纂</h3>
+        </div>
+        <p class="hint" style="font-size: 0.7rem; padding: 0 4px;">
+          各方向の <code>bindings</code> は <strong>2 つ</strong>：
+          <strong>Default</strong>（修飾キーなし）と <strong>Mod-pressed</strong>（修飾キー押下時）。
+          例: <code>&amp;kp LG(C)</code>（コピー）/ <code>&amp;kp LG(X)</code>（カット）
+        </p>
+        <div id="gestures-entries" class="combos-entries"></div>
+      </div>
+
+      <!-- Macros Editor (20_macros.dtsi) -->
+      <div id="macros-editor" class="combos-editor hidden">
+        <div class="visual-toolbar">
+          <h3 style="font-size: 0.85rem; letter-spacing: 0.15em; color: var(--accent-cyan);">◆ Macros Editor — マクロ術式</h3>
+          <button id="macros-add-btn" class="btn-primary" style="font-size: 0.75rem; padding: 4px 12px;">+ 新規マクロ</button>
+        </div>
+        <p class="hint" style="font-size: 0.7rem; padding: 0 4px;">
+          各マクロは <code>bindings</code> sequence。<code>&amp;macro_press</code> /
+          <code>&amp;macro_tap</code> / <code>&amp;macro_release</code> で送出制御。
+          one-param / two-param 系では <code>MACRO_PLACEHOLDER</code> をそのまま残す。
+        </p>
+        <div id="macros-entries" class="combos-entries"></div>
+      </div>
+
+      <!-- Behaviors Editor (30/31/35_*.dtsi) -->
+      <div id="behaviors-editor" class="combos-editor hidden">
+        <div class="visual-toolbar">
+          <h3 style="font-size: 0.85rem; letter-spacing: 0.15em; color: var(--accent-cyan);">◆ Behaviors Editor — 武装完全支配術</h3>
+          <button id="behaviors-add-btn" class="btn-primary" style="font-size: 0.75rem; padding: 4px 12px;">+ 新規 Behavior</button>
+        </div>
+        <p class="hint" style="font-size: 0.7rem; padding: 0 4px;">
+          各 behavior の <code>compatible</code> で種別が決まる：
+          hold-tap / sticky-key / sensor-rotate / mod-morph / tri-state 等。
+          properties（<code>flavor</code> / <code>tapping-term-ms</code> 等）は behavior 種別ごとに異なる。
+        </p>
+        <div id="behaviors-entries" class="combos-entries"></div>
+      </div>
+
+      <!-- Combos Editor (10_combos.dtsi) -->
+      <div id="combos-editor" class="combos-editor hidden">
+        <div class="visual-toolbar">
+          <h3 style="font-size: 0.85rem; letter-spacing: 0.15em; color: var(--accent-cyan);">◆ Combos Editor — 同時押し術式</h3>
+          <button id="combos-add-btn" class="btn-primary" style="font-size: 0.75rem; padding: 4px 12px;">+ 新規コンボ</button>
+        </div>
+        <p class="hint" style="font-size: 0.7rem; padding: 0 4px;">
+          各コンボは <code>name</code> + <code>bindings</code> + <code>key-positions</code> の三要素。
+          key-positions は物理キー位置のインデックス（数値、空白区切り）。bindings は ZMK behavior 表記
+          （例: <code>&amp;kp ESCAPE</code>, <code>&amp;mkp MB1</code>, <code>&amp;tog 5</code>）。
+        </p>
+        <div id="combos-entries" class="combos-entries"></div>
+      </div>
+
+      <!-- Settings Editor (.conf files) -->
+      <div id="conf-editor" class="conf-editor hidden">
+        <div class="visual-toolbar">
+          <h3 style="font-size: 0.85rem; letter-spacing: 0.15em; color: var(--accent-cyan);">◆ Kconfig Settings Editor</h3>
+          <input type="text" id="conf-filter" placeholder="🔍 Filter (例: BLE)" style="margin-left: 12px;">
+        </div>
+        <div id="conf-entries" class="conf-entries"></div>
+      </div>
+
+      <!-- Visual Editor (keymap.yaml only) -->
+      <div id="visual-editor" class="visual-editor hidden">
+        <div class="visual-toolbar">
+          <div id="layer-tabs" class="layer-tabs"></div>
+        </div>
+        <div id="keymap-grid" class="keymap-grid"></div>
+        <div id="key-edit-form" class="key-edit-form hidden">
+          <h3>◆ MEMORY REWRITE ── 記憶書換</h3>
+          <div class="form-row">
+            <label>Position</label>
+            <input type="text" id="edit-index" readonly>
+          </div>
+          <div class="form-row">
+            <label>Tap （t:）</label>
+            <input type="text" id="edit-tap" list="key-options-tap" placeholder="例: A, ESC, &smart_num 16" autocomplete="off">
+            <datalist id="key-options-tap"></datalist>
+          </div>
+          <div class="form-row">
+            <label>Hold （h:）</label>
+            <input type="text" id="edit-hold" list="key-options-hold" placeholder="例: LEFT SHIFT, NUM, GESTURE_W" autocomplete="off">
+            <datalist id="key-options-hold"></datalist>
+          </div>
+          <div class="form-row mod-toggles">
+            <label>Modifiers</label>
+            <label class="mod-chip"><input type="checkbox" id="mod-sft"><span>Sft</span></label>
+            <label class="mod-chip"><input type="checkbox" id="mod-ctl"><span>Ctl</span></label>
+            <label class="mod-chip"><input type="checkbox" id="mod-alt"><span>Alt</span></label>
+            <label class="mod-chip"><input type="checkbox" id="mod-gui"><span>Gui</span></label>
+            <button id="mod-clear-btn" class="btn-tiny" title="修飾キーをすべて解除">Clear</button>
+          </div>
+          <div class="form-row key-categories">
+            <label>Quick Pick</label>
+            <select id="edit-category" class="category-select">
+              <option value="">— カテゴリ選択 —</option>
+              <option value="layers">レイヤー</option>
+              <option value="modifiers">修飾キー (LEFT/RIGHT)</option>
+              <option value="letters">文字 (A-Z)</option>
+              <option value="digits">数字 (0-9)</option>
+              <option value="functionKeys">F1-F24</option>
+              <option value="arrows">矢印</option>
+              <option value="special">特殊キー</option>
+              <option value="symbols">記号</option>
+              <option value="behaviors">ZMK behavior</option>
+              <option value="gestures">剣技 (Sword Skills)</option>
+              <option value="used">使用中の値</option>
+            </select>
+            <select id="edit-keylist" class="key-select hidden">
+              <option value="">— 選択 —</option>
+            </select>
+            <select id="edit-target" class="target-select">
+              <option value="tap">→ Tap</option>
+              <option value="hold">→ Hold</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <button id="apply-edit-btn" class="btn-primary">〈 Apply 〉</button>
+            <button id="cancel-edit-btn" class="btn-ghost">[ Cancel ]</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ◆ SEALING & LOG ─ -->
+    <aside class="rightbar">
+      <div class="seal-panel">
+        <h2>◆ SEALING ── 封印</h2>
+        <div class="form-row">
+          <input type="text" id="commit-message" placeholder="edit(...): 〈...〉— ...">
+        </div>
+        <div class="form-row">
+          <button id="seal-btn" class="btn-seal">〈 SEAL & COMMIT 〉</button>
+        </div>
+        <p class="hint" id="seal-hint">No modified files</p>
+      </div>
+
+      <div class="log-panel">
+        <h2>◆ SYSTEM LOG ── 動作記録</h2>
+        <pre id="log-output" class="log-output"></pre>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ◆ Diff Preview Modal ─────────────── -->
+  <div id="diff-modal" class="behavior-picker-overlay hidden">
+    <div class="behavior-picker-modal diff-modal">
+      <div class="bp-header">
+        <h3>◆ SEALING PREVIEW ── 封印前確認</h3>
+        <button id="diff-close-btn" class="btn-tiny">✕</button>
+      </div>
+      <div class="bp-body">
+        <div class="form-row">
+          <input type="text" id="diff-commit-message" class="bind-input" placeholder="commit message (空欄なら自動生成)">
+        </div>
+        <p class="hint" id="diff-summary"></p>
+        <div id="diff-content" class="diff-content"></div>
+        <div class="bp-actions">
+          <button id="diff-confirm-btn" class="btn-seal">〈 Confirm & Seal 〉</button>
+          <button id="diff-cancel-btn" class="btn-ghost">[ Cancel ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ◆ Behavior Picker Modal ─────────────── -->
+  <div id="behavior-picker" class="behavior-picker-overlay hidden">
+    <div class="behavior-picker-modal">
+      <div class="bp-header">
+        <h3>◆ Behavior Picker — 神器選択</h3>
+        <button id="bp-close-btn" class="btn-tiny">✕</button>
+      </div>
+      <div class="bp-body">
+        <div class="bp-row">
+          <label>Behavior</label>
+          <select id="bp-behavior" class="bind-input">
+            <option value="&amp;kp">&amp;kp — Key Press</option>
+            <option value="&amp;mt">&amp;mt — Mod-Tap</option>
+            <option value="&amp;lt">&amp;lt — Layer-Tap</option>
+            <option value="&amp;mo">&amp;mo — Momentary Layer</option>
+            <option value="&amp;tog">&amp;tog — Toggle Layer</option>
+            <option value="&amp;to">&amp;to — To Layer</option>
+            <option value="&amp;sk">&amp;sk — Sticky Key</option>
+            <option value="&amp;mkp">&amp;mkp — Mouse Key Press</option>
+            <option value="&amp;smart_num">&amp;smart_num — Smart Num</option>
+            <option value="&amp;smart_snipe">&amp;smart_snipe — Smart Snipe</option>
+            <option value="&amp;trans">&amp;trans — Transparent</option>
+            <option value="&amp;none">&amp;none — None</option>
+            <option value="&amp;bootloader">&amp;bootloader</option>
+            <option value="&amp;sys_reset">&amp;sys_reset — Reset</option>
+            <option value="&amp;studio_unlock">&amp;studio_unlock</option>
+            <option value="&amp;bt">&amp;bt — Bluetooth</option>
+            <option value="&amp;drag_on">&amp;drag_on (custom)</option>
+            <option value="&amp;drag_off">&amp;drag_off (custom)</option>
+            <option value="&amp;rotate">&amp;rotate (custom)</option>
+            <option value="__custom__">— カスタム behavior 入力 —</option>
+          </select>
+        </div>
+        <div class="bp-row" id="bp-custom-row" style="display: none;">
+          <label>Custom</label>
+          <input type="text" id="bp-custom" class="bind-input" placeholder="例: &amp;gE_up">
+        </div>
+
+        <!-- Arg1 セクション -->
+        <div class="bp-row" id="bp-arg1-row">
+          <label id="bp-arg1-label">Argument 1</label>
+          <select id="bp-arg1-category" class="bind-input">
+            <option value="">—</option>
+            <option value="hid">HID キー</option>
+            <option value="modmask">Mod Mask（修飾複合）</option>
+            <option value="layer">レイヤー</option>
+            <option value="mouse">マウスボタン</option>
+            <option value="bt">Bluetooth コマンド</option>
+            <option value="raw">直接入力</option>
+          </select>
+        </div>
+        <div class="bp-row" id="bp-arg1-hid" style="display: none;">
+          <label>カテゴリ</label>
+          <select id="bp-arg1-hid-cat" class="bind-input">
+            <option value="hid-letters">文字 (A-Z)</option>
+            <option value="hid-digits">数字 (0-9)</option>
+            <option value="hid-functions">F1-F24</option>
+            <option value="hid-arrows">矢印</option>
+            <option value="hid-special">特殊キー</option>
+            <option value="hid-symbols">記号</option>
+            <option value="hid-modifiers">修飾キー (LSHIFT 等)</option>
+          </select>
+          <select id="bp-arg1-hid-key" class="bind-input"></select>
+        </div>
+        <div id="bp-arg1-modmask" style="display: none;">
+          <div class="mod-chip-row">
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="LCTL"><span>LCtl</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="LSHIFT"><span>LSft</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="LALT"><span>LAlt</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="LGUI"><span>LGui</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="RCTL"><span>RCtl</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="RSHIFT"><span>RSft</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="RALT"><span>RAlt</span></label>
+            <label class="live-mod-chip"><input type="checkbox" data-bp-mask="RGUI"><span>RGui</span></label>
+          </div>
+        </div>
+        <div class="bp-row" id="bp-arg1-layer" style="display: none;">
+          <label>レイヤー</label>
+          <input type="number" id="bp-arg1-layer-num" class="bind-input" min="0" max="31" value="0">
+        </div>
+        <div class="bp-row" id="bp-arg1-mouse" style="display: none;">
+          <label>マウスボタン</label>
+          <select id="bp-arg1-mouse-sel" class="bind-input">
+            <option value="MB1">MB1 (Left)</option>
+            <option value="MB2">MB2 (Right)</option>
+            <option value="MB3">MB3 (Middle)</option>
+            <option value="MB4">MB4 (Back)</option>
+            <option value="MB5">MB5 (Forward)</option>
+          </select>
+        </div>
+        <div class="bp-row" id="bp-arg1-bt" style="display: none;">
+          <label>BT コマンド</label>
+          <select id="bp-arg1-bt-sel" class="bind-input">
+            <option value="BT_CLR">BT_CLR — 現プロファイルクリア</option>
+            <option value="BT_CLR_ALL">BT_CLR_ALL — 全クリア</option>
+            <option value="BT_NXT">BT_NXT — 次</option>
+            <option value="BT_PRV">BT_PRV — 前</option>
+            <option value="BT_SEL 0">BT_SEL 0</option>
+            <option value="BT_SEL 1">BT_SEL 1</option>
+            <option value="BT_SEL 2">BT_SEL 2</option>
+            <option value="BT_SEL 3">BT_SEL 3</option>
+            <option value="BT_SEL 4">BT_SEL 4</option>
+          </select>
+        </div>
+        <div class="bp-row" id="bp-arg1-raw" style="display: none;">
+          <label>Arg1</label>
+          <input type="text" id="bp-arg1-raw-input" class="bind-input" placeholder="任意の引数">
+        </div>
+
+        <!-- Arg2 セクション (Mod-Tap / Layer-Tap で使う) -->
+        <div class="bp-row" id="bp-arg2-row" style="display: none;">
+          <label id="bp-arg2-label">Argument 2 (HID キー)</label>
+          <select id="bp-arg2-hid-cat" class="bind-input">
+            <option value="hid-letters">文字 (A-Z)</option>
+            <option value="hid-digits">数字 (0-9)</option>
+            <option value="hid-functions">F1-F24</option>
+            <option value="hid-arrows">矢印</option>
+            <option value="hid-special">特殊キー</option>
+            <option value="hid-symbols">記号</option>
+          </select>
+          <select id="bp-arg2-hid-key" class="bind-input"></select>
+        </div>
+
+        <!-- Wrapping (LG, LS, LC, LA) -->
+        <div class="bp-row">
+          <label>Wrap (任意)</label>
+          <select id="bp-wrap" class="bind-input">
+            <option value="">— ラップなし —</option>
+            <option value="LG">LG(X) — Cmd / Win</option>
+            <option value="LS">LS(X) — Shift</option>
+            <option value="LC">LC(X) — Ctrl</option>
+            <option value="LA">LA(X) — Alt</option>
+            <option value="LG(LS">LG(LS(X)) — Cmd+Shift</option>
+            <option value="LC(LS">LC(LS(X)) — Ctrl+Shift</option>
+          </select>
+        </div>
+
+        <!-- Preview -->
+        <div class="bp-row bp-preview-row">
+          <label>Preview</label>
+          <code id="bp-preview" class="bp-preview"></code>
+        </div>
+
+        <div class="bp-actions">
+          <button id="bp-insert-btn" class="btn-primary">〈 Insert 〉</button>
+          <button id="bp-replace-btn" class="btn-seal">〈 Replace 〉</button>
+          <button id="bp-cancel-btn" class="btn-ghost">[ Cancel ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="cardinal-footer">
+    <p>&lt;&lt; CARDINAL SYSTEM &gt;&gt; — 記憶書換術式は管理者権限を要する</p>
+  </footer>
+
+    </div> <!-- /sao-window-inner -->
+  </div> <!-- /sao-system-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>
