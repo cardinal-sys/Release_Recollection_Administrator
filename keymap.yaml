@@ -51,7 +51,7 @@ layers:
   - BACKSPACE
   - '&td_enter'
   - {t: DELETE, h: LEFT ALT}
-  - DEL
+  - {t: DEL, h: FUNCTION}
   FUNCTION:
   - {t: ▽, type: trans}
   - F5
@@ -103,7 +103,7 @@ layers:
   - BACKSPACE
   - {t: ▽, type: trans}
   - Sft+Gui+4
-  - {t: ▽, type: trans}
+  - {type: held}
   SIGN:
   - {t: ▽, type: trans}
   - '%'
