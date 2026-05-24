@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "keymap-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "scripts/keymap_preview_server.py"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "cardinal-editor",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "3001",
+        "--directory",
+        "/Users/maedaakio/Documents/GitHub/Release_Recollection_Administrator/editor"
+      ],
+      "port": 3001
+    }
+  ]
+}
