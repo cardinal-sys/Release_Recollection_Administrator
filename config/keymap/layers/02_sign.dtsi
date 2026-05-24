@@ -1,0 +1,14 @@
+/* ============================================================
+ * layers/02_sign.dtsi — [ Synthesis 02 ] SIGN
+ * ============================================================ */
+
+SIGN {
+    bindings = <
+    &trans  &kp PERCENT  &kp EXCLAMATION  &kp HASH  &kp DOLLAR  &kp AMPERSAND  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp TILDE  &trans
+    &trans  &mt LSHIFT TAB  &kp DOUBLE_QUOTES  &kp APOSTROPHE  &kp GRAVE  &kp QUESTION  &kp SLASH  &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS  &kp AT_SIGN  &kp SEMICOLON  &trans
+    &trans  &kp LSHIFT  &kp LA(Y)  &kp PIPE  &kp PERIOD  &kp COMMA  &kp PLUS  &kp ASTERISK  &kp LESS_THAN  &kp GREATER_THAN  &kp UNDERSCORE  &kp BACKSLASH  &kp COLON  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+    >;
+
+    sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
+};
