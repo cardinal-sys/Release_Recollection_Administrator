@@ -38,7 +38,7 @@
 | Step 2: PoC（Web Bluetooth 接続 + Transport 確立） | ✅ |
 | Step 3: RPC キーマップ取得・書換 + Visual Editor 同期 | ✅ |
 
-> **[ SYSTEM ]** Live Sync Conduit を使うには Elucidator (central) に ZMK Studio 有効化版ファームウェアが書き込まれている必要がある。Chrome / Edge など Web Bluetooth API 対応ブラウザ必須。
+> **[ SYSTEM ]** Live Sync Conduit を使うには Night_Sky_Sword (central) に ZMK Studio 有効化版ファームウェアが書き込まれている必要がある。Chrome / Edge など Web Bluetooth API 対応ブラウザ必須。
 
 ### ◆ 起動方法 ── Invocation
 
@@ -50,8 +50,8 @@
 
 | 入口 | URL |
 |---|---|
-| Cardinal Editor (git 編纂) | `https://administ-rator.github.io/Release_Recollection_Administrator/index.html` *（Phase 4 で移植予定）* |
-| Live Sync Conduit (実機接続) | `https://administ-rator.github.io/Release_Recollection_Administrator/live.html` *（Phase 4 で移植予定）* |
+| Cardinal Editor (git 編纂) | `https://administ-rator.github.io/Release_Recollection_Administrator/index.html` |
+| Live Sync Conduit (実機接続) | `https://administ-rator.github.io/Release_Recollection_Administrator/live.html` |
 
 > **[ SYSTEM ]** 初回利用時は GitHub の Settings → Pages で Source を
 > "GitHub Actions" に設定する必要がある。
@@ -134,19 +134,19 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | 領域 | ファイル |
 |---|---|
 | キーマップ描画 | `keymap.yaml` `keymap_drawer.yaml` |
-| 神器エントリ | `config/Release_Recollection.keymap` |
+| 神器エントリ | `config/Administrator.keymap` |
 | コンボ術式 | `config/keymap/10_combos.dtsi` |
 | マクロ術式 | `config/keymap/20_macros.dtsi` |
 | Enhance Armament | `config/keymap/30_*` `31_*` `35_*` |
 | 剣技（ジェスチャー） | `config/keymap/40_*` 〜 `47_*` |
 | 階層（レイヤー） | `config/keymap/layers/*.dtsi` |
-| Shield 設定 | `config/boards/shields/Release_Recollection/*` |
+| Shield 設定 | `config/boards/shields/Administrator/*` |
 | west.yml | `config/west.yml` |
 
 ### ◆ 編纂モード ── Edit Modes
 
 - **Code Editor** — CodeMirror による DTS / YAML 構文ハイライト + 括弧マッチング + Active Line Highlight
-- **Visual Editor**（`keymap.yaml` 限定）— `config/Release_Recollection.json` のレイアウト座標から **左右分割の物理キーボード配置を再現**。親指列の回転（`r:`）も `transform: rotate()` で忠実に表現。レイヤー切替タブ + キーのクリック編纂で `t:` `h:` を直接書換
+- **Visual Editor**（`keymap.yaml` 限定）— `config/Administrator.json` のレイアウト座標から **左右分割の物理キーボード配置を再現**。親指列の回転（`r:`）も `transform: rotate()` で忠実に表現。レイヤー切替タブ + キーのクリック編纂で `t:` `h:` を直接書換
 - **Quick Pick**（神器選択候補）— レイヤー / 修飾キー / 文字 / 数字 / F1-F24 / 矢印 / 特殊キー / 記号 / ZMK behavior / **剣技 (Sword Skills)** / 使用中の値 の 11 カテゴリから値を選択可能。剣技カテゴリには 8 神器 × 4 方向 = 32 種の `&gE_*` 〜 `&gW_*` 全 mod-morph behavior が含まれる。Tap/Hold いずれにも適用ターゲットを切替可能。`<datalist>` でオートコンプリートも併設
 - **Modifier Toggles**（修飾キー独立選択）— `Sft` / `Ctl` / `Alt` / `Gui` をチップ式チェックボックスで個別トグル。選択状態は対象フィールド（Tap / Hold）の値に **`Sft+Ctl+TAB` 形式で自動結合**される。既存値の修飾キープレフィックスもパースして UI に反映、双方向同期
 
@@ -432,7 +432,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | 設定 | 値 | 対象 | 効果 |
 |---|---|---|---|
-| Experimental Conn | R側(Elucidator)のみ有効、L側無効 | R側（Central） | Central側でホスト向けBLE接続安定化のため有効化 |
+| Experimental Conn | R側(Night_Sky_Sword)のみ有効、L側無効 | R側（Central） | Central側でホスト向けBLE接続安定化のため有効化 |
 | NFCT_PINS_AS_GPIOS | 有効 | R・L両側 | NFC無線とBLEの干渉防止（安定版2つともあり） |
 | BT_GAP_AUTO_UPDATE_CONN_PARAMS | 有効 | R・L両側 | 接続後に自動パラメータ再交渉（kabutokoma準拠） |
 | BT_CONN_PARAM_UPDATE_TIMEOUT | 1000ms | R・L両側 | 接続から1秒後にパラメータ更新要求 |
@@ -446,7 +446,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | BT_PERIPHERAL_PREF_MAX_INT | 6 (7.5ms) | R・L両側 | 接続インターバル上限（L側もR側と同期） |
 | Insomnia pingInterval | 3秒 | R・L両側 | keepaliveを高頻度化（L側にも追加） |
 
-### MOTION SENSOR CONFIG ── トラックボールセンサー（Elucidator.conf）
+### MOTION SENSOR CONFIG ── トラックボールセンサー（Night_Sky_Sword.conf）
 
 *センサーの挙動を制御するパラメータ。省電力モードへの移行速度を調整する。*
 
@@ -468,7 +468,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | 設定 | 値 | 対象 | 備考 |
 |---|---|---|---|
-| EC11スレッド | 4096 bytes | Dark_Repulser | |
+| EC11スレッド | 4096 bytes | Blue_Rose_Sword | |
 
 ══════════════════════════════════════════════
 
@@ -487,4 +487,5 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-05-24 | 〈Genesis Cascade〉— Phase 1 全完遂（Shield 基盤鋳造・基礎/剣技/レイヤー dtsi 全 31 ファイル移植・50キー matrix 機械マッピング・keymap entry）+ Phase 4 ほぼ全完遂（周辺ファイル・editor/ Cardinal Editor Web GUI・src-tauri/ Tauri デスクトップ版・物理レイアウト 51 keys・README 再編）+ K-α 追加 8 ポジション実用化（Esc/Tab/Shift/Ctrl/BSPC/ENT/Shift/Del）を一気通貫達成。初回 GHA build 全成功（Night_Sky_Sword rgbled_adapter + Blue_Rose_Sword rgbled_adapter + settings_reset）。残るは Phase 2（実機到着後の pin/matrix 検証・PMW3610 微調整）と Phase 3（west.yml ドライバ統合は既配置のため軽量）。 |
 | 2026-05-24 | 〈Administrator Awakening〉— Release Recollection 50キー版〈Administrator〉の建立。Cygnus素体（Dist16384/Cygnus-M-Lkeymouse）を仕様参考として、Cardinal版（42キー）の設計思想を継承して新リポを起源化。シールド〈Night_Sky_Sword〉（右手・キリト神器）/〈Blue_Rose_Sword〉（左手・ユージオ神器）の双剣構成。本コミット時点は骨格のみ（README / CLAUDE.md / .gitignore / LICENSE / build.yaml / config/west.yml / zephyr/module.yml / .github/workflows/build.yml）。Phase 1 以降で記憶解放術式の本格移植開始。 |
