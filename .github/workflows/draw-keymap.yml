@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "config/Administrator.keymap"
+      - "config/Administrator.json"
       - "config/keymap/**"
       - "keymap_drawer.yaml"
   workflow_dispatch:
