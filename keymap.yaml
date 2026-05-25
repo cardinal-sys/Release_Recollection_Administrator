@@ -899,7 +899,7 @@ combos:
   k: Gui+Q
 - p: [24, 38]
   k: Gui+W
-- p: [38, 50]
+- p: [38, 49]
   k: Gui+M
 - p: [1, 2]
   k: LEFT SHIFT
