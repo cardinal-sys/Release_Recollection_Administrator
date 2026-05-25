@@ -226,9 +226,6 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | Behavior | flavor | tapping-term-ms | quick-tap-ms | require-prior-idle-ms | hold-trigger-key-positions | 役割 |
 |---|---|---|---|---|---|---|
 | `gesture_mo_kp` | tap-preferred | 210 | 150 | 450 | — | ジェスチャーレイヤー（E,R,S,D,W等の長押し） |
-| `lt_mkp` | balanced | 200 | 150 | 150 | — | マウス層（hold）＋マウスボタン（tap） |
-| `mod_mkp` | balanced | 200 | 150 | 150 | — | Shift/Ctrl 用の modifier + mouse-button |
-| `dragkey` | tap-preferred | 200 | 100 | 150 | — | ドラッグ専用（マウス + キー同時入力） |
 
 ──────────────────────────────────────────────
 
@@ -487,6 +484,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-05-25 | 〈Phantom Sigil Pruning〉— Hold-Tap Behavior Matrix から実装で完全に 0 usage となっていた `lt_mkp` / `mod_mkp` / `dragkey` の 3 行を剪定し、現役 `gesture_mo_kp` の 1 行に絞った。〈Handling Refine〉(2026-05-01) で導入された hold-tap チューニングが〈Handling Stabilize〉(2026-05-01) の home-row mod (`hm_l`/`hm_r`) 廃止後も「保持」のまま README 表に残留し、双子リポ（42キー Cardinal・50キー Administrator）共通の幻影印璽として漂っていた。dead code 本体 (`config/keymap/30_enhance_armament_base.dtsi` の behavior 定義) は将来再昇華に備えた依代として温存。剣士が手にする現役神器のみが矩形（マトリクス）に映る世界像へ復帰した。 |
 | 2026-05-25 | 〈Pathname Sovereignty〉— 〈Sigil Vault Partition〉適用後も「Administrator Editor で `config/Administrator.json` が 404 になり Visual Editor の物理レイアウトが崩壊」する症状が継続したため、ブラウザの form autofill（再訪時に input value を復元する Chrome の挙動）が古い `Release_Recollection_Cardinal` を復元し続けている疑いを断つべく、URL pathname から repo を**直接導出**する〈Pathname Sovereignty〉を追加。`editor/app.js` に `deriveRepoFromUrl()` / `expectedRepo()` / `isRepoSovereign()` を新設し、`window.location.hostname.endsWith('.github.io')` の場合は `cardinal-sys/Release_Recollection_<エディタ名>` を URL から強制導出。state 初期値 / loadCredentials / handleAuth の全経路で sovereign repo を優先採用し、repo input は readonly 化＋title tooltip で固定理由を明示。localStorage に汚染された repo 値が残っていれば自動掃除。ローカル開発（localhost / file://）では従来通り input を尊重するため Tauri デスクトップ版や `python3 -m http.server` でも互換性維持。これにより GitHub Pages デプロイ版は **どんな漏れ込みでも URL が支配する**鉄則を獲得した。 |
 | 2026-05-25 | 〈Cardinal Mirror Reflection〉— Visual Editor (`Administrator.json`) と実機物理 (`Administrator.dtsi`) で 0.5 unit 乖離していた右 thumb cluster (pos 47/48) の座標を完全同期。〈Right Thumb Widening II〉(2026-05-24) を含む歴代 3 度の widening 儀式（〈Thumb Cluster Widening〉→〈Thumb Cluster Cardinal-fication〉→〈Right Thumb Widening II〉）がいずれも JSON 側にのみ刻まれ、DTSI は Phase 1 鋳造時の座標で凍結されていた。`pos 47: x=750→800, rx=650→850, ry=387→437` / `pos 48: x=863→913, rx=0→963, ry=350→400`。特に **pos 48 の rx=0** は rotation center が原点固定の異常値で、ZMK Studio 描画時に thumb 回転中心が破綻していた潜在不具合を解消。`col-gpios`/`row-gpios` 等の電気的接続は不変につき、実機キー入力動作には影響しない。Cardinal Editor の Visual Editor と ZMK Studio の両描画系が初めて同一の物理像を共有し、双剣の右翼が真の鏡面対称を取り戻す。 |
 | 2026-05-25 | 〈Sigil Vault Partition〉— Administrator Editor (50キー版) と Cardinal Editor (42キー版) が共通の `localStorage` キー (`cardinal_editor_repo` 等) を使っていたため、片方の `repo` 値がもう片方のセッションに漏出して GitHub API への fetch が 404 を返す混線を封印。`editor/app.js` の `STORAGE_KEYS` をエディタ識別子 (`__administrator_50` / `__cardinal_42`) で suffix 化し、PAT / repo / branch / remember 設定すべての記憶領域を分割。既存ユーザの利便のため `migrateLegacyCredentials()` を追加し、旧キーから PAT と Remember 設定だけは新キーへ昇華 (`repo`/`branch` は引き継がず混線源を断つ)。両エディタの `editor/app.js` に対称的な変更を施し、SAO 風には〈Sigil 保管庫〉を Cardinal Cardina と Administrator Quinella の名で隔壁分離した儀式に相当する。報告された症状は「Administrator Editor で `config/Administrator.keymap` 等が 404 になり編集できない」で、原因は localStorage に残っていた `cardinal-sys/Release_Recollection_Cardinal` を Administrator Editor が誤って参照していたこと。今後はエディタ切替時にも localStorage が干渉しない。 |
