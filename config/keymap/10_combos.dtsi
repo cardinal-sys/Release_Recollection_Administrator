@@ -41,7 +41,7 @@ window_close {
 
 window_min {
     bindings = <&kp LG(M)>;
-    key-positions = <38 50>;
+    key-positions = <38 49>;
 };
 
 left_shift {
