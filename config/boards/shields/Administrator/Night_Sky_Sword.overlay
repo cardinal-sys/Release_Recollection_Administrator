@@ -3,11 +3,14 @@
  * 〈夜空の剣〉— 右手・central
  *   - キリト神器・夜空の剣
  *   - PMW3610 トラックボール搭載
- *   - col-gpios 6列（Cygnus素体準拠）
+ *   - col-gpios 6列（cols 7–12、col-offset 7）
  *   - Cardinal版 Elucidator.overlay の input_processors 群を継承
  * =============================== */
 
 #include "Administrator.dtsi"
+
+/* 右手は左手（cols 0–6）の続きから始まる */
+&default_transform { col-offset = <7>; };
 
 #include <input/processors.dtsi>
 #include <mouse-gesture.dtsi>

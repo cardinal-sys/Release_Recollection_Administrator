@@ -3,14 +3,12 @@
  * 〈青薔薇の剣〉— 左手・peripheral
  *   - ユージオ神器・青薔薇の剣
  *   - EC11 ロータリーエンコーダー搭載
- *   - col-gpios 7列（Cygnus素体準拠・col-offset 7）
+ *   - col-gpios 7列（cols 0–6、col-offset なし）
  * =============================== */
 
 #include "Administrator.dtsi"
 
-&default_transform {
-    col-offset = <7>;
-};
+/* col-offset は Night_Sky_Sword（右・central）側で設定する */
 
 &kscan0 {
     wakeup-source;
