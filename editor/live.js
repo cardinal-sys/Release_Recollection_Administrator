@@ -1485,7 +1485,11 @@ function _modMaskToZmk(mask) {
 
 // ZMK Studio の displayName → node 名への変換テーブル
 // label が定義されている behavior は大文字 label で来るので node 名に変換する
+// ZMK Studio displayName（label or node name）→ キーマップ内で使う & 参照名
+// label が設定されている場合: displayName = label 値（大文字）→ node name へ変換
+// label がない場合: displayName = node name のまま → そのまま使うが alias があれば alias へ変換
 const LABEL_TO_NODE = {
+  // label → node name（label が大文字で返ってくる場合）
   'GESTURE_MO_KP':   'gesture_mo_kp',
   'ROTATE':          'rotate',
   'LT_MKP':         'lt_mkp',
@@ -1508,6 +1512,9 @@ const LABEL_TO_NODE = {
   'BT_PAIR_2':      'bt_pair_2',
   'BT_PAIR_3':      'bt_pair_3',
   'BT_PAIR_4':      'bt_pair_4',
+  // node name → キーマップ内ラベル alias（ZMK Studio がノード名で返す場合の alias 変換）
+  // 例: `td_enter: tap_dance_enter { ... }` → displayName='tap_dance_enter', 使用名='td_enter'
+  'tap_dance_enter': 'td_enter',
 };
 
 // 独自 behavior（hold-tap 系）のパラメーター数
@@ -1521,8 +1528,7 @@ const CUSTOM_BEHAVIOR_PARAMS = {
   'mod_mkp':       2,
   'lt_to_layer_0': 2,
   'ht_arrows_alt': 2,
-  'tap_dance_enter': 0, // &td_enter (node name in keymap = td_enter)
-  'td_enter':      0,
+  'td_enter':      0,  // &td_enter（tap_dance_enter のラベル alias）
   'rotate':        0,
   'dragkey':       2,
   'swapper':       0,
