@@ -49,7 +49,7 @@ layers:
   - {t: SPACE, h: NUM}
   - '&mkp MB1'
   - BACKSPACE
-  - '&tap_dance_enter'
+  - '&td_enter'
   - DELETE
   - {t: TAB, h: FUNCTION}
   FUNCTION:
