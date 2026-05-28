@@ -1,13 +1,10 @@
 /* ============================================================
- * layers/02_sign.dtsi — [ Synthesis 02 ] SIGN
+ * layers/02_sign.dtsi â [ Synthesis 02 ] SIGN
  * ============================================================ */
 
 SIGN {
     bindings = <
-    &trans  &kp PERCENT  &kp EXCLAMATION  &kp HASH  &kp DOLLAR  &kp AMPERSAND  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp TILDE  &trans
-    &trans  &mt LSHIFT TAB  &kp DOUBLE_QUOTES  &kp APOSTROPHE  &kp GRAVE  &kp QUESTION  &kp SLASH  &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS  &kp AT_SIGN  &kp SEMICOLON  &trans
-    &trans  &kp LSHIFT  &kp LA(Y)  &kp PIPE  &kp PERIOD  &kp COMMA  &kp PLUS  &kp ASTERISK  &kp LESS_THAN  &kp GREATER_THAN  &kp UNDERSCORE  &kp BACKSLASH  &kp COLON  &trans
-    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &kp LLSHFT(NUMBER_5)  &kp LLSHFT(NUMBER_1)  &kp LLSHFT(NUMBER_3)  &kp LLSHFT(NUMBER_4)  &kp LLSHFT(NUMBER_7)  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LLSHFT(LEFT_BRACKET)  &kp LLSHFT(RIGHT_BRACKET)  &kp LLSHFT(GRAVE)  &trans  &trans  &mt LCTRL_RSHFT_RALT_RGUI TAB  &kp LLSHFT(SINGLE_QUOTE)  &kp SINGLE_QUOTE  &kp GRAVE  &kp LLSHFT(SLASH)  &kp SLASH  &kp EQUAL  &kp LLSHFT(NUMBER_9)  &kp LLSHFT(NUMBER_0)  &kp MINUS  &kp LLSHFT(NUMBER_2)  &kp SEMICOLON  &trans  &trans  &kp LEFT_SHIFT  &kp LLALT(Y)  &kp LLSHFT(BACKSLASH)  &kp PERIOD  &kp COMMA  &kp LLSHFT(EQUAL)  &kp LLSHFT(NUMBER_8)  &kp LLSHFT(COMMA)  &kp LLSHFT(PERIOD)  &kp LLSHFT(MINUS)  &kp BACKSLASH  &kp LLSHFT(SEMICOLON)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
     >;
 
     sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
