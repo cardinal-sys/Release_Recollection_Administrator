@@ -189,49 +189,79 @@
             <label>Position</label>
             <input type="text" id="edit-index" readonly>
           </div>
-          <div class="form-row">
-            <label>Tap （t:）</label>
-            <input type="text" id="edit-tap" list="key-options-tap" placeholder="例: A, ESC, &smart_num 16" autocomplete="off">
-            <datalist id="key-options-tap"></datalist>
+
+          <!-- ◆ TAP スロット -->
+          <div class="ve-slot" id="ve-tap-slot">
+            <div class="ve-slot-header">
+              <span class="ve-slot-label">◆ TAP</span>
+              <span class="ve-slot-preview" id="ve-tap-preview"></span>
+            </div>
+            <div class="ve-slot-body">
+              <div class="ve-row">
+                <label>Behavior</label>
+                <select id="ve-tap-behavior" class="ve-select">
+                  <option value="kp">Key Press (&amp;kp)</option>
+                  <option value="trans">&amp;trans（透過）</option>
+                  <option value="none">&amp;none（無効）</option>
+                  <option value="mkp">Mouse Button (&amp;mkp)</option>
+                  <option value="bt">Bluetooth (&amp;bt)</option>
+                  <option value="smart">スマート (&amp;smart_num / &amp;smart_snipe)</option>
+                  <option value="gesture">剣技 (Sword Skills)</option>
+                  <option value="custom">カスタム入力</option>
+                </select>
+              </div>
+              <div id="ve-tap-slots-body"></div>
+            </div>
           </div>
-          <div class="form-row">
-            <label>Hold （h:）</label>
-            <input type="text" id="edit-hold" list="key-options-hold" placeholder="例: LEFT SHIFT, NUM, GESTURE_W" autocomplete="off">
-            <datalist id="key-options-hold"></datalist>
+
+          <!-- ◆ HOLD スロット -->
+          <div class="ve-slot" id="ve-hold-slot">
+            <div class="ve-slot-header">
+              <span class="ve-slot-label">◆ HOLD</span>
+              <span class="ve-slot-preview" id="ve-hold-preview"></span>
+            </div>
+            <div class="ve-slot-body">
+              <div class="ve-row">
+                <label>Behavior</label>
+                <select id="ve-hold-behavior" class="ve-select">
+                  <option value="none_hold">&amp;none（Hold なし）</option>
+                  <option value="mo">Layer Momentary (&amp;mo)</option>
+                  <option value="lt">Layer Tap (&amp;lt)</option>
+                  <option value="mt">Mod Tap (&amp;mt)</option>
+                  <option value="mod">Modifier Key</option>
+                  <option value="custom">カスタム入力</option>
+                </select>
+              </div>
+              <div id="ve-hold-slots-body"></div>
+            </div>
           </div>
-          <div class="form-row mod-toggles">
-            <label>Modifiers</label>
-            <label class="mod-chip"><input type="checkbox" id="mod-sft"><span>Sft</span></label>
-            <label class="mod-chip"><input type="checkbox" id="mod-ctl"><span>Ctl</span></label>
-            <label class="mod-chip"><input type="checkbox" id="mod-alt"><span>Alt</span></label>
-            <label class="mod-chip"><input type="checkbox" id="mod-gui"><span>Gui</span></label>
-            <button id="mod-clear-btn" class="btn-tiny" title="修飾キーをすべて解除">Clear</button>
-          </div>
-          <div class="form-row key-categories">
-            <label>Quick Pick</label>
-            <select id="edit-category" class="category-select">
-              <option value="">— カテゴリ選択 —</option>
-              <option value="layers">レイヤー</option>
-              <option value="modifiers">修飾キー (LEFT/RIGHT)</option>
-              <option value="letters">文字 (A-Z)</option>
-              <option value="digits">数字 (0-9)</option>
-              <option value="functionKeys">F1-F24</option>
-              <option value="arrows">矢印</option>
-              <option value="special">特殊キー</option>
-              <option value="symbols">記号</option>
-              <option value="behaviors">ZMK behavior</option>
-              <option value="gestures">剣技 (Sword Skills)</option>
-              <option value="used">使用中の値</option>
-            </select>
-            <select id="edit-keylist" class="key-select hidden">
-              <option value="">— 選択 —</option>
-            </select>
-            <select id="edit-target" class="target-select">
-              <option value="tap">→ Tap</option>
-              <option value="hold">→ Hold</option>
-            </select>
-          </div>
-          <div class="form-row">
+
+          <!-- 詳細（旧テキスト入力）折りたたみ -->
+          <details class="ve-advanced">
+            <summary>◆ Advanced — テキスト直接入力</summary>
+            <div class="form-row" style="margin-top:8px;">
+              <label>Tap （t:）</label>
+              <input type="text" id="edit-tap" list="key-options-tap" placeholder="例: A, ESC, &smart_num 16" autocomplete="off">
+              <datalist id="key-options-tap"></datalist>
+            </div>
+            <div class="form-row">
+              <label>Hold （h:）</label>
+              <input type="text" id="edit-hold" list="key-options-hold" placeholder="例: LEFT SHIFT, NUM, GESTURE_W" autocomplete="off">
+              <datalist id="key-options-hold"></datalist>
+            </div>
+          </details>
+
+          <!-- hidden: category/keylist/target/mod-chips は互換のため残す（非表示） -->
+          <select id="edit-category" class="hidden"></select>
+          <select id="edit-keylist" class="hidden"></select>
+          <select id="edit-target" class="hidden"><option value="tap">tap</option><option value="hold">hold</option></select>
+          <input type="checkbox" id="mod-sft" class="hidden">
+          <input type="checkbox" id="mod-ctl" class="hidden">
+          <input type="checkbox" id="mod-alt" class="hidden">
+          <input type="checkbox" id="mod-gui" class="hidden">
+          <button id="mod-clear-btn" class="hidden"></button>
+
+          <div class="form-row" style="margin-top:12px;">
             <button id="apply-edit-btn" class="btn-primary">〈 Apply 〉</button>
             <button id="cancel-edit-btn" class="btn-ghost">[ Cancel ]</button>
           </div>

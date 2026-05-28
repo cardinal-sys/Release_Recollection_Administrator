@@ -1701,3 +1701,132 @@ button {
   box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.1);
   clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
 }
+
+/* ◆ 〈Binding Selector Engine〉— Visual Editor behavior 選択式 UI ─── */
+.ve-slot {
+  background: rgba(126, 207, 255, 0.05);
+  border: 1px dashed var(--border-soft);
+  border-left: 2px solid var(--accent-cyan);
+  border-radius: 3px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+.ve-slot-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--border-soft);
+}
+.ve-slot-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+.ve-slot-preview {
+  font-size: 0.68rem;
+  font-family: monospace;
+  color: var(--accent-violet);
+  background: rgba(180, 140, 255, 0.1);
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(180, 140, 255, 0.2);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ve-slot-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ve-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 8px;
+  align-items: center;
+}
+.ve-row label {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.ve-select, .ve-input {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  color: var(--text-primary);
+  padding: 5px 8px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  border-radius: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ve-select:focus, .ve-input:focus {
+  outline: none;
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 6px rgba(180, 140, 255, 0.3);
+}
+.ve-mod-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.ve-mod-label {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.ve-mod-chips {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.ve-mod-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-accent);
+  border-radius: 2px;
+  padding: 3px 7px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  transition: all 0.1s ease;
+}
+.ve-mod-chip:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+.ve-mod-chip input { margin: 0; cursor: pointer; accent-color: var(--accent-violet); }
+.ve-mod-chip.active,
+.ve-mod-chip:has(input:checked) {
+  background: rgba(180, 140, 255, 0.15);
+  border-color: var(--accent-violet);
+  color: var(--accent-violet);
+  font-weight: bold;
+}
+.ve-advanced {
+  margin-top: 10px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  padding: 6px 10px;
+}
+.ve-advanced summary {
+  cursor: pointer;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+.ve-advanced[open] summary {
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}

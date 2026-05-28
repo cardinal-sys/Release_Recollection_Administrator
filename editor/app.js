@@ -2726,6 +2726,393 @@ function createKeyCell(entry, idx) {
   return cell;
 }
 
+/* ◆ 〈Binding Selector Engine〉— Visual Editor behavior 選択式 UI ─────────── */
+
+// keymap.yaml の t:/h: 値を behavior + params に分解する
+function parseValueToBehavior(val) {
+  if (!val) return { behavior: 'none_hold', params: [] };
+  const v = val.trim();
+  // &trans / &none
+  if (v === '&trans') return { behavior: 'trans', params: [] };
+  if (v === '&none') return { behavior: 'none', params: [] };
+  // &mkp MB1 など
+  const mkp = v.match(/^&mkp\s+(.+)$/);
+  if (mkp) return { behavior: 'mkp', params: [mkp[1].trim()] };
+  // &bt BT_SEL 0 / &bt BT_CLR など
+  const bt = v.match(/^&bt\s+(\S+)(?:\s+(\S+))?$/);
+  if (bt) return { behavior: 'bt', params: [bt[1], bt[2] ?? ''].filter((_, i) => i === 0 || bt[2] !== undefined) };
+  // &smart_num 16 / &smart_snipe 15
+  const smart = v.match(/^(&smart_\w+)\s+(\S+)$/);
+  if (smart) return { behavior: 'smart', params: [smart[1], smart[2]] };
+  // &mo LAYER
+  const mo = v.match(/^&mo\s+(\S+)$/);
+  if (mo) return { behavior: 'mo', params: [mo[1]] };
+  // &lt LAYER KEY
+  const lt = v.match(/^&lt\s+(\S+)\s+(.+)$/);
+  if (lt) return { behavior: 'lt', params: [lt[1], lt[2].trim()] };
+  // &mt MOD KEY
+  const mt = v.match(/^&mt\s+(\S+)\s+(.+)$/);
+  if (mt) return { behavior: 'mt', params: [mt[1], mt[2].trim()] };
+  // Modifier: LEFT SHIFT / RIGHT CONTROL etc.
+  if (/^(LEFT|RIGHT)\s+(SHIFT|CONTROL|ALT|GUI|COMMAND|OPTION)$/.test(v)) {
+    return { behavior: 'mod', params: [v] };
+  }
+  // 剣技
+  if (v.startsWith('&g')) return { behavior: 'gesture', params: [v] };
+  // &xxx (その他 behavior)
+  if (v.startsWith('&')) return { behavior: 'custom', params: [v] };
+  // キー押下（kp）: A, ESC, Sft+A, LEFT SHIFT など
+  return { behavior: 'kp', params: [v] };
+}
+
+// behavior + params → keymap.yaml の t:/h: 値に組み立てる
+function buildValueFromBehavior(behavior, params) {
+  switch (behavior) {
+    case 'trans':    return '&trans';
+    case 'none':     return '&none';
+    case 'none_hold': return '';
+    case 'mkp':      return `&mkp ${params[0] || 'MB1'}`;
+    case 'bt': {
+      const cmd = params[0] || 'BT_CLR';
+      return params[1] !== undefined && params[1] !== '' ? `&bt ${cmd} ${params[1]}` : `&bt ${cmd}`;
+    }
+    case 'smart':    return `${params[0] || '&smart_num'} ${params[1] || '16'}`;
+    case 'gesture':  return params[0] || '';
+    case 'mo':       return `&mo ${params[0] || '0'}`;
+    case 'lt':       return `&lt ${params[0] || '0'} ${params[1] || 'A'}`;
+    case 'mt':       return `&mt ${params[0] || 'LEFT_SHIFT'} ${params[1] || 'A'}`;
+    case 'mod':      return params[0] || 'LEFT SHIFT';
+    case 'kp':       return params[0] || '';
+    case 'custom':   return params[0] || '';
+    default:         return '';
+  }
+}
+
+// KP 入力用カテゴリ・キーリスト
+const VE_KP_CATS = [
+  { value: 'letters',      label: '文字 (A-Z)' },
+  { value: 'digits',       label: '数字 (0-9)' },
+  { value: 'functionKeys', label: 'F1-F24' },
+  { value: 'arrows',       label: '矢印' },
+  { value: 'special',      label: '特殊キー' },
+  { value: 'symbols',      label: '記号' },
+];
+
+const VE_MOD_OPTIONS = [
+  'LEFT SHIFT', 'RIGHT SHIFT',
+  'LEFT CONTROL', 'RIGHT CONTROL',
+  'LEFT ALT', 'RIGHT ALT',
+  'LEFT GUI', 'RIGHT GUI',
+];
+
+const VE_MOD_PAIRS = [
+  ['Sft', 'LEFT_SHIFT'], ['Ctl', 'LEFT_CONTROL'],
+  ['Alt', 'LEFT_ALT'],   ['Gui', 'LEFT_GUI'],
+  ['RSft', 'RIGHT_SHIFT'], ['RCtl', 'RIGHT_CONTROL'],
+  ['RAlt', 'RIGHT_ALT'],   ['RGui', 'RIGHT_GUI'],
+];
+
+const VE_MKP_OPTIONS = ['MB1', 'MB2', 'MB3', 'MB4', 'MB5'];
+const VE_BT_CMDS = ['BT_CLR', 'BT_NXT', 'BT_PRV', 'BT_SEL'];
+const VE_SMART_BEHAVIORS = ['&smart_num', '&smart_snipe'];
+
+function veGetKeyOptions(cat) {
+  if (cat === 'used') return collectUsedKeys(state.yamlData);
+  return KEY_PRESETS[cat] || [];
+}
+
+// KP 専用 UI（カテゴリ → キー選択 + Mod チェックボックス）を body に描画
+function veBuildKpBody(body, currentVal, onChange) {
+  const { mods: initMods, base: initBase } = veParseKpMods(currentVal);
+  const initCat = veGuessCat(initBase) || 'letters';
+
+  body.innerHTML = `
+    <div class="ve-row">
+      <label>カテゴリ</label>
+      <select class="ve-select ve-kp-cat"></select>
+    </div>
+    <div class="ve-row">
+      <label>キー</label>
+      <select class="ve-select ve-kp-key"></select>
+    </div>
+    <div class="ve-mod-row">
+      <span class="ve-mod-label">Modifier</span>
+      <div class="ve-mod-chips"></div>
+    </div>
+  `;
+  const catSel = body.querySelector('.ve-kp-cat');
+  const keySel = body.querySelector('.ve-kp-key');
+  const chipsEl = body.querySelector('.ve-mod-chips');
+
+  // カテゴリ選択肢を投入
+  for (const c of VE_KP_CATS) {
+    const o = document.createElement('option');
+    o.value = c.value; o.textContent = c.label;
+    catSel.appendChild(o);
+  }
+  catSel.value = initCat;
+
+  function fillKeys(cat, select) {
+    const opts = veGetKeyOptions(cat);
+    select.innerHTML = '<option value="">— 選択 —</option>' +
+      opts.map((v) => `<option value="${v.replace(/"/g,'&quot;')}">${v}</option>`).join('');
+  }
+  fillKeys(initCat, keySel);
+  keySel.value = initBase;
+
+  // Modifier チェックボックス
+  const MOD_CHIPS = [['Sft','Sft'], ['Ctl','Ctl'], ['Alt','Alt'], ['Gui','Gui']];
+  for (const [label, id] of MOD_CHIPS) {
+    const lbl = document.createElement('label');
+    lbl.className = 've-mod-chip' + (initMods.includes(id) ? ' active' : '');
+    lbl.innerHTML = `<input type="checkbox" data-mod="${id}"${initMods.includes(id) ? ' checked' : ''}><span>${label}</span>`;
+    chipsEl.appendChild(lbl);
+  }
+
+  function emitChange() {
+    const base = keySel.value;
+    const mods = [...chipsEl.querySelectorAll('input[data-mod]:checked')].map(cb => cb.dataset.mod);
+    const finalVal = mods.length ? mods.join('+') + '+' + base : base;
+    onChange(finalVal);
+  }
+
+  catSel.addEventListener('change', () => { fillKeys(catSel.value, keySel); emitChange(); });
+  keySel.addEventListener('change', emitChange);
+  for (const cb of chipsEl.querySelectorAll('input')) {
+    cb.addEventListener('change', (e) => {
+      e.target.closest('label').classList.toggle('active', e.target.checked);
+      emitChange();
+    });
+  }
+}
+
+function veParseKpMods(val) {
+  if (!val) return { mods: [], base: '' };
+  const MOD_PREFIXES = ['Sft', 'Ctl', 'Alt', 'Gui', 'RSft', 'RCtl', 'RAlt', 'RGui'];
+  const parts = val.split('+');
+  const mods = [];
+  let i = 0;
+  while (i < parts.length - 1 && MOD_PREFIXES.includes(parts[i])) { mods.push(parts[i]); i++; }
+  return { mods, base: parts.slice(i).join('+') };
+}
+
+function veGuessCat(base) {
+  if (!base) return null;
+  if (KEY_PRESETS.letters.includes(base)) return 'letters';
+  if (KEY_PRESETS.digits.includes(base)) return 'digits';
+  if (KEY_PRESETS.functionKeys.includes(base)) return 'functionKeys';
+  if (KEY_PRESETS.arrows.includes(base)) return 'arrows';
+  if (KEY_PRESETS.special.includes(base)) return 'special';
+  if (KEY_PRESETS.symbols.includes(base)) return 'symbols';
+  return null;
+}
+
+// Tap/Hold それぞれのスロット動的 UI を描画
+function veRenderSlot(slot, currentVal, isHold) {
+  const behaviorSel = document.getElementById(slot === 'tap' ? 've-tap-behavior' : 've-hold-behavior');
+  const body        = document.getElementById(slot === 'tap' ? 've-tap-slots-body' : 've-hold-slots-body');
+  const previewEl   = document.getElementById(slot === 'tap' ? 've-tap-preview' : 've-hold-preview');
+  const tapInput    = els.editTap;
+  const holdInput   = els.editHold;
+
+  // 現在値から behavior を推測してセレクトに反映
+  const parsed = parseValueToBehavior(currentVal);
+  // ただし hold 側で "none_hold" は特別
+  const detectedBeh = (isHold && !currentVal) ? 'none_hold' : parsed.behavior;
+
+  // Hold で kp が来た場合は mod として処理する可能性を考慮
+  if (behaviorSel.value !== detectedBeh) {
+    // セレクトに存在する option のみ選択
+    const exists = [...behaviorSel.options].some(o => o.value === detectedBeh);
+    if (exists) behaviorSel.value = detectedBeh;
+  }
+  const behavior = behaviorSel.value;
+  const params = parsed.params;
+
+  function setVal(val) {
+    if (slot === 'tap') tapInput.value = val;
+    else holdInput.value = val;
+    if (previewEl) previewEl.textContent = val || '—';
+  }
+
+  body.innerHTML = '';
+
+  switch (behavior) {
+    case 'trans':
+    case 'none':
+    case 'none_hold':
+      setVal(behavior === 'trans' ? '&trans' : behavior === 'none' ? '&none' : '');
+      break;
+
+    case 'kp':
+      veBuildKpBody(body, currentVal, (val) => setVal(val));
+      setVal(currentVal || '');
+      break;
+
+    case 'mkp': {
+      const row = document.createElement('div');
+      row.className = 've-row';
+      row.innerHTML = `<label>ボタン</label><select class="ve-select ve-mkp-sel">${
+        VE_MKP_OPTIONS.map(v => `<option value="${v}"${v===params[0]?' selected':''}>${v}</option>`).join('')
+      }</select>`;
+      body.appendChild(row);
+      const sel = row.querySelector('.ve-mkp-sel');
+      setVal(buildValueFromBehavior('mkp', [sel.value]));
+      sel.addEventListener('change', () => setVal(buildValueFromBehavior('mkp', [sel.value])));
+      break;
+    }
+
+    case 'bt': {
+      const cmd = params[0] || 'BT_CLR';
+      const row = document.createElement('div');
+      row.className = 've-row';
+      row.innerHTML = `<label>コマンド</label><select class="ve-select ve-bt-cmd">${
+        VE_BT_CMDS.map(v => `<option value="${v}"${v===cmd?' selected':''}>${v}</option>`).join('')
+      }</select>`;
+      body.appendChild(row);
+      const numRow = document.createElement('div');
+      numRow.className = 've-row';
+      numRow.id = 've-bt-num-row';
+      numRow.innerHTML = `<label>番号</label><select class="ve-select ve-bt-num">${
+        [0,1,2,3,4].map(n => `<option value="${n}"${String(n)===String(params[1])?' selected':''}>${n}</option>`).join('')
+      }</select>`;
+      if (cmd !== 'BT_SEL') numRow.classList.add('hidden');
+      body.appendChild(numRow);
+      const cmdSel = row.querySelector('.ve-bt-cmd');
+      const numSel = numRow.querySelector('.ve-bt-num');
+      function btEmit() {
+        const c = cmdSel.value;
+        numRow.classList.toggle('hidden', c !== 'BT_SEL');
+        setVal(buildValueFromBehavior('bt', c === 'BT_SEL' ? [c, numSel.value] : [c]));
+      }
+      setVal(buildValueFromBehavior('bt', cmd === 'BT_SEL' ? [cmd, params[1] ?? '0'] : [cmd]));
+      cmdSel.addEventListener('change', btEmit);
+      numSel.addEventListener('change', btEmit);
+      break;
+    }
+
+    case 'smart': {
+      const smBeh = params[0] || '&smart_num';
+      const smArg = params[1] || '16';
+      const row1 = document.createElement('div');
+      row1.className = 've-row';
+      row1.innerHTML = `<label>Kind</label><select class="ve-select ve-smart-beh">${
+        VE_SMART_BEHAVIORS.map(v => `<option value="${v}"${v===smBeh?' selected':''}>${v}</option>`).join('')
+      }</select>`;
+      const row2 = document.createElement('div');
+      row2.className = 've-row';
+      row2.innerHTML = `<label>Arg</label><input type="number" class="ve-input ve-smart-arg" value="${smArg}" min="0" max="31">`;
+      body.appendChild(row1); body.appendChild(row2);
+      const bSel = row1.querySelector('.ve-smart-beh');
+      const aInp = row2.querySelector('.ve-smart-arg');
+      function smEmit() { setVal(buildValueFromBehavior('smart', [bSel.value, aInp.value])); }
+      setVal(buildValueFromBehavior('smart', [smBeh, smArg]));
+      bSel.addEventListener('change', smEmit);
+      aInp.addEventListener('input', smEmit);
+      break;
+    }
+
+    case 'gesture': {
+      const gestureVal = params[0] || '';
+      const all = KEY_PRESETS.gestures;
+      const row = document.createElement('div');
+      row.className = 've-row';
+      row.innerHTML = `<label>剣技</label><select class="ve-select ve-gesture-sel"><option value="">— 選択 —</option>${
+        all.map(v => `<option value="${v}"${v===gestureVal?' selected':''}>${v}</option>`).join('')
+      }</select>`;
+      body.appendChild(row);
+      const sel = row.querySelector('.ve-gesture-sel');
+      setVal(gestureVal);
+      sel.addEventListener('change', () => setVal(sel.value));
+      break;
+    }
+
+    case 'mo': {
+      const layerVal = params[0] || '0';
+      body.appendChild(veLayerRow(layerVal, (v) => setVal(`&mo ${v}`)));
+      setVal(buildValueFromBehavior('mo', [layerVal]));
+      break;
+    }
+
+    case 'lt': {
+      const ltLayer = params[0] || '0';
+      const ltKey   = params[1] || 'A';
+      const lr = veLayerRow(ltLayer, (v) => {
+        setVal(buildValueFromBehavior('lt', [v, body.querySelector('.ve-lt-key-sel')?.value || ltKey]));
+      });
+      body.appendChild(lr);
+      veBuildKpBody(body, ltKey, (v) => {
+        setVal(buildValueFromBehavior('lt', [body.querySelector('.ve-layer-sel')?.value || ltLayer, v]));
+      });
+      body.querySelector('.ve-layer-sel')?.classList.add('ve-lt-layer-sel');
+      setVal(buildValueFromBehavior('lt', [ltLayer, ltKey]));
+      break;
+    }
+
+    case 'mt': {
+      const mtMod = params[0] || 'LEFT_SHIFT';
+      const mtKey = params[1] || 'A';
+      const modRow = document.createElement('div');
+      modRow.className = 've-row';
+      modRow.innerHTML = `<label>Modifier</label><select class="ve-select ve-mt-mod">${
+        VE_MOD_PAIRS.map(([l, v]) => `<option value="${v}"${v===mtMod?' selected':''}>${l}</option>`).join('')
+      }</select>`;
+      body.appendChild(modRow);
+      veBuildKpBody(body, mtKey, (v) => {
+        setVal(buildValueFromBehavior('mt', [modRow.querySelector('.ve-mt-mod').value, v]));
+      });
+      const modSel = modRow.querySelector('.ve-mt-mod');
+      modSel.addEventListener('change', () => {
+        const curKey = els.editTap.value; // 暫定：hold のキー部分は body から再取得できないので editHold から
+        const curKeyH = els.editHold.value;
+        const parsed2 = parseValueToBehavior(slot === 'tap' ? curKey : curKeyH);
+        setVal(buildValueFromBehavior('mt', [modSel.value, parsed2.params[1] || mtKey]));
+      });
+      setVal(buildValueFromBehavior('mt', [mtMod, mtKey]));
+      break;
+    }
+
+    case 'mod': {
+      const modVal = params[0] || 'LEFT SHIFT';
+      const row = document.createElement('div');
+      row.className = 've-row';
+      row.innerHTML = `<label>修飾キー</label><select class="ve-select ve-mod-sel">${
+        VE_MOD_OPTIONS.map(v => `<option value="${v}"${v===modVal?' selected':''}>${v}</option>`).join('')
+      }</select>`;
+      body.appendChild(row);
+      const sel = row.querySelector('.ve-mod-sel');
+      setVal(modVal);
+      sel.addEventListener('change', () => setVal(sel.value));
+      break;
+    }
+
+    case 'custom': {
+      const custVal = params[0] || '';
+      const row = document.createElement('div');
+      row.className = 've-row';
+      row.innerHTML = `<label>値</label><input type="text" class="ve-input ve-custom-inp" value="${custVal.replace(/"/g,'&quot;')}" placeholder="例: &lt 1 A">`;
+      body.appendChild(row);
+      const inp = row.querySelector('.ve-custom-inp');
+      setVal(custVal);
+      inp.addEventListener('input', () => setVal(inp.value));
+      break;
+    }
+  }
+
+  if (previewEl) previewEl.textContent = (slot === 'tap' ? tapInput.value : holdInput.value) || '—';
+}
+
+function veLayerRow(currentLayer, onChange) {
+  const row = document.createElement('div');
+  row.className = 've-row';
+  const layers = state.yamlData?.layers ? Object.keys(state.yamlData.layers) : KEY_PRESETS.layers;
+  row.innerHTML = `<label>レイヤー</label><select class="ve-select ve-layer-sel">${
+    layers.map((v, i) => `<option value="${i}"${String(i)===String(currentLayer)||v===currentLayer?' selected':''}>${i}: ${v}</option>`).join('')
+  }</select>`;
+  row.querySelector('.ve-layer-sel').addEventListener('change', (e) => onChange(e.target.value));
+  return row;
+}
+
 function renderEditForm() {
   if (state.selectedIndex === null) {
     els.keyEditForm.classList.add('hidden');
@@ -2735,18 +3122,29 @@ function renderEditForm() {
   const entry = state.yamlData.layers[state.currentLayer][state.selectedIndex];
   const { t, h } = parseKey(entry);
   els.editIndex.value = `${state.currentLayer}[${state.selectedIndex}]`;
+  // Advanced 直接入力欄にも反映（datalist 補完用）
   els.editTap.value = t;
   els.editHold.value = h;
-  // Auto-detect modifiers from the targeted field (tap by default)
-  const target = els.editTarget?.value || 'tap';
-  const sourceVal = target === 'tap' ? t : h;
-  const { mods } = splitModifiers(sourceVal);
-  setActiveModifiers(mods);
   refreshDatalists();
+
+  // Tap behavior 推測 → セレクト設定 → UI 描画
+  const tapParsed = parseValueToBehavior(t);
+  const tapSel = document.getElementById('ve-tap-behavior');
+  const tapExists = tapSel && [...tapSel.options].some(o => o.value === tapParsed.behavior);
+  if (tapSel && tapExists) tapSel.value = tapParsed.behavior;
+
+  // Hold behavior 推測
+  const holdParsed = parseValueToBehavior(h);
+  const holdSel = document.getElementById('ve-hold-behavior');
+  const holdBeh = !h ? 'none_hold' : holdParsed.behavior;
+  const holdExists = holdSel && [...holdSel.options].some(o => o.value === holdBeh);
+  if (holdSel && holdExists) holdSel.value = holdBeh;
+
+  veRenderSlot('tap', t, false);
+  veRenderSlot('hold', h, true);
 }
 
 function refreshDatalists() {
-  // Datalist は Tap/Hold 入力欄のオートコンプリート用。全候補を投入
   const all = [
     ...KEY_PRESETS.layers,
     ...KEY_PRESETS.modifiers,
@@ -2762,85 +3160,32 @@ function refreshDatalists() {
   ];
   const unique = Array.from(new Set(all));
   const html = unique.map((v) => `<option value="${v.replace(/"/g, '&quot;')}">`).join('');
-  els.keyOptionsTap.innerHTML = html;
-  els.keyOptionsHold.innerHTML = html;
+  if (els.keyOptionsTap)  els.keyOptionsTap.innerHTML  = html;
+  if (els.keyOptionsHold) els.keyOptionsHold.innerHTML = html;
 }
 
-function refreshKeylist() {
-  const cat = els.editCategory.value;
-  if (!cat) {
-    els.editKeylist.classList.add('hidden');
-    els.editKeylist.innerHTML = '<option value="">— 選択 —</option>';
-    return;
-  }
-  let options;
-  if (cat === 'used') {
-    options = collectUsedKeys(state.yamlData);
-  } else {
-    options = KEY_PRESETS[cat] || [];
-  }
-  els.editKeylist.classList.remove('hidden');
-  els.editKeylist.innerHTML =
-    '<option value="">— 選択 —</option>' +
-    options
-      .map((v) => `<option value="${v.replace(/"/g, '&quot;')}">${v}</option>`)
-      .join('');
-}
+function refreshKeylist() { /* no-op: legacy */ }
 
 /* ◆ MODIFIER UTILITIES ──────────────────── */
 const MOD_PREFIXES = ['Sft', 'Ctl', 'Alt', 'Gui'];
 
-function getActiveModifiers() {
-  const mods = [];
-  if (els.modSft.checked) mods.push('Sft');
-  if (els.modCtl.checked) mods.push('Ctl');
-  if (els.modAlt.checked) mods.push('Alt');
-  if (els.modGui.checked) mods.push('Gui');
-  return mods;
-}
-
-function setActiveModifiers(mods) {
-  els.modSft.checked = mods.includes('Sft');
-  els.modCtl.checked = mods.includes('Ctl');
-  els.modAlt.checked = mods.includes('Alt');
-  els.modGui.checked = mods.includes('Gui');
-}
-
+function getActiveModifiers() { return []; }
+function setActiveModifiers() {}
 function splitModifiers(value) {
-  // "Sft+Ctl+TAB" → { mods: ['Sft', 'Ctl'], base: 'TAB' }
   if (!value) return { mods: [], base: '' };
   const parts = value.split('+');
   const mods = [];
   let i = 0;
-  while (i < parts.length - 1 && MOD_PREFIXES.includes(parts[i])) {
-    mods.push(parts[i]);
-    i++;
-  }
+  while (i < parts.length - 1 && MOD_PREFIXES.includes(parts[i])) { mods.push(parts[i]); i++; }
   return { mods, base: parts.slice(i).join('+') };
 }
-
 function joinModifiers(mods, base) {
   if (!base) return mods.length ? mods.join('+') : '';
   if (!mods.length) return base;
   return [...mods, base].join('+');
 }
-
-function clearModifiers() {
-  setActiveModifiers([]);
-}
-
-function applyQuickPick() {
-  const value = els.editKeylist.value;
-  if (!value) return;
-  const mods = getActiveModifiers();
-  const finalValue = joinModifiers(mods, value);
-  const target = els.editTarget.value;
-  if (target === 'tap') {
-    els.editTap.value = finalValue;
-  } else {
-    els.editHold.value = finalValue;
-  }
-}
+function clearModifiers() {}
+function applyQuickPick() { /* no-op: legacy */ }
 
 function applyVisualEdit() {
   if (state.selectedIndex === null) return;
@@ -3115,25 +3460,19 @@ function init() {
   els.sealBtn.addEventListener('click', handleSeal);
   els.applyEditBtn.addEventListener('click', applyVisualEdit);
   els.cancelEditBtn.addEventListener('click', cancelVisualEdit);
-  els.editCategory.addEventListener('change', refreshKeylist);
-  els.editKeylist.addEventListener('change', applyQuickPick);
-  els.modClearBtn.addEventListener('click', clearModifiers);
-  // Modifier toggle: rewrite the target field's prefix in real time
-  for (const cb of [els.modSft, els.modCtl, els.modAlt, els.modGui]) {
-    cb.addEventListener('change', () => {
-      const mods = getActiveModifiers();
-      const target = els.editTarget.value;
-      const input = target === 'tap' ? els.editTap : els.editHold;
-      const { base } = splitModifiers(input.value);
-      input.value = joinModifiers(mods, base);
-    });
-  }
-  els.editTarget.addEventListener('change', () => {
-    // ターゲット切替時は対象フィールドの修飾キー状態に同期
-    const target = els.editTarget.value;
-    const input = target === 'tap' ? els.editTap : els.editHold;
-    const { mods } = splitModifiers(input.value);
-    setActiveModifiers(mods);
+  // 〈Binding Selector Engine〉— Tap/Hold behavior セレクト変更で動的スロットを再描画
+  const veTapBeh  = document.getElementById('ve-tap-behavior');
+  const veHoldBeh = document.getElementById('ve-hold-behavior');
+  if (veTapBeh)  veTapBeh.addEventListener('change',  () => veRenderSlot('tap',  els.editTap.value,  false));
+  if (veHoldBeh) veHoldBeh.addEventListener('change', () => veRenderSlot('hold', els.editHold.value, true));
+  // Advanced 直接入力欄が変更された場合はプレビューを更新
+  els.editTap.addEventListener('input',  () => {
+    const prev = document.getElementById('ve-tap-preview');
+    if (prev) prev.textContent = els.editTap.value || '—';
+  });
+  els.editHold.addEventListener('input', () => {
+    const prev = document.getElementById('ve-hold-preview');
+    if (prev) prev.textContent = els.editHold.value || '—';
   });
   els.viewCode.addEventListener('click', () => {
     state.viewMode = 'code';
