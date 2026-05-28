@@ -1604,7 +1604,7 @@ async function ghCommitAll(pat, branch, files, message) {
 
   log('〈GitHub Sync〉[1/5] branch HEAD を解決中…', 'info');
   const ref = await _ghFetch(pat,
-    `/repos/${GITHUB_REPO}/git/ref/heads/${encodeURIComponent(branch)}`);
+    `/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`);
   const headSha = ref.object.sha;
 
   log('〈GitHub Sync〉[2/5] base commit tree を取得中…', 'info');
