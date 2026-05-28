@@ -1,10 +1,13 @@
 /* ============================================================
- * layers/01_function.dtsi â [ Synthesis 01 ] FUNCTION
+ * layers/01_function.dtsi — [ Synthesis 01 ] FUNCTION
  * ============================================================ */
 
 FUNCTION {
     bindings = <
-    &trans  &kp F5  &kp F4  &kp F3  &kp F2  &kp F1  &kp LLSHFT(RIGHT_ARROW)  &kp LEFT_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp LLCTRL(TAB)  &trans  &trans  &kp F10  &kp F9  &kp F8  &kp F7  &kp F6  &kp ESC  &kp LLSHFT(LEFT_ARROW)  &kp LEFT_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LLCTRL(LLSHFT(TAB))  &trans  &trans  &mt LCTRL_RSHFT_RALT_RGUI F11  &kp F17  &kp F16  &kp F15  &kp F14  &kp F13  &kp LRGUI(A)  &kp LRGUI(M)  &kp LRGUI(Q)  &kp LRGUI(W)  &kp LRGUI(P)  &kp LRSHFT(LRGUI(NUMBER_5))  &trans  &trans  &mt RSHFT_RALT_RGUI F12  &mt LCTRL_LSHFT_RSHFT_RALT_RGUI F19  &mt LSHFT_RSHFT_RALT_RGUI F18  &kp CAPS  &kp F20  &kp LLGUI(BACKSPACE)  &kp BACKSPACE  &trans  &kp LRSHFT(LRGUI(NUMBER_4))  &trans
+    &trans  &kp F5  &kp F4  &kp F3  &kp F2  &kp F1  &kp LS(RIGHT_ARROW)  &kp LEFT_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp LC(TAB)  &trans
+    &trans  &kp F10  &kp F9  &kp F8  &kp F7  &kp F6  &kp ESC  &kp LS(LEFT_ARROW)  &kp LEFT_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(LC(TAB))  &trans
+    &trans  &mt LEFT_SHIFT F11  &kp F17  &kp F16  &kp F15  &kp F14  &kp F13  &kp RG(A)  &kp RG(M)  &kp RG(Q)  &kp RG(W)  &kp RG(P)  &kp RS(RG(NUMBER_5))  &trans
+    &trans  &mt LEFT_CONTROL F12  &mt LEFT_GUI F19  &mt LEFT_ALT F18  &kp CAPS  &kp F20  &kp LG(BACKSPACE)  &kp BACKSPACE  &trans  &kp RS(RG(NUMBER_4))  &trans
     >;
 
     sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
