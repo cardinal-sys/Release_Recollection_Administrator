@@ -1562,6 +1562,7 @@ async function keymapToDtsiFiles(pat, branch) {
 /* ── GitHub REST helpers ── */
 async function _ghFetch(pat, endpoint, options = {}) {
   const url = `${GITHUB_API}${endpoint}`;
+  log(`〈GitHub API〉${options.method || 'GET'} ${endpoint}`, 'info');
   const resp = await fetch(url, {
     ...options,
     headers: {
@@ -1573,7 +1574,10 @@ async function _ghFetch(pat, endpoint, options = {}) {
     },
   });
   const data = await resp.json();
-  if (!resp.ok) throw Object.assign(new Error(data.message ?? `HTTP ${resp.status}`), { status: resp.status, data });
+  if (!resp.ok) {
+    log(`〈GitHub API〉❌ ${resp.status} ${endpoint} → ${data.message ?? ''}`, 'error');
+    throw Object.assign(new Error(data.message ?? `HTTP ${resp.status}`), { status: resp.status, data });
+  }
   return data;
 }
 
