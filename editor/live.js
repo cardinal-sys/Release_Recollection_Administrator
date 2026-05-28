@@ -1681,8 +1681,9 @@ async function handleGithubSync() {
   try {
     dtsiFiles = await keymapToDtsiFiles(pat, branch);
   } catch (e) {
-    log(`〈GitHub Sync〉変換エラー: ${e.message || e}`, 'error');
-    setSyncStatus('error', `❌ 変換エラー: ${e.message || e}`);
+    const detail = e.status ? `HTTP ${e.status}: ${e.message}` : String(e);
+    log(`〈GitHub Sync〉変換エラー: ${detail}`, 'error');
+    setSyncStatus('error', `❌ 変換エラー: ${detail}`);
     return;
   }
 
@@ -1696,8 +1697,9 @@ async function handleGithubSync() {
     log(`〈GitHub Sync〉✅ 完了 — ${files.length} ファイル → ${branch} [${short}]`, 'success');
     setSyncStatus('ok', `✅ ${files.length} files → ${branch} [${short}]`);
   } catch (e) {
-    log(`〈GitHub Sync〉❌ エラー: ${e.message || e}`, 'error');
-    setSyncStatus('error', `❌ ${e.message || e}`);
+    const detail = e.status ? `HTTP ${e.status}: ${e.message}` : String(e);
+    log(`〈GitHub Sync〉❌ エラー: ${detail}`, 'error');
+    setSyncStatus('error', `❌ ${detail}`);
   }
 }
 
