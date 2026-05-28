@@ -1,10 +1,13 @@
 /* ============================================================
- * layers/06_bluetooth.dtsi â [ Synthesis 06 ] Bluetooth
+ * layers/06_bluetooth.dtsi — [ Synthesis 06 ] Bluetooth
  * ============================================================ */
 
 Bluetooth {
     bindings = <
-    &trans  &trans  &trans  &trans  &trans  &trans  /* BT_SOLO_0(0,0) */  /* BT_SOLO_1(0,0) */  /* BT_SOLO_2(0,0) */  /* BT_SOLO_3(0,0) */  /* BT_SOLO_4(0,0) */  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &studio_unlock  /* BT_PAIR_0(0,0) */  /* BT_PAIR_1(0,0) */  /* BT_PAIR_2(0,0) */  /* BT_PAIR_3(0,0) */  /* BT_PAIR_4(0,0) */  &trans  &trans  &trans  &trans  &trans  &trans  &kp LLALT(LLGUI(ESC))  &kp LLCTRL(LLGUI(Q))  &bootloader  &trans  &trans  &trans  &trans  /* Bluetooth(0,0) */  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  /* Bluetooth(4,0) */  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans  &bt_solo_0  &bt_solo_1  &bt_solo_2  &bt_solo_3  &bt_solo_4  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &studio_unlock  &bt_pair_0  &bt_pair_1  &bt_pair_2  &bt_pair_3  &bt_pair_4  &trans
+    &trans  &trans  &trans  &trans  &trans  &kp LG(LA(ESC))  &kp LC(LG(Q))  &bootloader  &trans  &trans  &trans  &trans  &bt BT_CLR  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR_ALL  &trans
     >;
 
     sensor-bindings = <&rotate>;

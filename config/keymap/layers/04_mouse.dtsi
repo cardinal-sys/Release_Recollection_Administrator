@@ -1,10 +1,13 @@
 /* ============================================================
- * layers/04_mouse.dtsi â [ Synthesis 04 ] MOUSE
+ * layers/04_mouse.dtsi — [ Synthesis 04 ] MOUSE
  * ============================================================ */
 
 MOUSE {
     bindings = <
-    &trans  /* mouse_move(4255645696,0) */  /* mouse_move(600,0) */  /* mouse_move(64936,0) */  /* mouse_move(39321600,0) */  &kp LLGUI(T)  &kp LLGUI(Z)  &kp LLGUI(RIGHT_BRACKET)  /* GESTURE_MO_KP(5,134676527) */  &kp LLGUI(A)  &kp LLCTRL(H)  &trans  &trans  /* mouse_scroll(39321600,0) */  /* mouse_scroll(600,0) */  /* mouse_scroll(64936,0) */  /* mouse_scroll(4255645696,0) */  /* arrows_alt(6,0) */  &mkp MB1  /* SAFARI_RELOAD_ONCE(0,0) */  &mkp MB3  &mkp MB2  &mkp MB1  &trans  /* GESTURE_MO_KP(5,458792) */  &trans  &trans  &mt LCTRL_RSHFT_RALT_RGUI HOME  &kp END  &kp DOWN_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp RIGHT_ARROW  &kp LLGUI(C)  &kp LLGUI(V)  &kp UP_ARROW  /* DRAG_OFF(0,0) */  &kp LLGUI(X)  /* GESTURE_MO_KP(5,458794) */  &trans  &trans  &kp LLGUI(P)  &kp LLGUI(RIGHT_BRACKET)  &kp LLGUI(LEFT_BRACKET)  /* arrows_alt(2,0) */  /* arrows_alt(3,0) */  &kp TAB  /* DRAG_ON(0,0) */  &kp DOWN_ARROW  &trans  &trans
+    &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp LG(T)  &kp LG(Z)  &kp LG(RBKT)  &gesture_mo_kp 5 LG(LBKT)  &kp LG(A)  &kp LC(H)  &trans
+    &trans  &msc MOVE_RIGHT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_LEFT  &arrows_alt 6  &mkp MB1  &safari_reload_once  &mkp MB3  &mkp MB2  &mkp MB1  &trans  &gesture_mo_kp 5 ENTER  &trans
+    &trans  &mt LEFT_SHIFT HOME  &kp END  &kp DOWN_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp RIGHT_ARROW  &kp LG(C)  &kp LG(V)  &kp UP_ARROW  &drag_off  &kp LG(X)  &gesture_mo_kp 5 BACKSPACE  &trans
+    &trans  &kp LG(P)  &kp LG(RBKT)  &kp LG(LBKT)  &arrows_alt 2  &arrows_alt 3  &kp TAB  &drag_on  &kp DOWN_ARROW  &trans  &trans
     >;
 
     sensor-bindings = <&rotate>;
