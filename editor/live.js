@@ -1441,6 +1441,13 @@ const MOD_NAMES = {
 };
 const MOUSE_MAP = {1:'MB1',2:'MB2',4:'MB3',8:'MB4',16:'MB5'};
 
+// ZMK modifier ビット → ZMK modifier 関数名
+const MOD_FN = {
+  0x01:'LC', 0x02:'LS', 0x04:'LA', 0x08:'LG',
+  0x10:'RC', 0x20:'RS', 0x40:'RA', 0x80:'RG',
+};
+
+// HID implicit modifier + keycode → &kp LS(LC(...(KEY)))
 function _hidToKc(usage) {
   const implicit = (usage >>> 24) & 0xFF;
   const page     = (usage >>> 16) & 0xFF;
@@ -1450,10 +1457,97 @@ function _hidToKc(usage) {
   else if (page === 12) kc = CONSUMER_MAP[keyId]  ?? `0x${keyId.toString(16).padStart(4,'0')}`;
   else return `/* unknown usage 0x${usage.toString(16).padStart(8,'0')} */`;
   if (implicit) {
-    const mods = Object.entries(MOD_NAMES).filter(([m]) => implicit & Number(m)).map(([,n]) => n);
-    return `&kp ${mods.map(m => `L${m}(`).join('')}${kc}${')'.repeat(mods.length)}`;
+    // ZMK 正規形式: LS(LC(RA(RG(KEY)))) — 各 modifier を関数でネスト
+    const fns = Object.entries(MOD_FN).filter(([m]) => implicit & Number(m)).map(([,f]) => f);
+    kc = fns.reduce((inner, fn) => `${fn}(${inner})`, kc);
+    return `&kp ${kc}`;
   }
   return kc;
+}
+
+// modifier ビットマスク → ZMK mt 第1引数
+// ZMK の &mt 第1引数は modifier keycode: LEFT_SHIFT / LEFT_GUI 等
+// 複数 modifier は LS(LC(...)) のネスト形式（実際の dtsi では単一のみが多い）
+const MOD_MASK_TO_KC = {
+  0x01:'LEFT_CONTROL', 0x02:'LEFT_SHIFT',  0x04:'LEFT_ALT',  0x08:'LEFT_GUI',
+  0x10:'RIGHT_CONTROL',0x20:'RIGHT_SHIFT', 0x40:'RIGHT_ALT', 0x80:'RIGHT_GUI',
+};
+function _modMaskToZmk(mask) {
+  if (mask === 0) return '0x00';
+  // 単一 modifier ビット → そのまま keycode 名
+  if (MOD_MASK_TO_KC[mask]) return MOD_MASK_TO_KC[mask];
+  // 複数 modifier ビット → 最低位を base に残りを MOD_FN でネスト
+  const bits = Object.keys(MOD_MASK_TO_KC).map(Number).filter(m => mask & m);
+  const [first, ...rest] = bits;
+  const base = MOD_MASK_TO_KC[first];
+  return rest.reduce((inner, m) => `${MOD_FN[m]}(${inner})`, base);
+}
+
+// ZMK Studio の displayName → node 名への変換テーブル
+// label が定義されている behavior は大文字 label で来るので node 名に変換する
+const LABEL_TO_NODE = {
+  'GESTURE_MO_KP':   'gesture_mo_kp',
+  'ROTATE':          'rotate',
+  'LT_MKP':         'lt_mkp',
+  'MOD_MKP':        'mod_mkp',
+  'DRAGKEY':        'dragkey',
+  'SWAPPER':        'swapper',
+  'SWAPPER_REV':    'swapper_rev',
+  'LAYER_TAP_TO_0': 'lt_to_layer_0',
+  'SAFARI_RELOAD_ONCE': 'safari_reload_once',
+  'TO_LAYER_0':     'to_layer_0',
+  'DRAG_ON':        'drag_on',
+  'DRAG_OFF':       'drag_off',
+  'BT_SOLO_0':      'bt_solo_0',
+  'BT_SOLO_1':      'bt_solo_1',
+  'BT_SOLO_2':      'bt_solo_2',
+  'BT_SOLO_3':      'bt_solo_3',
+  'BT_SOLO_4':      'bt_solo_4',
+  'BT_PAIR_0':      'bt_pair_0',
+  'BT_PAIR_1':      'bt_pair_1',
+  'BT_PAIR_2':      'bt_pair_2',
+  'BT_PAIR_3':      'bt_pair_3',
+  'BT_PAIR_4':      'bt_pair_4',
+};
+
+// 独自 behavior（hold-tap 系）のパラメーター数
+// 2 = &node p1 p2、1 = &node p1、0 = &node（パラメーターなし）
+const CUSTOM_BEHAVIOR_PARAMS = {
+  'gesture_mo_kp': 2,  // &gesture_mo_kp <layer> <kp_usage>
+  'ht_snipe':      2,  // &ht_snipe <layer> <kp_usage>
+  'smart_num':     1,  // &smart_num <layer>
+  'smart_snipe':   1,  // &smart_snipe <layer>
+  'lt_mkp':        2,  // &lt_mkp <layer> <btn>
+  'mod_mkp':       2,
+  'lt_to_layer_0': 2,
+  'ht_arrows_alt': 2,
+  'tap_dance_enter': 0, // &td_enter (node name in keymap = td_enter)
+  'td_enter':      0,
+  'rotate':        0,
+  'dragkey':       2,
+  'swapper':       0,
+  'swapper_rev':   0,
+};
+
+// p1 が HID key usage の場合はキーコードに変換、レイヤー番号の場合はそのまま返す
+function _p1ToKc(p1) {
+  // HID usage page が 0 以外ならキーコード変換
+  const page = (p1 >>> 16) & 0xFF;
+  if (page === 7 || page === 12) return _hidToKc(p1);
+  // implicit mod のみの場合（page=0, keyId=0 かつ implicit>0）
+  const implicit = (p1 >>> 24) & 0xFF;
+  const keyId = p1 & 0xFFFF;
+  if (implicit && keyId) return _hidToKc(p1);
+  // ページなし小数値 → レイヤー番号またはそのまま
+  return String(p1);
+}
+
+function _p2ToKc(p2) {
+  const page = (p2 >>> 16) & 0xFF;
+  const keyId = p2 & 0xFFFF;
+  if (page === 7) return KBD_MAP[keyId] ?? `0x${keyId.toString(16).padStart(4,'0')}`;
+  if (page === 12) return CONSUMER_MAP[keyId] ?? `0x${keyId.toString(16).padStart(4,'0')}`;
+  return KBD_MAP[keyId] ?? `0x${keyId.toString(16).padStart(4,'0')}`;
 }
 
 function _bindingToZmk(b, behaviors) {
@@ -1473,12 +1567,12 @@ function _bindingToZmk(b, behaviors) {
       return kc.startsWith('&kp ') ? kc : `&kp ${kc}`;
     }
     case 'Mod-Tap': {
-      const mods = Object.entries(MOD_NAMES).filter(([m]) => p1 & Number(m)).map(([,n]) => n).join('_') || `0x${p1.toString(16)}`;
-      const kc   = KBD_MAP[p2 & 0xFFFF] ?? `0x${(p2 & 0xFFFF).toString(16).padStart(4,'0')}`;
-      return `&mt ${mods} ${kc}`;
+      const modZmk = _modMaskToZmk(p1);
+      const kc     = _p2ToKc(p2);
+      return `&mt ${modZmk} ${kc}`;
     }
     case 'Layer-Tap': {
-      const kc = KBD_MAP[p2 & 0xFFFF] ?? `0x${(p2 & 0xFFFF).toString(16).padStart(4,'0')}`;
+      const kc = _p2ToKc(p2);
       return `&lt ${p1} ${kc}`;
     }
     case 'Momentary Layer': return `&mo ${p1}`;
@@ -1497,7 +1591,20 @@ function _bindingToZmk(b, behaviors) {
     case 'Grave/Escape':      return `&gresc`;
     case 'Output Selection':  return `&out ${{0:'OUT_AUTO',1:'OUT_USB',2:'OUT_BLE'}[p1] ?? String(p1)}`;
     case 'External Power':    return `&ext_power ${{0:'EP_OFF',1:'EP_ON',2:'EP_TOG'}[p1] ?? String(p1)}`;
-    default:                  return `/* ${bname}(${p1},${p2}) */`;
+    default: {
+      // 独自 behavior — label → node 名に変換、パラメーター数に応じて出力
+      const nodeName = LABEL_TO_NODE[bname] ?? bname.toLowerCase().replace(/[^a-z0-9_]/g, '_');
+      const paramCount = CUSTOM_BEHAVIOR_PARAMS[nodeName] ?? CUSTOM_BEHAVIOR_PARAMS[bname.toLowerCase()] ?? -1;
+      if (paramCount === 0) return `&${nodeName}`;
+      if (paramCount === 1) return `&${nodeName} ${p1}`;
+      if (paramCount === 2) {
+        const k2 = _p2ToKc(p2);
+        return `&${nodeName} ${p1} ${k2}`;
+      }
+      // 不明な場合: p2 が 0 なら 1パラメーター、そうでなければ 2パラメーター
+      if (p2 === 0) return `&${nodeName} ${p1}`;
+      return `&${nodeName} ${p1} ${_p2ToKc(p2)}`;
+    }
   }
 }
 
