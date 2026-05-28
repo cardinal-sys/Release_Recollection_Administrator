@@ -1,10 +1,13 @@
 /* ============================================================
- * layers/05_scroll.dtsi â [ Synthesis 05 ] SCROLL
+ * layers/05_scroll.dtsi — [ Synthesis 05 ] SCROLL
  * ============================================================ */
 
 SCROLL {
     bindings = <
-    &trans  &mouse_move 4255645696  &mouse_move 600  &mouse_move 64936  &mouse_move 39321600  &trans  &kp LEFT_SHIFT  &kp RIGHT_ALT  &trans  &kp RIGHT_CONTROL  &trans  &trans  &trans  &mouse_scroll 39321600  &mouse_scroll 600  &mouse_scroll 64936  &mouse_scroll 4255645696  &mo 8  &to 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp RIGHT_ARROW  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(NUMBER_9)  &trans  &kp LG(NUMBER_0)  &kp UP_ARROW  &kp DOWN_ARROW  &trans  &trans
+    &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &kp LEFT_SHIFT  &kp RIGHT_ALT  &trans  &kp RIGHT_CONTROL  &trans  &trans
+    &trans  &msc MOVE_RIGHT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_LEFT  &mo 8  &to 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp RIGHT_ARROW  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &trans
+    &trans  &trans  &trans  &trans  &kp LG(NUMBER_9)  &trans  &kp LG(NUMBER_0)  &kp UP_ARROW  &kp DOWN_ARROW  &trans  &trans
     >;
 
     sensor-bindings = <&inc_dec_kp LG(LA(MINUS)) LG(LA(PLUS))>;
