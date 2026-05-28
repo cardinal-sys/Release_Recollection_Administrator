@@ -1,13 +1,10 @@
 /* ============================================================
- * layers/00_default.dtsi — [ Synthesis 00 ] default
+ * layers/00_default.dtsi â [ Synthesis 00 ] default
  * ============================================================ */
 
 default_layer {
     bindings = <
-    &kp ESC  &mt LEFT_SHIFT Q  &gesture_mo_kp 14 W  &gesture_mo_kp 7 E  &gesture_mo_kp 8 R  &gesture_mo_kp 11 T  &kp Y  &kp U  &gesture_mo_kp 5 I  &kp O  &mt RIGHT_SHIFT P  &kp BSPC
-    &kp TAB  &gesture_mo_kp 12 A  &gesture_mo_kp 9 S  &gesture_mo_kp 13 D  &kp F  &lt 6 G  &smart_num 16  &kp AT_SIGN  &kp H  &kp J  &gesture_mo_kp 5 K  &gesture_mo_kp 4 L  &mt LEFT_GUI MINUS  &kp ENTER
-    &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &gesture_mo_kp 10 B  &ht_snipe 15 TAB  &kp COLON  &kp N  &kp M  &kp COMMA  &kp PERIOD  &mt LEFT_CONTROL PLUS  &kp RSHFT
-    &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &kp LC(SPACE)  &lt 2 ESC  &lt 3 SPACE  &mkp MB1  &kp BACKSPACE  &td_enter  &mt LEFT_ALT DELETE  &lt 1 DEL
+    &kp LEFT_SHIFT  &mt LCTRL_RSHFT_RALT_RGUI Q  /* GESTURE_MO_KP(14,458778) */  /* GESTURE_MO_KP(7,458760) */  /* GESTURE_MO_KP(8,458773) */  /* GESTURE_MO_KP(11,458775) */  &kp Y  &kp U  /* GESTURE_MO_KP(5,458764) */  &kp O  &mt LCTRL_LALT_RSHFT_RALT_RGUI P  &kp LEFT_SHIFT  &kp UP_ARROW  /* GESTURE_MO_KP(12,458756) */  /* GESTURE_MO_KP(9,458774) */  /* GESTURE_MO_KP(13,458759) */  &kp F  &lt 6 G  /* smart_num(16,0) */  &kp LLSHFT(NUMBER_2)  &kp H  &kp J  /* GESTURE_MO_KP(5,458766) */  /* GESTURE_MO_KP(4,458767) */  &kp MINUS  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp Z  &kp X  &kp C  &kp V  /* GESTURE_MO_KP(10,458757) */  /* ht_snipe(15,458795) */  &kp LLSHFT(SEMICOLON)  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp LLSHFT(EQUAL)  &kp RIGHT_ARROW  &kp LEFT_CONTROL  &kp LEFT_GUI  &kp LEFT_ALT  &kp ENTER  &lt 2 ESC  &lt 3 SPACE  &mkp MB1  &kp BACKSPACE  /* tap_dance_enter(0,0) */  &kp DELETE  &lt 1 TAB
     >;
 
     sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;

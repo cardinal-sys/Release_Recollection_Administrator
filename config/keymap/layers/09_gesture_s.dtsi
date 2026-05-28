@@ -1,12 +1,9 @@
 /* ============================================================
- * layers/09_gesture_s.dtsi — [ Synthesis 09 ] GESTURE_S
+ * layers/09_gesture_s.dtsi â [ Synthesis 09 ] GESTURE_S
  * ============================================================ */
 
 GESTURE_S {
     bindings = <
-    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &trans  &trans  &trans
-    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &trans  &trans
-    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &trans  &trans  &trans  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &kp LEFT_SHIFT  &trans  &trans  &trans  &trans
     >;
 };
