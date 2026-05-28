@@ -1427,6 +1427,111 @@ button {
   margin-bottom: 14px;
 }
 
+/* ◆ 〈 Live Inscription 〉── Auto-Sync パネル ─────── */
+.auto-sync-panel {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-soft);
+}
+
+.auto-sync-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.auto-sync-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+}
+
+.auto-sync-debounce-btn {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  border: 1px dashed var(--border-soft);
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: transparent;
+}
+.auto-sync-debounce-btn:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.btn-auto-sync {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  letter-spacing: 0.15em;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.btn-auto-sync.auto-sync-off {
+  background: transparent;
+  border-color: var(--border-soft);
+  color: var(--text-dim);
+}
+.btn-auto-sync.auto-sync-off:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
+.btn-auto-sync.auto-sync-on {
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(0, 240, 255, 0.1));
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.35);
+  animation: auto-sync-pulse 2s ease-in-out infinite;
+}
+
+@keyframes auto-sync-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 204, 0, 0.35); }
+  50%       { box-shadow: 0 0 20px rgba(255, 204, 0, 0.6); }
+}
+
+.auto-sync-status {
+  font-size: 0.65rem;
+  margin-top: 6px;
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+.auto-sync-status.sync-idle    { color: var(--text-secondary); }
+.auto-sync-status.sync-pending { color: var(--accent-gold); }
+.auto-sync-status.sync-active  { color: var(--accent-cyan);  animation: blink-text 0.8s step-start infinite; }
+.auto-sync-status.sync-ok      { color: var(--accent-success); }
+.auto-sync-status.sync-error   { color: var(--accent-crimson); }
+
+@keyframes blink-text {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.auto-sync-hint {
+  margin-top: 6px;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.auto-sync-hint kbd {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  padding: 1px 4px;
+  font-size: 0.58rem;
+  font-family: inherit;
+  color: var(--accent-cyan);
+}
+
 .log-panel {
   flex: 1;
   padding: 14px;

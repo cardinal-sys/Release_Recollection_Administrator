@@ -250,6 +250,23 @@
           <button id="seal-btn" class="btn-seal">〈 SEAL & COMMIT 〉</button>
         </div>
         <p class="hint" id="seal-hint">No modified files</p>
+
+        <!-- 〈Live Inscription〉Auto-Sync Panel ─────── -->
+        <div class="auto-sync-panel">
+          <div class="auto-sync-header">
+            <span class="auto-sync-title">◆ LIVE INSCRIPTION ── 自動封印</span>
+            <button id="auto-sync-debounce" class="btn-tiny auto-sync-debounce-btn" title="デバウンス時間をクリックで変更">Debounce: 3s</button>
+          </div>
+          <div class="form-row">
+            <button id="auto-sync-btn" class="btn-auto-sync auto-sync-off">[ Auto-Sync: OFF ]</button>
+          </div>
+          <p id="auto-sync-status" class="auto-sync-status"></p>
+          <p class="hint auto-sync-hint">
+            ON にするとファイル編集から <strong>3秒後</strong> に自動コミット。<br>
+            <kbd>Ctrl+S</kbd> / <kbd>⌘S</kbd> で即時封印も可能。
+          </p>
+        </div>
+        <!-- /〈Live Inscription〉 ─────────────────── -->
       </div>
 
       <div class="log-panel">

@@ -207,6 +207,17 @@ const state = {
   viewMode: 'code',       // 'code' | 'visual'
 };
 
+/* ◆ 〈Live Inscription〉AUTO-SYNC STATE ──── */
+const autoSync = {
+  enabled: false,         // ON/OFF トグル
+  debounceMs: 3000,       // 変更後何ms でコミット発火（既定 3秒）
+  timer: null,            // setTimeout handle
+  countdown: null,        // setInterval handle（カウントダウン表示用）
+  remaining: 0,           // 残り ms
+  lastCommitAt: null,     // 最終コミット時刻（Date）
+  inFlight: false,        // コミット実行中フラグ（多重発火防止）
+};
+
 let cm = null; // CodeMirror instance
 
 /* ◆ DOM ────────────────────────────────── */
@@ -253,6 +264,10 @@ const els = {
   sealBtn:         $('seal-btn'),
   sealHint:        $('seal-hint'),
   logOutput:       $('log-output'),
+  // 〈Live Inscription〉Auto-Sync UI
+  autoSyncBtn:     $('auto-sync-btn'),
+  autoSyncStatus:  $('auto-sync-status'),
+  autoSyncDebounce: $('auto-sync-debounce'),
 };
 
 /* ◆ STATUS / LOG ────────────────────────── */
@@ -493,6 +508,135 @@ async function commitAll(message) {
   }
   state.modifiedKeys.clear();
   if (state.activePath === 'keymap.yaml') reloadVisualEditor();
+}
+
+/* ◆ 〈Live Inscription〉AUTO-SYNC ENGINE ────── */
+
+/**
+ * 変更が発生したときに呼ぶ。Auto-Sync が ON なら debounce タイマーを（再）スタート。
+ * OFF なら何もしない（既存の手動 Seal フローに影響ゼロ）。
+ */
+function autoSyncOnChange() {
+  if (!autoSync.enabled) return;
+  if (autoSync.inFlight) return; // コミット中は積み重ねない
+
+  // 既存タイマーをキャンセルして再スタート（連続入力時は伸ばす）
+  clearTimeout(autoSync.timer);
+  clearInterval(autoSync.countdown);
+  autoSync.remaining = autoSync.debounceMs;
+  updateAutoSyncUI();
+
+  // カウントダウン表示（100ms 刻み）
+  autoSync.countdown = setInterval(() => {
+    autoSync.remaining = Math.max(0, autoSync.remaining - 100);
+    updateAutoSyncUI();
+  }, 100);
+
+  // デバウンス後にコミット
+  autoSync.timer = setTimeout(async () => {
+    clearInterval(autoSync.countdown);
+    autoSync.countdown = null;
+    autoSync.remaining = 0;
+    await triggerAutoSync();
+  }, autoSync.debounceMs);
+}
+
+/**
+ * 実際にコミットを発火する内部関数。
+ * 変更がなければスキップ。コミット中の多重発火を防ぐ。
+ */
+async function triggerAutoSync() {
+  if (autoSync.inFlight) return;
+  const modified = Array.from(state.files.values()).filter((f) => f.modified);
+  if (modified.length === 0) {
+    updateAutoSyncUI();
+    return;
+  }
+
+  autoSync.inFlight = true;
+  updateAutoSyncUI();
+
+  const ts = new Date().toLocaleTimeString();
+  const fileList = Array.from(state.files.entries())
+    .filter(([, f]) => f.modified)
+    .map(([p]) => p.split('/').pop())
+    .join(', ');
+  const msg = `auto(cardinal): 〈Live Inscription〉— ${fileList} [${ts}]`;
+
+  log(`〈Live Inscription〉Auto-Sync firing… (${modified.length} file(s))`, 'info');
+  try {
+    await commitAll(msg);
+    autoSync.lastCommitAt = new Date();
+    log(`〈Live Inscription〉✅ Auto-sealed: ${msg}`, 'success');
+  } catch (e) {
+    // 422 Memory Conflict など — エラーは log に出してユーザーに知らせる
+    log(`〈Live Inscription〉⚠ Auto-Sync failed: ${e.message}`, 'error');
+  } finally {
+    autoSync.inFlight = false;
+    updateAutoSyncUI();
+  }
+}
+
+/**
+ * Auto-Sync ON/OFF を切り替える。
+ */
+function toggleAutoSync() {
+  autoSync.enabled = !autoSync.enabled;
+  if (!autoSync.enabled) {
+    // OFF にした → 進行中タイマーをキャンセル
+    clearTimeout(autoSync.timer);
+    clearInterval(autoSync.countdown);
+    autoSync.timer = null;
+    autoSync.countdown = null;
+    autoSync.remaining = 0;
+    log('〈Live Inscription〉Auto-Sync: OFF', 'warning');
+  } else {
+    log('〈Live Inscription〉Auto-Sync: ON — 変更から ' + (autoSync.debounceMs / 1000) + '秒後に自動コミット', 'success');
+  }
+  updateAutoSyncUI();
+}
+
+/**
+ * Auto-Sync ボタン・ステータス表示を更新する。
+ */
+function updateAutoSyncUI() {
+  if (!els.autoSyncBtn) return;
+
+  if (autoSync.enabled) {
+    els.autoSyncBtn.textContent = '〈 Auto-Sync: ON 〉';
+    els.autoSyncBtn.classList.add('auto-sync-on');
+    els.autoSyncBtn.classList.remove('auto-sync-off');
+  } else {
+    els.autoSyncBtn.textContent = '[ Auto-Sync: OFF ]';
+    els.autoSyncBtn.classList.remove('auto-sync-on');
+    els.autoSyncBtn.classList.add('auto-sync-off');
+  }
+
+  if (!els.autoSyncStatus) return;
+
+  if (autoSync.inFlight) {
+    els.autoSyncStatus.textContent = '⟳ 同期中…';
+    els.autoSyncStatus.className = 'auto-sync-status sync-active';
+  } else if (autoSync.enabled && autoSync.remaining > 0) {
+    const sec = (autoSync.remaining / 1000).toFixed(1);
+    const modified = Array.from(state.files.values()).filter((f) => f.modified).length;
+    els.autoSyncStatus.textContent = `⏱ ${sec}s 後に自動封印 (${modified} file(s))`;
+    els.autoSyncStatus.className = 'auto-sync-status sync-pending';
+  } else if (autoSync.lastCommitAt) {
+    const t = autoSync.lastCommitAt.toLocaleTimeString();
+    els.autoSyncStatus.textContent = `✅ 最終封印: ${t}`;
+    els.autoSyncStatus.className = 'auto-sync-status sync-ok';
+  } else if (autoSync.enabled) {
+    els.autoSyncStatus.textContent = '監視中 — 変更を検知したら自動封印';
+    els.autoSyncStatus.className = 'auto-sync-status sync-idle';
+  } else {
+    els.autoSyncStatus.textContent = '';
+    els.autoSyncStatus.className = 'auto-sync-status';
+  }
+
+  if (els.autoSyncDebounce) {
+    els.autoSyncDebounce.textContent = `Debounce: ${autoSync.debounceMs / 1000}s`;
+  }
 }
 
 /* ◆ FILE TREE RENDER ────────────────────── */
@@ -928,6 +1072,8 @@ function commitConfChange(path, entries) {
   renderTabBar();
   renderFileTree();
   renderModifiedList();
+  // 〈Live Inscription〉— Settings 変更を Auto-Sync に通知
+  autoSyncOnChange();
 }
 
 /* ◆ COMBOS (10_combos.dtsi) PARSER / EDITOR ─── */
@@ -1279,6 +1425,8 @@ function commitCombosChange(path, parsed) {
   renderTabBar();
   renderFileTree();
   renderModifiedList();
+  // 〈Live Inscription〉— Combos 変更を Auto-Sync に通知
+  autoSyncOnChange();
 }
 
 function addNewCombo(path) {
@@ -1635,6 +1783,8 @@ function commitDtsChange(path, parsed) {
   renderTabBar();
   renderFileTree();
   renderModifiedList();
+  // 〈Live Inscription〉— DTS 変更を Auto-Sync に通知
+  autoSyncOnChange();
 }
 
 /* ◆ STEP 5: MACROS EDITOR (20_macros.dtsi) ─── */
@@ -2382,6 +2532,8 @@ function initCodeMirror() {
     renderTabBar();
     renderFileTree();
     renderModifiedList();
+    // 〈Live Inscription〉— コードエディタの変更を Auto-Sync に通知
+    autoSyncOnChange();
   });
 }
 
@@ -2712,6 +2864,8 @@ function applyVisualEdit() {
   renderTabBar();
   renderFileTree();
   renderModifiedList();
+  // 〈Live Inscription〉— Visual Editor 変更を Auto-Sync に通知
+  autoSyncOnChange();
 }
 
 function cancelVisualEdit() {
@@ -3064,8 +3218,55 @@ function init() {
     if (e.target.id === 'diff-modal') closeDiffModal();
   });
 
+  // 〈Live Inscription〉Auto-Sync ボタン
+  if (els.autoSyncBtn) {
+    els.autoSyncBtn.addEventListener('click', toggleAutoSync);
+  }
+  // Debounce 値の変更
+  if (els.autoSyncDebounce) {
+    els.autoSyncDebounce.addEventListener('click', () => {
+      const next = prompt(
+        `Auto-Sync デバウンス時間（ミリ秒）を入力してください。\n現在: ${autoSync.debounceMs}ms`,
+        String(autoSync.debounceMs)
+      );
+      if (next === null) return;
+      const ms = parseInt(next, 10);
+      if (ms >= 500 && ms <= 60000) {
+        autoSync.debounceMs = ms;
+        updateAutoSyncUI();
+        log(`〈Live Inscription〉デバウンス時間を ${ms}ms に変更しました`, 'info');
+      } else {
+        alert('500〜60000ms の範囲で入力してください。');
+      }
+    });
+  }
+
+  // 〈Ctrl+S Fast Seal〉— Ctrl+S / Cmd+S でワンクリック即時封印
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      if (autoSync.enabled) {
+        // Auto-Sync ON 時: 進行中タイマーを即時発火に早める
+        clearTimeout(autoSync.timer);
+        clearInterval(autoSync.countdown);
+        autoSync.timer = null;
+        autoSync.countdown = null;
+        autoSync.remaining = 0;
+        updateAutoSyncUI();
+        log('〈Live Inscription〉Ctrl+S — 即時封印', 'info');
+        triggerAutoSync();
+      } else {
+        // Auto-Sync OFF 時: 通常の Seal フローを呼ぶ
+        handleSeal();
+      }
+    }
+  });
+
+  updateAutoSyncUI();
+
   setStatus('Awaiting authentication', 'idle');
   log('Cardinal Editor initialized');
+  log('Tip: 〈Live Inscription〉— 右パネルの Auto-Sync ボタンで自動封印を起動できます');
 
   // 〈Auto-Sealing〉— stored PAT があれば即座に認証する
   if (els.patInput.value.trim()) {
