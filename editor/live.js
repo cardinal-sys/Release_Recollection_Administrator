@@ -1604,19 +1604,17 @@ async function ghGetFile(pat, path, branch = 'main') {
 async function ghCommitAll(pat, branch, files, message) {
   // files: [ { path: string, content: string }, ... ]
 
-  log(`〈GitHub Sync〉[1/5] branch HEAD を解決中… (repo: ${GITHUB_REPO})`, 'info');
+  // 1. branch HEAD SHA を取得
   const ref = await _ghFetch(pat,
     `/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`);
   const headSha = ref.object.sha;
-  log(`〈GitHub Sync〉[1/5] ✅ HEAD=${headSha.slice(0,7)}`, 'success');
 
-  log('〈GitHub Sync〉[2/5] base commit tree を取得中…', 'info');
+  // 2. HEAD commit の base tree SHA を取得
   const baseCommit = await _ghFetch(pat,
     `/repos/${GITHUB_REPO}/git/commits/${headSha}`);
   const baseTreeSha = baseCommit.tree.sha;
-  log(`〈GitHub Sync〉[2/5] ✅ base tree=${baseTreeSha.slice(0,7)}`, 'success');
 
-  log(`〈GitHub Sync〉[3/5] ${files.length} blob を並列作成中…`, 'info');
+  // 3. 各ファイルの blob を並列作成
   const blobs = await Promise.all(files.map(async ({ path, content }) => {
     const blob = await _ghFetch(pat, `/repos/${GITHUB_REPO}/git/blobs`, {
       method: 'POST',
@@ -1627,9 +1625,8 @@ async function ghCommitAll(pat, branch, files, message) {
     });
     return { path, sha: blob.sha };
   }));
-  log(`〈GitHub Sync〉[3/5] ✅ ${blobs.length} blobs 作成完了`, 'success');
 
-  log('〈GitHub Sync〉[4/5] tree を作成中…', 'info');
+  // 4. 新しい tree を作成（base_tree = HEAD tree）
   const tree = await _ghFetch(pat, `/repos/${GITHUB_REPO}/git/trees`, {
     method: 'POST',
     body: JSON.stringify({
@@ -1639,20 +1636,17 @@ async function ghCommitAll(pat, branch, files, message) {
       })),
     }),
   });
-  log(`〈GitHub Sync〉[4/5] ✅ tree=${tree.sha.slice(0,7)}`, 'success');
 
-  log('〈GitHub Sync〉[5/5] commit → ref 更新中…', 'info');
+  // 5. commit オブジェクトを作成して ref を更新
   const commit = await _ghFetch(pat, `/repos/${GITHUB_REPO}/git/commits`, {
     method: 'POST',
     body: JSON.stringify({ message, tree: tree.sha, parents: [headSha] }),
   });
-  log(`〈GitHub Sync〉[5/5] ✅ commit=${commit.sha.slice(0,7)}`, 'success');
 
   await _ghFetch(pat, `/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`, {
     method: 'PATCH',
     body: JSON.stringify({ sha: commit.sha }),
   });
-  log(`〈GitHub Sync〉[5/5] ✅ ref 更新完了`, 'success');
 
   return commit.sha;
 }
