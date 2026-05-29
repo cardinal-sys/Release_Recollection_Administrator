@@ -2319,27 +2319,32 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_solo_0</tspan></text>
+<text x="0" y="-4" class="key tap">BT</text>
+<text x="0" y="26" class="key hold">0</text>
 </g>
 <g transform="translate(630, 37)" class="key keypos-7">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_solo_1</tspan></text>
+<text x="0" y="-4" class="key tap">BT</text>
+<text x="0" y="26" class="key hold">1</text>
 </g>
 <g transform="translate(690, 30)" class="key keypos-8">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_solo_2</tspan></text>
+<text x="0" y="-4" class="key tap">BT</text>
+<text x="0" y="26" class="key hold">2</text>
 </g>
 <g transform="translate(750, 37)" class="key keypos-9">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_solo_3</tspan></text>
+<text x="0" y="-4" class="key tap">BT</text>
+<text x="0" y="26" class="key hold">3</text>
 </g>
 <g transform="translate(810, 52)" class="key keypos-10">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_solo_4</tspan></text>
+<text x="0" y="-4" class="key tap">BT</text>
+<text x="0" y="26" class="key hold">4</text>
 </g>
 <g transform="translate(870, 52)" class="key trans keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -2388,27 +2393,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_pair_0</tspan></text>
+<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_disc_0</tspan></text>
 </g>
 <g transform="translate(630, 97)" class="key keypos-21">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_pair_1</tspan></text>
+<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_disc_1</tspan></text>
 </g>
 <g transform="translate(690, 90)" class="key keypos-22">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_pair_2</tspan></text>
+<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_disc_2</tspan></text>
 </g>
 <g transform="translate(750, 97)" class="key keypos-23">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_pair_3</tspan></text>
+<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_disc_3</tspan></text>
 </g>
 <g transform="translate(810, 112)" class="key keypos-24">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_pair_4</tspan></text>
+<text x="0" y="-4" class="key tap"><tspan style="font-size: 70%">&amp;bt_disc_4</tspan></text>
 </g>
 <g transform="translate(870, 112)" class="key trans keypos-25">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
