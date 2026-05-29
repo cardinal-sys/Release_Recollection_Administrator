@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: Administrator}
 layers:
   default:
-  - ESC
+  - LEFT SHIFT
   - {t: Q, h: LEFT SHIFT}
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
