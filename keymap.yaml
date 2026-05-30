@@ -901,10 +901,6 @@ combos:
   k: Gui+W
 - p: [39, 50]
   k: Gui+M
-- p: [1, 2]
-  k: LEFT SHIFT
-- p: [9, 10]
-  k: RIGHT SHIFT
 - p: [14, 15]
   k: TAB
 - p: [2, 3]
