@@ -474,16 +474,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -829,16 +829,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -1155,16 +1155,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -1506,16 +1506,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -1880,16 +1880,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -2240,16 +2240,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -2578,16 +2578,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -2915,16 +2915,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -3252,16 +3252,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -3589,16 +3589,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -3926,16 +3926,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -4263,16 +4263,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -4600,16 +4600,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -4937,16 +4937,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -5274,16 +5274,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -5642,16 +5642,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
@@ -6011,16 +6011,16 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <text x="600" y="161" class="combo tap">?</text>
 </g>
 <g class="combo combopos-5">
-<rect rx="6" ry="6" x="792" y="66" width="36" height="32" class="combo"/>
-<text x="810" y="82" class="combo tap">Gui+Q</text>
+<rect rx="6" ry="6" x="852" y="66" width="36" height="32" class="combo"/>
+<text x="870" y="82" class="combo tap">Gui+Q</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="792" y="126" width="36" height="32" class="combo"/>
-<text x="810" y="142" class="combo tap">Gui+W</text>
+<rect rx="6" ry="6" x="852" y="126" width="36" height="32" class="combo"/>
+<text x="870" y="142" class="combo tap">Gui+W</text>
 </g>
 <g class="combo combopos-7">
-<rect rx="6" ry="6" x="792" y="186" width="36" height="32" class="combo"/>
-<text x="810" y="202" class="combo tap">Gui+M</text>
+<rect rx="6" ry="6" x="852" y="186" width="36" height="32" class="combo"/>
+<text x="870" y="202" class="combo tap">Gui+M</text>
 </g>
 <g class="combo combopos-8">
 <rect rx="6" ry="6" x="102" y="29" width="36" height="32" class="combo"/>
