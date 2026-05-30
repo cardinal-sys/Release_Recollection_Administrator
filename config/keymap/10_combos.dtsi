@@ -31,17 +31,17 @@ key2 {
 
 app_quit {
     bindings = <&kp LG(Q)>;
-    key-positions = <10 24>;
+    key-positions = <11 25>;
 };
 
 window_close {
     bindings = <&kp LG(W)>;
-    key-positions = <24 38>;
+    key-positions = <25 39>;
 };
 
 window_min {
     bindings = <&kp LG(M)>;
-    key-positions = <38 49>;
+    key-positions = <39 50>;
 };
 
 left_shift {
