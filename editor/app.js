@@ -2157,7 +2157,7 @@ function bpUpdateLayout() {
   const arg2Label = document.getElementById('bp-arg2-label');
 
   // 引数なし behavior
-  const noArgBehaviors = ['&trans', '&none', '&bootloader', '&sys_reset', '&studio_unlock', '&smart_num', '&smart_snipe', '&drag_on', '&drag_off', '&rotate'];
+  const noArgBehaviors = ['&trans', '&none', '&bootloader', '&sys_reset', '&studio_unlock', '&smart_num', '&smart_snipe', '&drag_on', '&drag_off', '&rotate', '&bt_disc_0', '&bt_disc_1', '&bt_disc_2', '&bt_disc_3', '&bt_disc_4'];
   if (noArgBehaviors.includes(beh)) {
     arg1Row.style.display = 'none';
     arg2Row.style.display = 'none';
@@ -2229,7 +2229,7 @@ function bpBuildString() {
     return document.getElementById('bp-custom').value.trim();
   }
 
-  const noArgBehaviors = ['&trans', '&none', '&bootloader', '&sys_reset', '&studio_unlock', '&smart_num', '&smart_snipe', '&drag_on', '&drag_off', '&rotate'];
+  const noArgBehaviors = ['&trans', '&none', '&bootloader', '&sys_reset', '&studio_unlock', '&smart_num', '&smart_snipe', '&drag_on', '&drag_off', '&rotate', '&bt_disc_0', '&bt_disc_1', '&bt_disc_2', '&bt_disc_3', '&bt_disc_4'];
   if (noArgBehaviors.includes(beh)) return beh;
 
   // arg1
