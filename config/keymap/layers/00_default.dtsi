@@ -1,13 +1,10 @@
 /* ============================================================
- * layers/00_default.dtsi — [ Synthesis 00 ] default
+ * layers/00_default.dtsi â [ Synthesis 00 ] default
  * ============================================================ */
 
 default_layer {
     bindings = <
-    &kp LEFT_SHIFT  &mt LEFT_SHIFT Q  &gesture_mo_kp 14 W  &gesture_mo_kp 7 E  &gesture_mo_kp 8 R  &gesture_mo_kp 11 T  &kp Y  &kp U  &gesture_mo_kp 5 I  &kp O  &mt RIGHT_SHIFT P  &kp LEFT_SHIFT
-    &kp UP_ARROW  &gesture_mo_kp 12 A  &gesture_mo_kp 9 S  &gesture_mo_kp 13 D  &kp F  &lt 6 G  &smart_num 16  &kp AT_SIGN  &kp H  &kp J  &gesture_mo_kp 5 K  &gesture_mo_kp 4 L  &kp MINUS  &kp LEFT_ARROW
-    &kp DOWN_ARROW  &kp Z  &kp X  &kp C  &kp V  &gesture_mo_kp 10 B  &ht_snipe 15 TAB  &kp COLON  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp PLUS  &kp RIGHT_ARROW
-    &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &kp ENTER  &lt 2 ESC  &lt 3 SPACE  &mkp MB1  &kp BACKSPACE  &td_enter  &kp DELETE  &lt 1 DEL
+    &kp LEFT_SHIFT  &mt RG(RA(RS(LEFT_CONTROL))) Q  &gesture_mo_kp 14 W  &gesture_mo_kp 7 E  &gesture_mo_kp 8 R  &gesture_mo_kp 11 T  &kp Y  &kp U  &gesture_mo_kp 5 I  &kp O  &mt RG(RA(RS(LA(LEFT_CONTROL)))) P  &kp LEFT_SHIFT  &kp UP_ARROW  &gesture_mo_kp 12 A  &gesture_mo_kp 9 S  &gesture_mo_kp 13 D  &kp F  &lt 6 G  &smart_num 16  &kp LS(NUMBER_2)  &kp H  &kp J  &gesture_mo_kp 5 K  &gesture_mo_kp 4 L  &kp MINUS  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp Z  &kp X  &kp C  &kp V  &gesture_mo_kp 10 B  &ht_snipe 15 TAB  &kp LS(SEMICOLON)  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp LS(EQUAL)  &kp RIGHT_ARROW  &kp LEFT_CONTROL  &kp LEFT_GUI  &kp LEFT_ALT  &kp LC(SPACE)  &lt 2 ESC  &lt 3 SPACE  &mkp MB1  &kp BACKSPACE  &td_enter  &kp ENTER  &lt 1 DELETE
     >;
 
     sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
