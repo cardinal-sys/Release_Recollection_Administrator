@@ -4,7 +4,7 @@
 
 SIGN {
     bindings = <
-    &trans  &kp LS(NUMBER_5)  &kp LS(NUMBER_1)  &kp LS(NUMBER_3)  &kp LS(NUMBER_4)  &kp LS(NUMBER_7)  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)  &kp LS(GRAVE)  &trans  &trans  &mt RG(RA(RS(LEFT_CONTROL))) TAB  &kp LS(SINGLE_QUOTE)  &kp SINGLE_QUOTE  &kp GRAVE  &kp LS(SLASH)  &kp SLASH  &kp EQUAL  &kp LS(NUMBER_9)  &kp LS(NUMBER_0)  &kp MINUS  &kp LS(NUMBER_2)  &kp SEMICOLON  &trans  &trans  &kp LEFT_SHIFT  &kp LA(Y)  &kp LS(BACKSLASH)  &kp PERIOD  &kp COMMA  &kp LS(EQUAL)  &kp LS(NUMBER_8)  &kp LS(COMMA)  &kp LS(PERIOD)  &kp LS(MINUS)  &kp BACKSLASH  &kp LS(SEMICOLON)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &kp LS(NUMBER_5)  &kp LS(NUMBER_1)  &kp LS(NUMBER_3)  &kp LS(NUMBER_4)  &kp LS(NUMBER_7)  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)  &kp LS(GRAVE)  &trans  &trans  &mt LEFT_SHIFT TAB  &kp LS(SINGLE_QUOTE)  &kp SINGLE_QUOTE  &kp GRAVE  &kp LS(SLASH)  &kp SLASH  &kp EQUAL  &kp LS(NUMBER_9)  &kp LS(NUMBER_0)  &kp MINUS  &kp LS(NUMBER_2)  &kp SEMICOLON  &trans  &trans  &kp LEFT_SHIFT  &kp LA(Y)  &kp LS(BACKSLASH)  &kp PERIOD  &kp COMMA  &kp LS(EQUAL)  &kp LS(NUMBER_8)  &kp LS(COMMA)  &kp LS(PERIOD)  &kp LS(MINUS)  &kp BACKSLASH  &kp LS(SEMICOLON)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
     >;
 
     sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;

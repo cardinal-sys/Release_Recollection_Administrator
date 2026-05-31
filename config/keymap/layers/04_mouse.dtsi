@@ -4,7 +4,7 @@
 
 MOUSE {
     bindings = <
-    &trans  &mmv 4255645696  &mmv 600  &mmv 64936  &mmv 39321600  &kp LG(T)  &kp LG(Z)  &kp LG(RIGHT_BRACKET)  &gesture_mo_kp 5 LEFT_BRACKET  &kp LG(A)  &kp LC(H)  &trans  &trans  &msc 39321600  &msc 600  &msc 64936  &msc 4255645696  &arrows_alt 6  &mkp MB1  &safari_reload_once  &mkp MB3  &mkp MB2  &mkp MB1  &trans  &gesture_mo_kp 5 ENTER  &trans  &trans  &mt RG(RA(RS(LEFT_CONTROL))) HOME  &kp END  &kp DOWN_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp RIGHT_ARROW  &kp LG(C)  &kp LG(V)  &kp UP_ARROW  &drag_off  &kp LG(X)  &gesture_mo_kp 5 BACKSPACE  &trans  &trans  &kp LG(P)  &kp LG(RIGHT_BRACKET)  &kp LG(LEFT_BRACKET)  &arrows_alt 2  &arrows_alt 3  &kp TAB  &drag_on  &kp DOWN_ARROW  &trans  &trans
+    &trans  &mmv 4255645696  &mmv 600  &mmv 64936  &mmv 39321600  &kp LG(T)  &kp LG(Z)  &kp LG(RIGHT_BRACKET)  &gesture_mo_kp 5 LG(LEFT_BRACKET)  &kp LG(A)  &kp LC(H)  &trans  &trans  &msc 39321600  &msc 600  &msc 64936  &msc 4255645696  &arrows_alt 6  &mkp MB1  &safari_reload_once  &mkp MB3  &mkp MB2  &mkp MB1  &trans  &gesture_mo_kp 5 ENTER  &trans  &trans  &mt LEFT_SHIFT HOME  &kp END  &kp DOWN_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp RIGHT_ARROW  &kp LG(C)  &kp LG(V)  &kp UP_ARROW  &drag_off  &kp LG(X)  &gesture_mo_kp 5 BACKSPACE  &trans  &trans  &kp LG(P)  &kp LG(RIGHT_BRACKET)  &kp LG(LEFT_BRACKET)  &arrows_alt 2  &arrows_alt 3  &kp TAB  &drag_on  &kp DOWN_ARROW  &trans  &trans
     >;
 
     sensor-bindings = <&rotate>;
