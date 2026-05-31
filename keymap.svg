@@ -152,7 +152,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">Q</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 70%">LEFT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -208,7 +208,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">P</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">RIGHT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(870, 52)" class="key keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -267,7 +267,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(510, 112)" class="key keypos-19">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">@</text>
+<text x="0" y="-4" class="key tap">Sft+2</text>
 </g>
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -348,7 +348,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(510, 172)" class="key keypos-33">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">:</text>
+<text x="0" y="-4" class="key tap">Sft+;</text>
 </g>
 <g transform="translate(570, 164)" class="key keypos-34">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -373,7 +373,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(810, 172)" class="key keypos-38">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
+<text x="0" y="-4" class="key tap">Sft+=</text>
 </g>
 <g transform="translate(870, 172)" class="key keypos-39">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -385,7 +385,9 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(30, 232)" class="key keypos-40">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">LCTRL</text>
+<text x="0" y="-4" class="key tap">
+<tspan x="0" dy="-0.6em">LEFT</tspan><tspan x="0" dy="1.2em">CONTROL</tspan>
+</text>
 </g>
 <g transform="translate(90, 232)" class="key keypos-41">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -404,7 +406,9 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(210, 210)" class="key keypos-43">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">ENTER</text>
+<text x="0" y="-4" class="key tap">
+<tspan x="0" dy="-0.6em">Ctl+</tspan><tspan x="0" dy="1.2em">SPACE</tspan>
+</text>
 </g>
 <g transform="translate(285, 232)" class="key keypos-44">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -440,12 +444,12 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(810, 232)" class="key keypos-49">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">DELETE</text>
+<text x="0" y="-4" class="key tap">ENTER</text>
 </g>
 <g transform="translate(870, 232)" class="key keypos-50">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">DEL</text>
+<text x="0" y="-4" class="key tap">DELETE</text>
 <a href="#FUNCTION">
 <text x="0" y="26" class="key hold layer-activator"><tspan style="font-size: 88%">FUNCTION</tspan></text>
 </a></g>
@@ -667,7 +671,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">F11</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 70%">LEFT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 157)" class="key keypos-28">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -723,7 +727,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">Sft+Gui</tspan><tspan x="0" dy="1.2em">+5</tspan>
+<tspan x="0" dy="-0.6em">Gui+Sft</tspan><tspan x="0" dy="1.2em">+5</tspan>
 </text>
 </g>
 <g transform="translate(870, 172)" class="key trans keypos-39">
@@ -740,19 +744,19 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">F12</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">LEFT CONTR…</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 217)" class="key keypos-42">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">F19</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 88%">LEFT GUI</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(210, 210)" class="key keypos-43">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">F18</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 88%">LEFT ALT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(285, 232)" class="key keypos-44">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -785,7 +789,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">Sft+Gui</tspan><tspan x="0" dy="1.2em">+4</tspan>
+<tspan x="0" dy="-0.6em">Gui+Sft</tspan><tspan x="0" dy="1.2em">+4</tspan>
 </text>
 </g>
 <g transform="translate(870, 232)" class="key held keypos-50">
@@ -859,27 +863,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(90, 52)" class="key keypos-1">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">%</text>
+<text x="0" y="-4" class="key tap">Sft+5</text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">!</text>
+<text x="0" y="-4" class="key tap">Sft+1</text>
 </g>
 <g transform="translate(210, 30)" class="key keypos-3">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">#</text>
+<text x="0" y="-4" class="key tap">Sft+3</text>
 </g>
 <g transform="translate(270, 37)" class="key keypos-4">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">$</text>
+<text x="0" y="-4" class="key tap">Sft+4</text>
 </g>
 <g transform="translate(330, 44)" class="key keypos-5">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">&amp;</text>
+<text x="0" y="-4" class="key tap">Sft+7</text>
 </g>
 <g transform="translate(570, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -894,17 +898,17 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(690, 30)" class="key keypos-8">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">{</text>
+<text x="0" y="-4" class="key tap">Sft+[</text>
 </g>
 <g transform="translate(750, 37)" class="key keypos-9">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">}</text>
+<text x="0" y="-4" class="key tap">Sft+]</text>
 </g>
 <g transform="translate(810, 52)" class="key keypos-10">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">~</text>
+<text x="0" y="-4" class="key tap">Sft+`</text>
 </g>
 <g transform="translate(870, 52)" class="key trans keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -920,12 +924,12 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">TAB</text>
-<text x="0" y="26" class="key hold">LSHIFT</text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 97)" class="key keypos-14">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">&quot;</text>
+<text x="0" y="-4" class="key tap">Sft+&#x27;</text>
 </g>
 <g transform="translate(210, 90)" class="key keypos-15">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -940,7 +944,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(330, 104)" class="key keypos-17">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">?</text>
+<text x="0" y="-4" class="key tap">Sft+/</text>
 </g>
 <g transform="translate(390, 112)" class="key keypos-18">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -955,12 +959,12 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">(</text>
+<text x="0" y="-4" class="key tap">Sft+9</text>
 </g>
 <g transform="translate(630, 97)" class="key keypos-21">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">)</text>
+<text x="0" y="-4" class="key tap">Sft+0</text>
 </g>
 <g transform="translate(690, 90)" class="key keypos-22">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -970,7 +974,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(750, 97)" class="key keypos-23">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">@</text>
+<text x="0" y="-4" class="key tap">Sft+2</text>
 </g>
 <g transform="translate(810, 112)" class="key keypos-24">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -990,7 +994,9 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(90, 172)" class="key keypos-27">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">LSHIFT</text>
+<text x="0" y="-4" class="key tap">
+<tspan x="0" dy="-0.6em">LEFT</tspan><tspan x="0" dy="1.2em">SHIFT</tspan>
+</text>
 </g>
 <g transform="translate(150, 157)" class="key keypos-28">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1000,7 +1006,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(210, 150)" class="key keypos-29">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">|</text>
+<text x="0" y="-4" class="key tap">Sft+\</text>
 </g>
 <g transform="translate(270, 157)" class="key keypos-30">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1015,27 +1021,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(390, 172)" class="key keypos-32">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
+<text x="0" y="-4" class="key tap">Sft+=</text>
 </g>
 <g transform="translate(510, 172)" class="key keypos-33">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">*</text>
+<text x="0" y="-4" class="key tap">Sft+8</text>
 </g>
 <g transform="translate(570, 164)" class="key keypos-34">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">&lt;</text>
+<text x="0" y="-4" class="key tap">Sft+,</text>
 </g>
 <g transform="translate(630, 157)" class="key keypos-35">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">&gt;</text>
+<text x="0" y="-4" class="key tap">Sft+.</text>
 </g>
 <g transform="translate(690, 150)" class="key keypos-36">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">_</text>
+<text x="0" y="-4" class="key tap">Sft+-</text>
 </g>
 <g transform="translate(750, 157)" class="key keypos-37">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1045,7 +1051,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(810, 172)" class="key keypos-38">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">:</text>
+<text x="0" y="-4" class="key tap">Sft+;</text>
 </g>
 <g transform="translate(870, 172)" class="key trans keypos-39">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -1179,7 +1185,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">Ctl+Alt</tspan><tspan x="0" dy="1.2em">+V</tspan>
+<tspan x="0" dy="-0.6em">Alt+Ctl</tspan><tspan x="0" dy="1.2em">+V</tspan>
 </text>
 </g>
 <g transform="translate(210, 30)" class="key keypos-3">
@@ -1204,37 +1210,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">1</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0059</text>
 </g>
 <g transform="translate(630, 37)" class="key keypos-7">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">2</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005a</text>
 </g>
 <g transform="translate(690, 30)" class="key keypos-8">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">3</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005b</text>
 </g>
 <g transform="translate(750, 37)" class="key keypos-9">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">4</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005c</text>
 </g>
 <g transform="translate(810, 52)" class="key keypos-10">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">5</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005d</text>
 </g>
 <g transform="translate(870, 52)" class="key trans keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -1284,37 +1280,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">6</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005e</text>
 </g>
 <g transform="translate(630, 97)" class="key keypos-21">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">7</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005f</text>
 </g>
 <g transform="translate(690, 90)" class="key keypos-22">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">8</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0060</text>
 </g>
 <g transform="translate(750, 97)" class="key keypos-23">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">9</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0061</text>
 </g>
 <g transform="translate(810, 112)" class="key keypos-24">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">0</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0062</text>
 </g>
 <g transform="translate(870, 112)" class="key trans keypos-25">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -1359,7 +1345,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(510, 172)" class="key keypos-33">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
+<text x="0" y="-4" class="key tap">Sft+=</text>
 </g>
 <g transform="translate(570, 164)" class="key keypos-34">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1369,7 +1355,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(630, 157)" class="key keypos-35">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">*</text>
+<text x="0" y="-4" class="key tap">Sft+8</text>
 </g>
 <g transform="translate(690, 150)" class="key keypos-36">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1513,28 +1499,28 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_LEFT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">4255645696</tspan>
 </text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_DOWN</tspan>
+<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">600</tspan>
 </text>
 </g>
 <g transform="translate(210, 30)" class="key keypos-3">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">MOVE_UP</tspan>
+<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">64936</tspan>
 </text>
 </g>
 <g transform="translate(270, 37)" class="key keypos-4">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">MOVE_RIGHT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 88%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 88%">39321600</tspan>
 </text>
 </g>
 <g transform="translate(330, 44)" class="key keypos-5">
@@ -1555,7 +1541,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(690, 30)" class="key keypos-8">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">Gui+[</text>
+<text x="0" y="-4" class="key tap">[</text>
 <a href="#SCROLL">
 <text x="0" y="26" class="key hold layer-activator">SCROLL</text>
 </a></g>
@@ -1583,28 +1569,28 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">MOVE_RIGHT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 88%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 88%">39321600</tspan>
 </text>
 </g>
 <g transform="translate(150, 97)" class="key keypos-14">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_DOWN</tspan>
+<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">600</tspan>
 </text>
 </g>
 <g transform="translate(210, 90)" class="key keypos-15">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">MOVE_UP</tspan>
+<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">64936</tspan>
 </text>
 </g>
 <g transform="translate(270, 97)" class="key keypos-16">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_LEFT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">4255645696</tspan>
 </text>
 </g>
 <g transform="translate(330, 104)" class="key keypos-17">
@@ -1672,7 +1658,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">HOME</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 70%">LEFT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 157)" class="key keypos-28">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -1875,28 +1861,28 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_LEFT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">4255645696</tspan>
 </text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_DOWN</tspan>
+<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">600</tspan>
 </text>
 </g>
 <g transform="translate(210, 30)" class="key keypos-3">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">MOVE_UP</tspan>
+<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">64936</tspan>
 </text>
 </g>
 <g transform="translate(270, 37)" class="key keypos-4">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">MOVE_RIGHT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 88%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 88%">39321600</tspan>
 </text>
 </g>
 <g transform="translate(330, 44)" class="key trans keypos-5">
@@ -1948,28 +1934,28 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">MOVE_RIGHT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 88%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 88%">39321600</tspan>
 </text>
 </g>
 <g transform="translate(150, 97)" class="key keypos-14">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_DOWN</tspan>
+<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">600</tspan>
 </text>
 </g>
 <g transform="translate(210, 90)" class="key keypos-15">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">MOVE_UP</tspan>
+<tspan x="0" dy="-0.6em">&amp;msc</tspan><tspan x="0" dy="1.2em">64936</tspan>
 </text>
 </g>
 <g transform="translate(270, 97)" class="key keypos-16">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_LEFT</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;msc</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">4255645696</tspan>
 </text>
 </g>
 <g transform="translate(330, 104)" class="key keypos-17">
@@ -2384,7 +2370,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">Ctl+Gui</tspan><tspan x="0" dy="1.2em">+Q</tspan>
+<tspan x="0" dy="-0.6em">Gui+Ctl</tspan><tspan x="0" dy="1.2em">+Q</tspan>
 </text>
 </g>
 <g transform="translate(510, 172)" class="key keypos-33">
@@ -5149,7 +5135,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">Q</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 70%">LEFT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5205,7 +5191,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">P</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">RIGHT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(870, 52)" class="key trans keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5260,7 +5246,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(510, 112)" class="key keypos-19">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">@</text>
+<text x="0" y="-4" class="key tap">Sft+2</text>
 </g>
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5289,7 +5275,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">-</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 88%">LEFT GUI</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(870, 112)" class="key trans keypos-25">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5336,7 +5322,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(510, 172)" class="key keypos-33">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">:</text>
+<text x="0" y="-4" class="key tap">Sft+;</text>
 </g>
 <g transform="translate(570, 164)" class="key keypos-34">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5361,8 +5347,8 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(810, 172)" class="key keypos-38">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">LEFT CONTR…</tspan></text>
+<text x="0" y="-4" class="key tap">=</text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(870, 172)" class="key trans keypos-39">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5377,7 +5363,9 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(90, 232)" class="key keypos-41">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">LCTRL</text>
+<text x="0" y="-4" class="key tap">
+<tspan x="0" dy="-0.6em">LEFT</tspan><tspan x="0" dy="1.2em">CONTROL</tspan>
+</text>
 </g>
 <g transform="translate(150, 217)" class="key keypos-42">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5430,7 +5418,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">DELETE</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 88%">LEFT ALT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(870, 232)" class="key trans keypos-50">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5504,72 +5492,52 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(90, 52)" class="key keypos-1">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">5</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005d</text>
 </g>
 <g transform="translate(150, 37)" class="key keypos-2">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">4</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005c</text>
 </g>
 <g transform="translate(210, 30)" class="key keypos-3">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">3</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005b</text>
 </g>
 <g transform="translate(270, 37)" class="key keypos-4">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">2</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005a</text>
 </g>
 <g transform="translate(330, 44)" class="key keypos-5">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">1</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0059</text>
 </g>
 <g transform="translate(570, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">1</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0059</text>
 </g>
 <g transform="translate(630, 37)" class="key keypos-7">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">2</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005a</text>
 </g>
 <g transform="translate(690, 30)" class="key keypos-8">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">3</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005b</text>
 </g>
 <g transform="translate(750, 37)" class="key keypos-9">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">4</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005c</text>
 </g>
 <g transform="translate(810, 52)" class="key keypos-10">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">5</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005d</text>
 </g>
 <g transform="translate(870, 52)" class="key trans keypos-11">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5584,37 +5552,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(90, 112)" class="key keypos-13">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">0</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0062</text>
 </g>
 <g transform="translate(150, 97)" class="key keypos-14">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">9</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0061</text>
 </g>
 <g transform="translate(210, 90)" class="key keypos-15">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">8</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0060</text>
 </g>
 <g transform="translate(270, 97)" class="key keypos-16">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">7</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005f</text>
 </g>
 <g transform="translate(330, 104)" class="key keypos-17">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">6</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005e</text>
 </g>
 <g transform="translate(390, 112)" class="key trans keypos-18">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5629,37 +5587,27 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(570, 104)" class="key keypos-20">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">6</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005e</text>
 </g>
 <g transform="translate(630, 97)" class="key keypos-21">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">7</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x005f</text>
 </g>
 <g transform="translate(690, 90)" class="key keypos-22">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">8</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0060</text>
 </g>
 <g transform="translate(750, 97)" class="key keypos-23">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">9</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0061</text>
 </g>
 <g transform="translate(810, 112)" class="key keypos-24">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">
-<tspan x="0" dy="-0.6em">KP</tspan><tspan x="0" dy="1.2em">0</tspan>
-</text>
+<text x="0" y="-4" class="key tap">0x0062</text>
 </g>
 <g transform="translate(870, 112)" class="key trans keypos-25">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key trans side"/>
@@ -5675,7 +5623,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
 <text x="0" y="-4" class="key tap">,</text>
-<text x="0" y="26" class="key hold"><tspan style="font-size: 70%">LEFT SHIFT</tspan></text>
+<text x="0" y="26" class="key hold"><tspan style="font-size: 64%">Gui+AltGr+…</tspan></text>
 </g>
 <g transform="translate(150, 157)" class="key keypos-28">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5690,7 +5638,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(270, 157)" class="key keypos-30">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">*</text>
+<text x="0" y="-4" class="key tap">Sft+8</text>
 </g>
 <g transform="translate(330, 164)" class="key keypos-31">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5700,12 +5648,12 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(390, 172)" class="key keypos-32">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
+<text x="0" y="-4" class="key tap">Sft+=</text>
 </g>
 <g transform="translate(510, 172)" class="key keypos-33">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">+</text>
+<text x="0" y="-4" class="key tap">Sft+=</text>
 </g>
 <g transform="translate(570, 164)" class="key keypos-34">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
@@ -5715,7 +5663,7 @@ text.combo { font-size: 14px; fill: #a5f3fc; filter: drop-shadow(0 0 5px rgba(16
 <g transform="translate(630, 157)" class="key keypos-35">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>
 <rect rx="4" ry="4" x="-22" y="-26" width="44" height="44" class="key"/>
-<text x="0" y="-4" class="key tap">*</text>
+<text x="0" y="-4" class="key tap">Sft+8</text>
 </g>
 <g transform="translate(690, 150)" class="key keypos-36">
 <rect rx="6" ry="6" x="-28" y="-28" width="56" height="56" class="key side"/>

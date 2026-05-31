@@ -2,7 +2,7 @@ layout: {zmk_keyboard: Administrator}
 layers:
   default:
   - LEFT SHIFT
-  - {t: Q, h: LEFT SHIFT}
+  - {t: Q, h: Gui+AltGr+Sft+LEFT CONTROL}
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
   - {t: R, h: GESTURE_R}
@@ -11,7 +11,7 @@ layers:
   - U
   - {t: I, h: SCROLL}
   - O
-  - {t: P, h: RIGHT SHIFT}
+  - {t: P, h: Gui+AltGr+Sft+Alt+LEFT CONTROL}
   - LEFT SHIFT
   - UP ARROW
   - {t: A, h: GESTURE_A}
@@ -20,7 +20,7 @@ layers:
   - F
   - {t: G, h: Bluetooth}
   - '&smart_num 16'
-  - '@'
+  - Sft+2
   - H
   - J
   - {t: K, h: SCROLL}
@@ -34,24 +34,24 @@ layers:
   - V
   - {t: B, h: GESTURE_B}
   - {t: TAB, h: '&smart_snipe 15'}
-  - ':'
+  - Sft+;
   - N
   - M
   - ','
   - .
-  - +
+  - Sft+=
   - RIGHT ARROW
-  - LCTRL
+  - LEFT CONTROL
   - LEFT GUI
   - LEFT ALT
-  - ENTER
+  - Ctl+SPACE
   - {t: ESC, h: SIGN}
   - {t: SPACE, h: NUM}
   - '&mkp MB1'
   - BACKSPACE
   - '&td_enter'
-  - DELETE
-  - {t: DEL, h: FUNCTION}
+  - ENTER
+  - {t: DELETE, h: FUNCTION}
   FUNCTION:
   - {t: ▽, type: trans}
   - F5
@@ -80,7 +80,7 @@ layers:
   - Sft+Ctl+TAB
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: F11, h: LEFT SHIFT}
+  - {t: F11, h: Gui+AltGr+Sft+LEFT CONTROL}
   - F17
   - F16
   - F15
@@ -91,59 +91,59 @@ layers:
   - Gui+Q
   - Gui+W
   - Gui+P
-  - Sft+Gui+5
+  - Gui+Sft+5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: F12, h: LEFT CONTROL}
-  - {t: F19, h: LEFT GUI}
-  - {t: F18, h: LEFT ALT}
+  - {t: F12, h: Gui+AltGr+RIGHT SHIFT}
+  - {t: F19, h: Gui+AltGr+Sft+Sft+LEFT CONTROL}
+  - {t: F18, h: Gui+AltGr+Sft+LEFT SHIFT}
   - CAPS
   - F20
   - Gui+BACKSPACE
   - BACKSPACE
   - {t: ▽, type: trans}
-  - Sft+Gui+4
+  - Gui+Sft+4
   - {type: held}
   SIGN:
   - {t: ▽, type: trans}
-  - '%'
-  - '!'
-  - '#'
-  - $
-  - '&'
+  - Sft+5
+  - Sft+1
+  - Sft+3
+  - Sft+4
+  - Sft+7
   - '['
   - ']'
-  - '{'
-  - '}'
-  - '~'
+  - Sft+[
+  - Sft+]
+  - Sft+`
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: TAB, h: LSHIFT}
-  - '"'
+  - {t: TAB, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - Sft+'
   - ''''
   - '`'
-  - '?'
+  - Sft+/
   - /
   - '='
-  - (
-  - )
+  - Sft+9
+  - Sft+0
   - '-'
-  - '@'
+  - Sft+2
   - ;
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LSHIFT
+  - LEFT SHIFT
   - Alt+Y
-  - '|'
+  - Sft+\
   - .
   - ','
-  - +
-  - '*'
-  - <
-  - '>'
-  - _
+  - Sft+=
+  - Sft+8
+  - Sft+,
+  - Sft+.
+  - Sft+-
   - \
-  - ':'
+  - Sft+;
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -159,15 +159,15 @@ layers:
   NUM:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Ctl+Alt+V
+  - Alt+Ctl+V
   - Gui+Sft+3
   - Gui+Sft+4
   - {t: ▽, type: trans}
-  - KP 1
-  - KP 2
-  - KP 3
-  - KP 4
-  - KP 5
+  - '0x0059'
+  - '0x005a'
+  - '0x005b'
+  - '0x005c'
+  - '0x005d'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gui+A
@@ -177,11 +177,11 @@ layers:
   - END
   - {t: ▽, type: trans}
   - '='
-  - KP 6
-  - KP 7
-  - KP 8
-  - KP 9
-  - KP 0
+  - '0x005e'
+  - '0x005f'
+  - '0x0060'
+  - '0x0061'
+  - '0x0062'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -190,9 +190,9 @@ layers:
   - Gui+Y
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - +
+  - Sft+=
   - '-'
-  - '*'
+  - Sft+8
   - /
   - .
   - ','
@@ -210,22 +210,22 @@ layers:
   - {t: ▽, type: trans}
   MOUSE:
   - {t: ▽, type: trans}
-  - '&mmv MOVE_LEFT'
-  - '&mmv MOVE_DOWN'
-  - '&mmv MOVE_UP'
-  - '&mmv MOVE_RIGHT'
+  - '&mmv 4255645696'
+  - '&mmv 600'
+  - '&mmv 64936'
+  - '&mmv 39321600'
   - Gui+T
   - Gui+Z
   - Gui+]
-  - {t: 'Gui+[', h: SCROLL}
+  - {t: '[', h: SCROLL}
   - Gui+A
   - Ctl+H
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&msc MOVE_RIGHT'
-  - '&msc MOVE_DOWN'
-  - '&msc MOVE_UP'
-  - '&msc MOVE_LEFT'
+  - '&msc 39321600'
+  - '&msc 600'
+  - '&msc 64936'
+  - '&msc 4255645696'
   - '&arrows_alt 6'
   - '&mkp MB1'
   - '&safari_reload_once'
@@ -236,7 +236,7 @@ layers:
   - {t: ENTER, h: SCROLL}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: HOME, h: LEFT SHIFT}
+  - {t: HOME, h: Gui+AltGr+Sft+LEFT CONTROL}
   - END
   - DOWN ARROW
   - UP ARROW
@@ -262,10 +262,10 @@ layers:
   - {t: ▽, type: trans}
   SCROLL:
   - {t: ▽, type: trans}
-  - '&mmv MOVE_LEFT'
-  - '&mmv MOVE_DOWN'
-  - '&mmv MOVE_UP'
-  - '&mmv MOVE_RIGHT'
+  - '&mmv 4255645696'
+  - '&mmv 600'
+  - '&mmv 64936'
+  - '&mmv 39321600'
   - {t: ▽, type: trans}
   - LEFT SHIFT
   - RIGHT ALT
@@ -274,10 +274,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&msc MOVE_RIGHT'
-  - '&msc MOVE_DOWN'
-  - '&msc MOVE_UP'
-  - '&msc MOVE_LEFT'
+  - '&msc 39321600'
+  - '&msc 600'
+  - '&msc 64936'
+  - '&msc 4255645696'
   - GESTURE_R
   - {t: default, h: toggle}
   - {t: ▽, type: trans}
@@ -345,7 +345,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gui+Alt+ESC
-  - Ctl+Gui+Q
+  - Gui+Ctl+Q
   - '&bootloader'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -782,7 +782,7 @@ layers:
   - {t: ▽, type: trans}
   SNIPE:
   - {t: ▽, type: trans}
-  - {t: Q, h: LEFT SHIFT}
+  - {t: Q, h: Gui+AltGr+Sft+LEFT CONTROL}
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
   - {t: R, h: GESTURE_R}
@@ -791,7 +791,7 @@ layers:
   - U
   - {t: I, h: SCROLL}
   - O
-  - {t: P, h: RIGHT SHIFT}
+  - {t: P, h: Gui+AltGr+Sft+Alt+LEFT CONTROL}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: A, h: GESTURE_A}
@@ -800,12 +800,12 @@ layers:
   - F
   - {t: G, h: Bluetooth}
   - '&smart_num 16'
-  - '@'
+  - Sft+2
   - H
   - J
   - {t: K, h: '&arrows_alt 15'}
   - {t: L, h: MOUSE}
-  - {t: '-', h: LEFT GUI}
+  - {t: '-', h: Gui+AltGr+Sft+Sft+LEFT CONTROL}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Z
@@ -814,15 +814,15 @@ layers:
   - V
   - {t: B, h: GESTURE_B}
   - TAB
-  - ':'
+  - Sft+;
   - N
   - M
   - ','
   - .
-  - {t: +, h: LEFT CONTROL}
+  - {t: '=', h: Gui+AltGr+RIGHT SHIFT}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LCTRL
+  - LEFT CONTROL
   - LEFT GUI
   - LEFT ALT
   - {t: ESC, h: SIGN, type: held}
@@ -830,45 +830,45 @@ layers:
   - '&mkp MB1'
   - BACKSPACE
   - {t: ENTER, h: FUNCTION}
-  - {t: DELETE, h: LEFT ALT}
+  - {t: DELETE, h: Gui+AltGr+Sft+LEFT SHIFT}
   - {t: ▽, type: trans}
   NUM_SMART:
   - {t: ▽, type: trans}
-  - KP 5
-  - KP 4
-  - KP 3
-  - KP 2
-  - KP 1
-  - KP 1
-  - KP 2
-  - KP 3
-  - KP 4
-  - KP 5
+  - '0x005d'
+  - '0x005c'
+  - '0x005b'
+  - '0x005a'
+  - '0x0059'
+  - '0x0059'
+  - '0x005a'
+  - '0x005b'
+  - '0x005c'
+  - '0x005d'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - KP 0
-  - KP 9
-  - KP 8
-  - KP 7
-  - KP 6
+  - '0x0062'
+  - '0x0061'
+  - '0x0060'
+  - '0x005f'
+  - '0x005e'
   - {t: ▽, type: trans}
   - '='
-  - KP 6
-  - KP 7
-  - KP 8
-  - KP 9
-  - KP 0
+  - '0x005e'
+  - '0x005f'
+  - '0x0060'
+  - '0x0061'
+  - '0x0062'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ',', h: LEFT SHIFT}
+  - {t: ',', h: Gui+AltGr+Sft+LEFT CONTROL}
   - .
   - /
-  - '*'
+  - Sft+8
   - '-'
-  - +
-  - +
+  - Sft+=
+  - Sft+=
   - '-'
-  - '*'
+  - Sft+8
   - /
   - .
   - ','
