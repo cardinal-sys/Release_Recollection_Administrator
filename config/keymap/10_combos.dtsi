@@ -55,7 +55,7 @@ lctab {
 };
 
 click {
-    bindings = <&mkp MB1>;
+    bindings = <&kp ENTER>;
     key-positions = <22 23>;
 };
 
