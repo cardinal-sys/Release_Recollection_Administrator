@@ -2,7 +2,7 @@ layout: {zmk_keyboard: Administrator}
 layers:
   default:
   - LEFT SHIFT
-  - {t: Q, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: Q, h: LEFT SHIFT}
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
   - {t: R, h: GESTURE_R}
@@ -11,7 +11,7 @@ layers:
   - U
   - {t: I, h: SCROLL}
   - O
-  - {t: P, h: Gui+AltGr+Sft+Alt+LEFT CONTROL}
+  - {t: P, h: RIGHT SHIFT}
   - LEFT SHIFT
   - UP ARROW
   - {t: A, h: GESTURE_A}
@@ -80,7 +80,7 @@ layers:
   - Sft+Ctl+TAB
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: F11, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: F11, h: LEFT SHIFT}
   - F17
   - F16
   - F15
@@ -94,9 +94,9 @@ layers:
   - Gui+Sft+5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: F12, h: Gui+AltGr+RIGHT SHIFT}
-  - {t: F19, h: Gui+AltGr+Sft+Sft+LEFT CONTROL}
-  - {t: F18, h: Gui+AltGr+Sft+LEFT SHIFT}
+  - {t: F12, h: LEFT CONTROL}
+  - {t: F19, h: LEFT GUI}
+  - {t: F18, h: LEFT ALT}
   - CAPS
   - F20
   - Gui+BACKSPACE
@@ -118,7 +118,7 @@ layers:
   - Sft+`
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: TAB, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: TAB, h: LEFT SHIFT}
   - Sft+'
   - ''''
   - '`'
@@ -163,11 +163,11 @@ layers:
   - Gui+Sft+3
   - Gui+Sft+4
   - {t: ▽, type: trans}
-  - '0x0059'
-  - '0x005a'
-  - '0x005b'
-  - '0x005c'
-  - '0x005d'
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP 4
+  - KP 5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gui+A
@@ -177,11 +177,11 @@ layers:
   - END
   - {t: ▽, type: trans}
   - '='
-  - '0x005e'
-  - '0x005f'
-  - '0x0060'
-  - '0x0061'
-  - '0x0062'
+  - KP 6
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP 0
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -217,7 +217,7 @@ layers:
   - Gui+T
   - Gui+Z
   - Gui+]
-  - {t: '[', h: SCROLL}
+  - {t: 'Gui+[', h: SCROLL}
   - Gui+A
   - Ctl+H
   - {t: ▽, type: trans}
@@ -236,7 +236,7 @@ layers:
   - {t: ENTER, h: SCROLL}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: HOME, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: HOME, h: LEFT SHIFT}
   - END
   - DOWN ARROW
   - UP ARROW
@@ -782,7 +782,7 @@ layers:
   - {t: ▽, type: trans}
   SNIPE:
   - {t: ▽, type: trans}
-  - {t: Q, h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: Q, h: LEFT SHIFT}
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
   - {t: R, h: GESTURE_R}
@@ -791,7 +791,7 @@ layers:
   - U
   - {t: I, h: SCROLL}
   - O
-  - {t: P, h: Gui+AltGr+Sft+Alt+LEFT CONTROL}
+  - {t: P, h: RIGHT SHIFT}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: A, h: GESTURE_A}
@@ -805,7 +805,7 @@ layers:
   - J
   - {t: K, h: '&arrows_alt 15'}
   - {t: L, h: MOUSE}
-  - {t: '-', h: Gui+AltGr+Sft+Sft+LEFT CONTROL}
+  - {t: '-', h: LEFT GUI}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Z
@@ -819,7 +819,7 @@ layers:
   - M
   - ','
   - .
-  - {t: '=', h: Gui+AltGr+RIGHT SHIFT}
+  - {t: Sft+=, h: LEFT CONTROL}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - LEFT CONTROL
@@ -830,37 +830,37 @@ layers:
   - '&mkp MB1'
   - BACKSPACE
   - {t: ENTER, h: FUNCTION}
-  - {t: DELETE, h: Gui+AltGr+Sft+LEFT SHIFT}
+  - {t: DELETE, h: LEFT ALT}
   - {t: ▽, type: trans}
   NUM_SMART:
   - {t: ▽, type: trans}
-  - '0x005d'
-  - '0x005c'
-  - '0x005b'
-  - '0x005a'
-  - '0x0059'
-  - '0x0059'
-  - '0x005a'
-  - '0x005b'
-  - '0x005c'
-  - '0x005d'
+  - KP 5
+  - KP 4
+  - KP 3
+  - KP 2
+  - KP 1
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP 4
+  - KP 5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '0x0062'
-  - '0x0061'
-  - '0x0060'
-  - '0x005f'
-  - '0x005e'
+  - KP 0
+  - KP 9
+  - KP 8
+  - KP 7
+  - KP 6
   - {t: ▽, type: trans}
   - '='
-  - '0x005e'
-  - '0x005f'
-  - '0x0060'
-  - '0x0061'
-  - '0x0062'
+  - KP 6
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP 0
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ',', h: Gui+AltGr+Sft+LEFT CONTROL}
+  - {t: ',', h: LEFT SHIFT}
   - .
   - /
   - Sft+8
