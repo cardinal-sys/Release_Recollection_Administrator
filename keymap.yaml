@@ -2,7 +2,7 @@ layout: {zmk_keyboard: Administrator}
 layers:
   default:
   - LEFT SHIFT
-  - {t: Q, h: LEFT SHIFT}
+  - Q
   - {t: W, h: GESTURE_W}
   - {t: E, h: GESTURE_E}
   - {t: R, h: GESTURE_R}
@@ -11,7 +11,7 @@ layers:
   - U
   - {t: I, h: SCROLL}
   - O
-  - {t: P, h: RIGHT SHIFT}
+  - P
   - LEFT SHIFT
   - UP ARROW
   - {t: A, h: GESTURE_A}
