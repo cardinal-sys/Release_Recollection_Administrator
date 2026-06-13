@@ -901,9 +901,9 @@ combos:
   k: Gui+W
 - p: [39, 50]
   k: Gui+M
-- p: [14, 15]
+- p: [13, 14]
   k: TAB
-- p: [2, 3]
+- p: [1, 2]
   k: Sft+TAB
 - p: [22, 23]
   k: ENTER
