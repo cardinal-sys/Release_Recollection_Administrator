@@ -79,52 +79,6 @@ python3 scripts/cardinal_editor_server.py
 python3 -m http.server 3001 --directory editor
 ```
 
-#### 〈ネイティブ〉Tauri デスクトップ版（実験段階）
-
-Web Bluetooth は macOS の HID 接続済みデバイスを再選択できない仕様の制約があり、
-Live Sync の BLE 接続が安定しない。Tauri デスクトップ版は **OS ネイティブ Bluetooth API** を
-直接叩くため、HID 接続中でも BLE 接続が可能（公式 ZMK Studio Tauri 版と同等）。
-
-##### 必要環境
-- Rust toolchain（`rustup` 経由）
-- Node.js 20+ + npm
-- macOS の場合: Xcode Command Line Tools
-
-##### セットアップ
-```bash
-# Rust 未インストールなら
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Tauri CLI
-npm install
-```
-
-##### 起動
-```bash
-# 開発モード（Cardinal Editor サーバ自動起動）
-npm run tauri:dev
-
-# リリースビルド（.dmg / .app を生成）
-npm run tauri:build
-```
-
-ビルド成果物は `src-tauri/target/release/bundle/` 配下に生成される。
-
-##### リリース配布
-タグ `v*` を push すると `.github/workflows/tauri-build.yml` が走り、
-macOS (Universal) / Windows / Linux 向け **.dmg / .msi / .deb / .AppImage** が
-自動ビルドされて GitHub Releases にドラフト公開される。
-
-```bash
-# 例: v0.1.0 をリリース
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-> **[ SYSTEM ]** Phase A は editor/ embed のみ、Phase B で Rust BLE transport
-> 実装、Phase C で UI 上の Web/Tauri バッジ表示、Phase D で CI による
-> マルチプラットフォームビルドを完備。Web Bluetooth の制約を完全突破。
-
 ### ◆ 認証関門 ── Authentication Gate
 
 GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入力。トークンは localStorage にのみ保存され、GitHub API の Bearer 認証に使用される。
@@ -494,6 +448,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-06-13 | 〈Tauri Phantom Doc Exorcism〉— README の〈Live Sync Conduit〉節に居残っていた「〈ネイティブ〉Tauri デスクトップ版（実験段階）」サブセクション（必要環境 / セットアップ / 起動 / リリース配布 + Phase A〜D の SYSTEM 注釈、計 45 行）を完全消去。当該節は `npm run tauri:dev` / `src-tauri/target/release/bundle/` / `.github/workflows/tauri-build.yml` を実機能として記述していたが、これらは 2026-05-27〈Native Embodiment Dissolution · Administrator Sync〉([PR #2](https://github.com/cardinal-sys/Release_Recollection_Administrator/pull/2)) で解体済みであり、読者に「実行可能」と誤認させる残響だった。実態検証で `src-tauri/` / `tauri-build.yml` / `package.json` の不在、`editor/` の Tauri 参照ゼロを確認の上で剪定。双子の 42キー Cardinal 側 README には同種の能動的機能節は既に存在せず（解体済み・SYSTEM LOG の歴史記録のみ）対称構成を確認。本リポの SYSTEM LOG に残る Tauri 関連記録（解体儀式・〈Native Embodiment〉遍歴）は術式の証跡として温存。 |
 | 2026-06-13 | 〈Cursor Cadence Wager Withdrawn · iPad Sovereignty〉— 同日試行した BLE 6/6 固定実験（[PR #5](https://github.com/cardinal-sys/Release_Recollection_Administrator/pull/5)〈Cursor Cadence Experiment〉）を**見送り確定**。実機が iPad 主体であることを最優先に据え、6/6 が iPadOS BLE に拒否され ≈30ms へ転落するリスクを許容しない判断。PR #5 をクローズし `feature/cursor-cadence-experiment` ブランチを削除。main は `5a94931`〈EXPERIMENTAL_CONN Dissolution〉(iPad ペアリング修正) + 接続インターバル `6/12`(Apple HID 互換) + エンコーダー 48/24 の **iPad 対応安定構成**を堅持する。カーソル平滑化を追う場合は Win/Android 専用運用が前提となるため、本実験の着想は将来そうした分岐が生じた際に `feature/` で再召喚し得る。同日の〈Rotary Sigil Recalibration〉(EC11 48/24) は main 採用・ビルド成功済で本撤回の影響を受けない。 |
 | 2026-06-13 | 〈Cygnus Resonance · Rotary Sigil Recalibration〉— 素体 Cygnus（[Dist16384/Cygnus-M-Lkeymouse](https://github.com/Dist16384/Cygnus-M-Lkeymouse)）の 2026-06 月次更新 4 件（`af469d8` keymap / `f076677` Cygnus_R.conf / `5d0bb32` `a6429bb` Cygnus.dtsi）を観測し、〈Administrator〉への適用可否を精査した儀式。**採用 (1) Rotary Sigil Recalibration** (`a6429bb` 準拠): `Administrator.dtsi` の EC11 を `steps 12 → 48` / `triggers-per-rotation 10 → 24` へ再調律。旧 12/10 は Phase 1.1 鋳造時の素体コピーで、1 トリガー = 1.2 パルスという端数比のため 1 デテントで過剰・不規則トリガーが発生し得た。48/24（2 steps/trigger）で 1 クリック = 1 トリガーに正規化され、青薔薇の剣のエンコーダーが正しい拍で廻る。**不採用 (2) BLE 接続インターバル 6/6 固定** (`f076677`): 素体は `PREF_MIN/MAX_INT=6`（7.5ms 固定 ≈133Hz）でカーソル平滑化を図るが、〈Administrator〉は 2026-05-27〈Bilateral BLE Trinity〉で 6/6 が Apple 系 BLE に拒否され ≈30ms へ転落する症状を確認済。一度 `feature/cursor-cadence-experiment` ブランチ（[PR #5](https://github.com/cardinal-sys/Release_Recollection_Administrator/pull/5)）で実機検証を試みたが、**実機が iPad 主体のため iPad 接続の確実性を最優先し見送り確定**（PR クローズ・ブランチ削除）。main は `6/12`（7.5〜15ms）の Apple HID 互換を堅持する。素体がコメント提案に留めた `PREF_LATENCY=0` も当方は実装済で先行。**不採用 (3) physical layout 回転原点修正** (`5d0bb32`): 素体は右親指キーの `rx=0` 誤記（回転原点が盤面原点に飛ぶ）を修正したが、〈Administrator〉は独自50キー配列で回転キー全数が rx/ry 非ゼロ＝同バグ非該当（かつ描画専用で打鍵無関係）。**不採用 (4) ホームロー A/S の layer-tap 撤去** (`af469d8`): 素体作者の個人キーマップ嗜好であり、〈Administrator〉の A/S は独自の `gesture_mo_kp`（SWORD SKILLS 剣技起動）が憑依済みのため対象外。 |
 | 2026-05-31 | 〈EXPERIMENTAL_CONN Dissolution〉— iPad ペアリング時に「デバイス名が消える」（iPadOS が接続ネゴシエーション失敗後にリストから削除する）症状への対処として `Night_Sky_Sword.conf` から `CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y` を撤去。同フラグは ZMK 実験的な接続パラメータ交渉実装で MacBook とは機能するが iPadOS の厳格な BLE スタックとの互換性が保証されない。MacBook への影響は接続タイミングが若干変わる可能性あり。ビルド後 iPad との接続可否を検証予定。 |
