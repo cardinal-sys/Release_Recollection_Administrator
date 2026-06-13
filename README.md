@@ -459,6 +459,16 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | arrows-alt L15 tick | 80ms | K ホールドスクロールの精密度。値が大きいほど 1 ノッチが大きい動きを要求 |
 | L5 SCROLL スケーラー | `1/1`（1x = 等速） | `zip_xy_to_scroll_mapper` 後段に `zip_snipe_scroll_scaler 1 1` を噛ませる現状は等速。`<1 2>` に変更すれば半速精密化に再昇華可能 |
 
+### ROTARY SIGIL ── EC11 ロータリーエンコーダー（Blue_Rose_Sword / Administrator.dtsi）
+
+*青薔薇の剣の柄に宿る回転の印。一刻みが一拍と同調してこそ、術式は正しく廻る。*
+
+| 設定 | 値 | 効果 |
+|---|---|---|
+| EC11 steps | 48 | 1 回転あたりの quadrature パルス数（素体 Cygnus `a6429bb` 準拠。旧 12 はパルス数過小で 1 クリックが過剰トリガー化） |
+| triggers-per-rotation | 24 | 1 回転あたりのキーマップトリガー数。`48 / 24 = 2 steps/trigger` で 1 デテント = 1 トリガーに正規化 |
+| sensor-bindings (L0) | `&inc_dec_kp DOWN_ARROW UP_ARROW` | 回転 1 ノッチごとに ↓ / ↑ を発火 |
+
 ### THREAD STACK ── スレッドスタック（クラッシュ対策）
 
 *システムの安定を支える根幹。スタックが尽きればフラクトライトは瞬く間に崩壊する。*
@@ -484,6 +494,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-06-13 | 〈Cygnus Resonance · Rotary Sigil Recalibration〉— 素体 Cygnus（[Dist16384/Cygnus-M-Lkeymouse](https://github.com/Dist16384/Cygnus-M-Lkeymouse)）の 2026-06 月次更新 4 件（`af469d8` keymap / `f076677` Cygnus_R.conf / `5d0bb32` `a6429bb` Cygnus.dtsi）を観測し、〈Administrator〉への適用可否を精査した儀式。**採用 (1) Rotary Sigil Recalibration** (`a6429bb` 準拠): `Administrator.dtsi` の EC11 を `steps 12 → 48` / `triggers-per-rotation 10 → 24` へ再調律。旧 12/10 は Phase 1.1 鋳造時の素体コピーで、1 トリガー = 1.2 パルスという端数比のため 1 デテントで過剰・不規則トリガーが発生し得た。48/24（2 steps/trigger）で 1 クリック = 1 トリガーに正規化され、青薔薇の剣のエンコーダーが正しい拍で廻る。**保留 (2) BLE 接続インターバル 6/6 固定** (`f076677`): 素体は `PREF_MIN/MAX_INT=6`（7.5ms 固定 ≈133Hz）でカーソル平滑化を図る。〈Administrator〉は 2026-05-27〈Bilateral BLE Trinity〉で 6/6 が Apple 系 BLE に拒否され ≈30ms へ転落する症状を確認済のため main では `6/12`（7.5〜15ms）を堅持するが、別途 `feature/cursor-cadence-experiment` ブランチで R側のみ 6/6 を実機検証中（iPad での挙動を見極め中）。素体がコメント提案に留めた `PREF_LATENCY=0` も当方は実装済で先行。**不採用 (3) physical layout 回転原点修正** (`5d0bb32`): 素体は右親指キーの `rx=0` 誤記（回転原点が盤面原点に飛ぶ）を修正したが、〈Administrator〉は独自50キー配列で回転キー全数が rx/ry 非ゼロ＝同バグ非該当（かつ描画専用で打鍵無関係）。**不採用 (4) ホームロー A/S の layer-tap 撤去** (`af469d8`): 素体作者の個人キーマップ嗜好であり、〈Administrator〉の A/S は独自の `gesture_mo_kp`（SWORD SKILLS 剣技起動）が憑依済みのため対象外。 |
 | 2026-05-31 | 〈EXPERIMENTAL_CONN Dissolution〉— iPad ペアリング時に「デバイス名が消える」（iPadOS が接続ネゴシエーション失敗後にリストから削除する）症状への対処として `Night_Sky_Sword.conf` から `CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y` を撤去。同フラグは ZMK 実験的な接続パラメータ交渉実装で MacBook とは機能するが iPadOS の厳格な BLE スタックとの互換性が保証されない。MacBook への影響は接続タイミングが若干変わる可能性あり。ビルド後 iPad との接続可否を検証予定。 |
 | 2026-05-31 | 〈Live Sync Conduit Truename Hardening · Serializer Root Purge〉— 前項〈BT Disc Sigil Zero-Cell Restoration〉(`50a2384`) は `editor/app.js`（Cardinal Editor の手動 Behavior Picker）を直したが、**実際に GitHub へ書き戻す Live Sync Conduit の本体は `editor/live.js` の `_bindingToZmk()`** であり未修正だったため、次の〈Memory Inscription〉(`3b018c7`) が `&bt_disc_N 0` を再度刻みビルドが再失敗（Run #26698960611）。`live.js` を全面 truename 修正し、Live Sync の多重破損を根治。**(1) bt_disc ゼロセル登録** — `CUSTOM_BEHAVIOR_PARAMS` / `LABEL_TO_NODE` に `bt_disc_0..4`（paramCount=0）を追加し、default 経路の余分な `0` 付与を封印（ビルドエラー根治）。 **(2) Mod-Tap 修飾の真名復元** — `_modMaskToZmk(p1)` が ZMK Studio の HID modifier usage（`0x000700E0..E7`）を ZMK modmask ビット列と誤読し `&mt LEFT_SHIFT Q` を `&mt RG(RA(RS(LEFT_CONTROL))) Q` に化けさせていた（全レイヤー12件）症状を、`_p2ToKc(p1)`（`KBD_MAP[225]=LEFT_SHIFT`）へ切替えて浄化。 **(3) implicit modifier 保持** — `_p2ToKc` が上位バイトの implicit mod を捨て `&gesture_mo_kp 5 LG(LBKT)` を `LEFT_BRACKET` に脱落させていた症状を、`MOD_FN` ネスト復元で修正。 **(4) keypad 真名復元** — `KBD_MAP` に keypad（`0x53..0x63`: `KP_NUMBER_0..9`/`KP_DOT`/演算子）を追加し `&kp 0x0059` 等の生 hex 化（30件）を `&kp KP_NUMBER_1` 等へ復元。 **(5) UTF-8 文字化け根治** — 既存ファイル読込の `atob()` 単体を書込側 `btoa(unescape(encodeURIComponent()))` と対称な `decodeURIComponent(escape(atob()))` へ修正。これが em-dash「—」・日本語コメントが同期毎に多段化け（`—`→`â`→`Ã¢ÂÂ`）していた根本原因。 合わせて全 17 レイヤーのヘッダコメントを最後の手書き正常版 `ba25a6b` から復元（バインド不変を検証）。 検証: Node で実 `_bindingToZmk`/`_p2ToKc` を mock 駆動し Mod-Tap 修飾・implicit mod・bt_disc ゼロセル・keypad・UTF-8 ラウンドトリップの 8 ケース全合格。 実機（ZMK Studio）が真のキーマップのため、`live.js` デプロイ後に実機から再同期すれば全レイヤーがクリーンな dtsi で再生成される。 双子リポ（42キー Cardinal）にも同 serializer 修正を計画。 |
 | 2026-05-31 | 〈BT Disc Sigil Zero-Cell Restoration · Live Sync Purge〉— Live Sync Conduit〈Memory Inscription〉(`f137025`) が `config/keymap/layers/06_bluetooth.dtsi` の `&bt_disc_0..4` (`#binding-cells = <0>` の純ゼロセルマクロ) に余分な `0` 引数を付加し `&bt_disc_N 0` として書き戻したため、devicetree パーサが末尾の `0` を独立 phandle として解釈し `error: 'DT_N_S_keymap_S_bluetooth_P_bindings_IDX_21_PH_FULL_NAME' undeclared` で Night_Sky_Sword rgbled_adapter ビルドが失敗（Run #26698596978 / Phase: `West Build` で停止）。 修正: **(1) 応急浄化** — `06_bluetooth.dtsi` の 5 箇所 `&bt_disc_N 0` を `&bt_disc_N` へ復元しビルド即復旧。 **(2) Serializer 再発封印** — `editor/app.js` Behavior Picker (`bpSetBehavior` / `bpBuildString`) の `noArgBehaviors` リストに `&bt_disc_0` 〜 `&bt_disc_4` を追加し、引数 UI を非表示化することで「raw 入力フォームの既定値 `0` が末尾に混入する」経路を封じた。 〈BT Disc Sigils〉が再びゼロセル真名 (`&bt_disc_N` 単体) でレイヤーに刻まれ、〈Memory Inscription〉再実行時の同種破損を予防する。 双子リポ（42キー Cardinal）に同症状が再現する場合は同等の serializer 修正を計画。 |
