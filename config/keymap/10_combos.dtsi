@@ -46,12 +46,12 @@ window_min {
 
 tab {
     bindings = <&kp TAB>;
-    key-positions = <14 15>;
+    key-positions = <13 14>;
 };
 
 lctab {
     bindings = <&kp LS(TAB)>;
-    key-positions = <2 3>;
+    key-positions = <1 2>;
 };
 
 click {
