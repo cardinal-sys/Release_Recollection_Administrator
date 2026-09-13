@@ -1,7 +1,7 @@
 if SHIELD_NIGHT_SKY_SWORD
 
 config ZMK_KEYBOARD_NAME
-    default "Night Sky Sword"
+    default "Red Rose Sword"
 
 config ZMK_SPLIT
     default y
