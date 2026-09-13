@@ -134,7 +134,10 @@
         spi-max-frequency = <2000000>;
         irq-gpios    = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         cpi = <2200>;
-        force-awake;
+        /* 〈Wakeful Vigil Suspension〉— 姉妹リポジトリ Cardinal（42キー版）で
+         * トラックボールを常時RUNモード（高消費電流）に固定しバッテリー%変動の
+         * 一因と実機確認済みのため撤去。副作用（初動遅延）が出れば本行を戻す。
+         * force-awake; */
         snipe-layers  = <15>;
         scroll-layers = <5>;
         cpi-layers    = <4 3200>;
