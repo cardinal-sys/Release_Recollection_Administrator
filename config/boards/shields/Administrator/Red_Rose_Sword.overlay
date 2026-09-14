@@ -1,7 +1,7 @@
 /* ===============================
- * Night_Sky_Sword.overlay
- * 〈夜空の剣〉— 右手・central
- *   - キリト神器・夜空の剣
+ * Red_Rose_Sword.overlay
+ * 〈赤薔薇の剣〉— 右手・central
+ *   - キリト神器・赤薔薇の剣（旧名 Night_Sky_Sword、2026-09-14改名）
  *   - PMW3610 トラックボール搭載
  *   - col-gpios 6列（cols 7–12、col-offset 7）
  *   - Cardinal版 Elucidator.overlay の input_processors 群を継承

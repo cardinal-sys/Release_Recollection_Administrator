@@ -8,7 +8,7 @@
 
 > **[ SYSTEM ANNOUNCEMENT ]**
 > 公理は記憶を統べる。50の権限が世界を編纂する。
-> 神器〈Night_Sky_Sword〉と〈Blue_Rose_Sword〉が叛逆の双剣となり、
+> 神器〈Red_Rose_Sword〉と〈Blue_Rose_Sword〉が叛逆の双剣となり、
 > Cardinal の継承者として記憶解放術を顕現する。
 > ── System Call, Enhance Armament. Administrator Awakening.
 
@@ -38,7 +38,7 @@
 | Step 2: PoC（Web Bluetooth 接続 + Transport 確立） | ✅ |
 | Step 3: RPC キーマップ取得・書換 + Visual Editor 同期 | ✅ |
 
-> **[ SYSTEM ]** Live Sync Conduit を使うには Night_Sky_Sword (central) に ZMK Studio 有効化版ファームウェアが書き込まれている必要がある。Chrome / Edge など Web Bluetooth API 対応ブラウザ必須。
+> **[ SYSTEM ]** Live Sync Conduit を使うには Red_Rose_Sword (central) に ZMK Studio 有効化版ファームウェアが書き込まれている必要がある。Chrome / Edge など Web Bluetooth API 対応ブラウザ必須。
 
 ### ◆ 起動方法 ── Invocation
 
@@ -399,8 +399,8 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | 設定 | 値 | 対象 | 効果 |
 |---|---|---|---|
-| BLE表示名 (ZMK_KEYBOARD_NAME) | R側: `Red Rose Sword` / L側: `Blue Rose Sword` | R・L両側 | 42キー版〈Cardinal〉個体の1台に新規割当された表示名「Night Sky Sword」との重複回避のため、R側を2026-09-13に `Night Sky Sword` から改名。シールド識別子(`Night_Sky_Sword` ファイル名・Kconfig)自体は不変で、BLE表示名のみが分岐する |
-| Experimental Conn | R側(Night_Sky_Sword)のみ有効、L側無効 | R側（Central） | Central側でホスト向けBLE接続安定化のため有効化 |
+| BLE表示名 (ZMK_KEYBOARD_NAME) | R側: `Red Rose Sword` / L側: `Blue Rose Sword` | R・L両側 | 42キー版〈Cardinal〉個体の1台に新規割当された表示名「Night Sky Sword」との重複回避のため、R側を2026-09-13に `Night Sky Sword` から改名。2026-09-14にシールド識別子(ファイル名・Kconfig)自体も `Night_Sky_Sword` → `Red_Rose_Sword` へ改名し、BLE表示名と一致させた |
+| Experimental Conn | R側(Red_Rose_Sword)のみ有効、L側無効 | R側（Central） | Central側でホスト向けBLE接続安定化のため有効化 |
 | NFCT_PINS_AS_GPIOS | 有効 | R・L両側 | NFC無線とBLEの干渉防止（安定版2つともあり） |
 | BT_GAP_AUTO_UPDATE_CONN_PARAMS | 有効 | R・L両側 | 接続後に自動パラメータ再交渉（kabutokoma準拠） |
 | BT_CONN_PARAM_UPDATE_TIMEOUT | 1000ms | R・L両側 | 接続から1秒後にパラメータ更新要求 |
@@ -415,7 +415,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | BT_PERIPHERAL_PREF_MAX_INT | 12 (15ms) | R・L両側 | 接続インターバル上限 (Apple HID 互換上限。`MIN_INT=6` との範囲指定で macOS/iPadOS/iOS から最低 15ms を引き出す。L側もR側と同期) |
 | Insomnia pingInterval | **実験的に無効化**（従来3秒、R・L両側） | R・L両側 | 〈Wakeful Vigil Suspension · Administrator Sync〉（2026-09-13）。42キー版〈Cardinal〉でバッテリー%変動の一因と実機確認済みのため双子同期で無効化。無効化により端末が実際にIDLE化するようになり、`battery.c`のバッテリー再測定タイマーがIDLE中は停止する既定挙動に戻る。BLE切断が再発したら復帰 |
 
-### MOTION SENSOR CONFIG ── トラックボールセンサー（Night_Sky_Sword.conf）
+### MOTION SENSOR CONFIG ── トラックボールセンサー（Red_Rose_Sword.conf）
 
 *センサーの挙動を制御するパラメータ。省電力モードへの移行速度を調整する。*
 
@@ -466,6 +466,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-09-14 | 〈Red Rose Sword 真名統合 · Identity Reforging〉— 前日〈Red Rose Sword 顕現〉ではBLE表示名(`CONFIG_ZMK_KEYBOARD_NAME`)のみを改名し、シールド識別子は `Night_Sky_Sword` のまま温存する方針だったが、GitHub Actions Artifactsが生成する `.uf2` ファイル名がシールド識別子由来のため `Night_Sky_Sword rgbled_adapter-xiao_ble_nrf52840_zmk-zmk.uf2` のまま変わらず、BLE表示名との乖離がユーザーを混乱させることが判明。シールド識別子自体を `Red_Rose_Sword` へ全面改名し、真名を完全に統合した。**変更範囲**: ファイル名 `Night_Sky_Sword.conf`/`.overlay` → `Red_Rose_Sword.conf`/`.overlay`（`git mv`）、`Kconfig.shield` の `SHIELD_NIGHT_SKY_SWORD` → `SHIELD_RED_ROSE_SWORD`、`Kconfig.defconfig` の `if` ガード、`build.yaml`/`build-debug.yaml` の `shield:` 指定とartifact-name、`Blue_Rose_Sword.conf`/`.overlay` 内の相互参照コメント、`editor/app.js`・`editor/live.html`・`editor/live.js`（Cardinal Editor・Live Sync Conduitの参照ファイルパス・表示テキスト）、README内の現行参照箇所（SYSTEM ANNOUNCEMENT・Live Sync Conduit節・CHARACTER PARAMETERS）。**〈Administrator Awakening〉〜前日までのSYSTEM LOG過去エントリは当時の事実記録として改変せず温存**（ユーザー方針）。ファームウェア機能・BLE表示名・シールド構成（右手central/左手peripheral、PMW3610・EC11等）に変更なし、識別子の一致のみが目的。`feature/rename-shield-red-rose-sword` ブランチ→PRで改編。 |
 | 2026-09-13 | 〈Wakeful Vigil Suspension · Peripheral Echo Silencing / Administrator Sync〉— 42キー版〈Cardinal〉でユーザー報告「バッテリー表示がおかしい（Mac表示%が実際と食い違う／下がって戻る、起動時LED二重点滅）」を発端に判明した3件の不具合を、双子リポジトリとして同時対応。**①LED二重点滅**: `CONFIG_RGBLED_WIDGET_BATTERY_SHOW_PERIPHERALS=y` が原型 `Cygnus-M-Lkeymouse` 相当の既定 `SELF` から外れた非既定枝で、起動時に左手側の残量取得が split BLE 再接続待ち（約2.25秒）に間に合わないと実残量と無関係な「missing」色（既定マゼンタ）を点滅させる不具合と判明、撤去。**②バッテリー%変動**: `Night_Sky_Sword.overlay` の `force-awake;`（PMW3610を常時高消費電流のRUNモードに固定）と `CONFIG_ZMK_INSOMNIA_PING_ON_START=y`（3秒毎のダミーイベントでZMKの活動状態を常時ACTIVEに固定し、`battery.c` のバッテリー再測定タイマーがIDLE化で止まらず24時間回り続ける副作用）の組み合わせが、LiPoの内部抵抗による瞬間的な電圧沈み込み（IRドロップ）を捕捉する頻度を上げていたと推定、両方とも無効化。42キー版〈Cardinal〉側で実機検証済み（PR #33, #34マージ済み）につき、本リポジトリへも双子同期で移植。全て1行コメントアウトで即復帰できる形にしてある。**既知のリグレッションリスク**: force-awake無効化でトラックボール復帰時の初動遅延、Insomnia無効化でBLE切断（iPadOS等）が再発する可能性 ―― 発生時は該当行を戻すこと。CHARACTER PARAMETERSに新設したBATTERY SIGILセクション、NERVE LINK STABILITY / MOTION SENSOR CONFIGの該当行も更新。 |
 | 2026-09-13 | 〈Red Rose Sword 顕現 · Truename Divergence〉— 42キー版〈Cardinal〉所持3台の個体差別化のため、うち1台に新たなBLE表示名「Night Sky Sword」が割り当てられ、本リポジトリ右手側(central)の既存BLE表示名と重複が発生。`Night_Sky_Sword.conf` / `Kconfig.defconfig` の `CONFIG_ZMK_KEYBOARD_NAME` を「Night Sky Sword」から「Red Rose Sword」へ改名し重複を解消。シールド識別子(ファイル名・`Kconfig.shield` / `Kconfig.defconfig` の `SHIELD_NIGHT_SKY_SWORD`)自体は `Night_Sky_Sword` のまま変更せず、BLE表示名のみが分岐する構成となった。「Red Rose Sword」はアリシゼーション編アドミニストレータ討伐戦でキリトがユージオの血を用いて青薔薇の剣(Blue Rose Sword)を再構成して得た剣であり、同戦でキリトは夜空の剣(Night Sky Sword)と赤薔薇の剣(Red Rose Sword)の二刀流だったという設定に由来 — Blue Rose Swordと対になる名として選定。左手側(peripheral)「Blue Rose Sword」は変更なし。 |
 | 2026-09-12 | 〈Idle Tax Removal · Administrator Sync〉— 42キー版〈Cardinal〉での修正の双子同期。PCが他処理（ブラウザ等）で混み合うとキー入力・トラックボール移動が両方同時に遅延する症状の切り分け。ZMKソース（`app/Kconfig`）の `CONFIG_BT_PERIPHERAL_PREF_LATENCY`（ホストとの接続のPeripheral Latency）既定値は **30** だが `Night_Sky_Sword.conf`/`Blue_Rose_Sword.conf` では **0** に上書きされていた。Latency=0 はデータの有無に関わらず毎接続イベント必須応答を強制し、ホストのBLEスタックを常時稼働状態にする — 42キー〈Cardinal〉で実機検証済みの原因（`fix/ble-peripheral-latency-default` ブランチ、main マージ済み）。原型 `cardinal-sys/Cygnus-S-Lkeymouse` にはこの設定自体が存在せず既定30のまま。`Night_Sky_Sword.conf` の `CONFIG_BT_PERIPHERAL_PREF_LATENCY` 行を撤去（コメントアウト）し、既定挙動に戻した。左右分割リンク側の `ZMK_SPLIT_BLE_PREF_LATENCY=0` はホスト接続とは別物のため変更せず。**〈Administrator〉本体での実機検証は行わず、42キー版と同一修正であることを根拠にmainへ直接マージ**（ユーザー承認済み）。異常があれば設定を復元して切り分ける。 |
