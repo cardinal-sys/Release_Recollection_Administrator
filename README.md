@@ -353,6 +353,22 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 ══════════════════════════════════════════════
 
+## ◆ BATTERY SIGIL ── 残量インジケーター設定（zmk-rgbled-widget）
+
+*クリスタルは己の生命だけを語る。連れの声は代弁しない。*
+
+| 設定 | 値 | 効果 |
+|---|---|---|
+| RGBLED_WIDGET_BATTERY_SHOW | SELF（既定） | 起動時、自分（右手 Night Sky Sword）の残量のみ1回点滅。左手（Blue Rose Sword）の残量は表示しない |
+| RGBLED_WIDGET_BATTERY_LEVEL_HIGH | 50% | これ以上で緑 |
+| RGBLED_WIDGET_BATTERY_LEVEL_LOW | 20% | これ未満〜HIGH未満で黄 |
+| RGBLED_WIDGET_BATTERY_LEVEL_CRITICAL | 10% | これ以下で赤（Critical） |
+| RGBLED_WIDGET_INTERVAL_MS | 250ms | 点滅間の最小待機時間 |
+
+> **[ SYSTEM ]** かつて `CONFIG_RGBLED_WIDGET_BATTERY_SHOW_PERIPHERALS=y`（自分＋左手の残量を続けて2回点滅）を有効化していたが、起動直後の split BLE 再接続が間に合わないと左手側の残量取得が `0`（未確定）扱いとなり、実残量とは無関係な「missing」色（既定マゼンタ）が混ざって点滅する不具合が判明。42キー版〈Cardinal〉での修正（2026-09-13）を双子同期で移植し、SELF（自分のみ）表示へ撤去した。
+
+══════════════════════════════════════════════
+
 ## ◆ EQUIPPED MODULES ── 依存モジュール
 
 *このシステムを支える仲間たち。一つでも欠ければ、剣技は発動しない。*
@@ -397,7 +413,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | BT Max Paired | 6 | R・L両側 | `ZMK_BLE_PROFILE_COUNT = BT_MAX_PAIRED - PERIPHERALS = 6 - 1 = 5` で profile 0..4 全 5 枠を有効化 |
 | BT_PERIPHERAL_PREF_MIN_INT | 6 (7.5ms) | R・L両側 | 接続インターバル下限 (Win/Android 最速側で 7.5ms 交渉) |
 | BT_PERIPHERAL_PREF_MAX_INT | 12 (15ms) | R・L両側 | 接続インターバル上限 (Apple HID 互換上限。`MIN_INT=6` との範囲指定で macOS/iPadOS/iOS から最低 15ms を引き出す。L側もR側と同期) |
-| Insomnia pingInterval | 3秒 | R・L両側 | keepaliveを高頻度化（L側にも追加） |
+| Insomnia pingInterval | **実験的に無効化**（従来3秒、R・L両側） | R・L両側 | 〈Wakeful Vigil Suspension · Administrator Sync〉（2026-09-13）。42キー版〈Cardinal〉でバッテリー%変動の一因と実機確認済みのため双子同期で無効化。無効化により端末が実際にIDLE化するようになり、`battery.c`のバッテリー再測定タイマーがIDLE中は停止する既定挙動に戻る。BLE切断が再発したら復帰 |
 
 ### MOTION SENSOR CONFIG ── トラックボールセンサー（Red_Rose_Sword.conf）
 
@@ -408,7 +424,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | PMW3610 REST移行時間 | 3000ms | RUN モード維持を延長し、短時間アイドル復帰の遅延を抑制 |
 | PMW3610 REST1 サンプル間隔 | 10ms | REST 中のサンプリング間隔を半減し、復帰時の応答を改善 |
 | PMW3610 ポーリングレート | 125Hz (POLLING_RATE_125) | 起動遅延を削除しポーリングレート固定モードに変更 |
-| PMW3610 force-awake | 有効 | スリープ移行を抑制し、起動遅延ゼロを維持 |
+| PMW3610 force-awake | **実験的に無効化**（従来有効） | 〈Wakeful Vigil Suspension · Administrator Sync〉（2026-09-13）。センサーを常時RUNモード（高消費電流）に固定していた設定。42キー版〈Cardinal〉でバッテリー%変動の一因と実機確認済みのため双子同期で無効化。復帰時の初動遅延が気になれば本行を戻す |
 | PMW3610 4ms モード | **無効**（削除済み） | BLE 7.5ms インターバルとのミスマッチによるポインタジャンプを防止 |
 | PMW3610 CPI | 2200 | 通常カーソル CPI（`pointer_accel.sensor-dpi` も同値）。SNIPE 中はドライバが自動低減 |
 | PMW3610 cpi-layers | `<4 3200>` | L4 MOUSE アクティブ時はセンサー CPI を 3200 に動的切替（〈Resolution Shift〉) |
@@ -451,6 +467,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 | DATE | ENTRY |
 |---|---|
 | 2026-09-14 | 〈Red Rose Sword 真名統合 · Identity Reforging〉— 前日〈Red Rose Sword 顕現〉ではBLE表示名(`CONFIG_ZMK_KEYBOARD_NAME`)のみを改名し、シールド識別子は `Night_Sky_Sword` のまま温存する方針だったが、GitHub Actions Artifactsが生成する `.uf2` ファイル名がシールド識別子由来のため `Night_Sky_Sword rgbled_adapter-xiao_ble_nrf52840_zmk-zmk.uf2` のまま変わらず、BLE表示名との乖離がユーザーを混乱させることが判明。シールド識別子自体を `Red_Rose_Sword` へ全面改名し、真名を完全に統合した。**変更範囲**: ファイル名 `Night_Sky_Sword.conf`/`.overlay` → `Red_Rose_Sword.conf`/`.overlay`（`git mv`）、`Kconfig.shield` の `SHIELD_NIGHT_SKY_SWORD` → `SHIELD_RED_ROSE_SWORD`、`Kconfig.defconfig` の `if` ガード、`build.yaml`/`build-debug.yaml` の `shield:` 指定とartifact-name、`Blue_Rose_Sword.conf`/`.overlay` 内の相互参照コメント、`editor/app.js`・`editor/live.html`・`editor/live.js`（Cardinal Editor・Live Sync Conduitの参照ファイルパス・表示テキスト）、README内の現行参照箇所（SYSTEM ANNOUNCEMENT・Live Sync Conduit節・CHARACTER PARAMETERS）。**〈Administrator Awakening〉〜前日までのSYSTEM LOG過去エントリは当時の事実記録として改変せず温存**（ユーザー方針）。ファームウェア機能・BLE表示名・シールド構成（右手central/左手peripheral、PMW3610・EC11等）に変更なし、識別子の一致のみが目的。`feature/rename-shield-red-rose-sword` ブランチ→PRで改編。 |
+| 2026-09-13 | 〈Wakeful Vigil Suspension · Peripheral Echo Silencing / Administrator Sync〉— 42キー版〈Cardinal〉でユーザー報告「バッテリー表示がおかしい（Mac表示%が実際と食い違う／下がって戻る、起動時LED二重点滅）」を発端に判明した3件の不具合を、双子リポジトリとして同時対応。**①LED二重点滅**: `CONFIG_RGBLED_WIDGET_BATTERY_SHOW_PERIPHERALS=y` が原型 `Cygnus-M-Lkeymouse` 相当の既定 `SELF` から外れた非既定枝で、起動時に左手側の残量取得が split BLE 再接続待ち（約2.25秒）に間に合わないと実残量と無関係な「missing」色（既定マゼンタ）を点滅させる不具合と判明、撤去。**②バッテリー%変動**: `Night_Sky_Sword.overlay` の `force-awake;`（PMW3610を常時高消費電流のRUNモードに固定）と `CONFIG_ZMK_INSOMNIA_PING_ON_START=y`（3秒毎のダミーイベントでZMKの活動状態を常時ACTIVEに固定し、`battery.c` のバッテリー再測定タイマーがIDLE化で止まらず24時間回り続ける副作用）の組み合わせが、LiPoの内部抵抗による瞬間的な電圧沈み込み（IRドロップ）を捕捉する頻度を上げていたと推定、両方とも無効化。42キー版〈Cardinal〉側で実機検証済み（PR #33, #34マージ済み）につき、本リポジトリへも双子同期で移植。全て1行コメントアウトで即復帰できる形にしてある。**既知のリグレッションリスク**: force-awake無効化でトラックボール復帰時の初動遅延、Insomnia無効化でBLE切断（iPadOS等）が再発する可能性 ―― 発生時は該当行を戻すこと。CHARACTER PARAMETERSに新設したBATTERY SIGILセクション、NERVE LINK STABILITY / MOTION SENSOR CONFIGの該当行も更新。 |
 | 2026-09-13 | 〈Red Rose Sword 顕現 · Truename Divergence〉— 42キー版〈Cardinal〉所持3台の個体差別化のため、うち1台に新たなBLE表示名「Night Sky Sword」が割り当てられ、本リポジトリ右手側(central)の既存BLE表示名と重複が発生。`Night_Sky_Sword.conf` / `Kconfig.defconfig` の `CONFIG_ZMK_KEYBOARD_NAME` を「Night Sky Sword」から「Red Rose Sword」へ改名し重複を解消。シールド識別子(ファイル名・`Kconfig.shield` / `Kconfig.defconfig` の `SHIELD_NIGHT_SKY_SWORD`)自体は `Night_Sky_Sword` のまま変更せず、BLE表示名のみが分岐する構成となった。「Red Rose Sword」はアリシゼーション編アドミニストレータ討伐戦でキリトがユージオの血を用いて青薔薇の剣(Blue Rose Sword)を再構成して得た剣であり、同戦でキリトは夜空の剣(Night Sky Sword)と赤薔薇の剣(Red Rose Sword)の二刀流だったという設定に由来 — Blue Rose Swordと対になる名として選定。左手側(peripheral)「Blue Rose Sword」は変更なし。 |
 | 2026-09-12 | 〈Idle Tax Removal · Administrator Sync〉— 42キー版〈Cardinal〉での修正の双子同期。PCが他処理（ブラウザ等）で混み合うとキー入力・トラックボール移動が両方同時に遅延する症状の切り分け。ZMKソース（`app/Kconfig`）の `CONFIG_BT_PERIPHERAL_PREF_LATENCY`（ホストとの接続のPeripheral Latency）既定値は **30** だが `Night_Sky_Sword.conf`/`Blue_Rose_Sword.conf` では **0** に上書きされていた。Latency=0 はデータの有無に関わらず毎接続イベント必須応答を強制し、ホストのBLEスタックを常時稼働状態にする — 42キー〈Cardinal〉で実機検証済みの原因（`fix/ble-peripheral-latency-default` ブランチ、main マージ済み）。原型 `cardinal-sys/Cygnus-S-Lkeymouse` にはこの設定自体が存在せず既定30のまま。`Night_Sky_Sword.conf` の `CONFIG_BT_PERIPHERAL_PREF_LATENCY` 行を撤去（コメントアウト）し、既定挙動に戻した。左右分割リンク側の `ZMK_SPLIT_BLE_PREF_LATENCY=0` はホスト接続とは別物のため変更せず。**〈Administrator〉本体での実機検証は行わず、42キー版と同一修正であることを根拠にmainへ直接マージ**（ユーザー承認済み）。異常があれば設定を復元して切り分ける。 |
 | 2026-09-11 | 〈Timeout Sigil Removal · Administrator Sync〉— 42キー版〈Cardinal〉での修正の双子同期。`CONFIG_BT_PERIPHERAL_PREF_TIMEOUT=1000`（10秒）は Apple Accessory Design Guidelines の supervision timeout ≤ 6秒に違反しており、42キー〈Cardinal〉で iPadOS の2個目以降のプロファイルが「一度は繋がるがすぐ切断される」症状の原因と判明・実機で解消確認済み（`fix/ble-peripheral-timeout-default` ブランチ、main マージ済み）。原型 `cardinal-sys/Cygnus-S-Lkeymouse` の `KeyballBLE_L/R.conf` にはこの設定自体が存在しない（Zephyr既定に委ねている）ことも確認済み。`Night_Sky_Sword.conf`/`Blue_Rose_Sword.conf` の `CONFIG_BT_PERIPHERAL_PREF_TIMEOUT` 行を撤去（コメントアウト）し、既定挙動に戻す。`MIN_INT`/`MAX_INT` は変更せず。**〈Administrator〉本体での実機検証は行わず、42キー版と同一修正であることを根拠にmainへ直接マージ**（ユーザー承認済み）。異常があれば設定を復元して切り分ける。 |
