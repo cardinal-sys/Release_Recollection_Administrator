@@ -8,7 +8,7 @@
 
 #include "Administrator.dtsi"
 
-/* col-offset は Night_Sky_Sword（右・central）側で設定する */
+/* col-offset は Red_Rose_Sword（右・central）側で設定する */
 
 &kscan0 {
     wakeup-source;

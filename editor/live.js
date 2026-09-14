@@ -250,7 +250,7 @@ async function tryReconnectKnownDevice() {
     const known = await navigator.bluetooth.getDevices();
     log(`getDevices() returned ${known.length} known device(s)`);
     if (known.length === 0) return null;
-    // 名前が Night_Sky_Sword っぽい / もしくは前回接続したものを優先
+    // 名前が Red_Rose_Sword っぽい / もしくは前回接続したものを優先
     const target = known.find((d) => /elucidator/i.test(d.name || ''))
                 || known[0];
     log(`Reusing known device: ${target.name || '(no name)'}`);

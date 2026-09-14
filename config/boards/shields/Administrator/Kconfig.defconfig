@@ -1,4 +1,4 @@
-if SHIELD_NIGHT_SKY_SWORD
+if SHIELD_RED_ROSE_SWORD
 
 config ZMK_KEYBOARD_NAME
     default "Red Rose Sword"

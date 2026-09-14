@@ -19,8 +19,8 @@
 | ファイル | 役割 |
 |---|---|
 | `config/Administrator.keymap` | キーマップ定義（レイヤー・バインド） — 〈Administrator〉記憶解放術の entry point |
-| `config/boards/shields/Administrator/Night_Sky_Sword.overlay` | 右手側設定（PMW3610トラックボール等） — キリト神器・夜空の剣 |
-| `config/boards/shields/Administrator/Night_Sky_Sword.conf` | 右手側Kconfig（PMW3610パラメータ等） |
+| `config/boards/shields/Administrator/Red_Rose_Sword.overlay` | 右手側設定（PMW3610トラックボール等） — キリト神器・赤薔薇の剣（旧名 Night_Sky_Sword、2026-09-14改名） |
+| `config/boards/shields/Administrator/Red_Rose_Sword.conf` | 右手側Kconfig（PMW3610パラメータ等） |
 | `config/boards/shields/Administrator/Blue_Rose_Sword.overlay` | 左手側設定 — ユージオ神器・青薔薇の剣 |
 | `config/boards/shields/Administrator/Blue_Rose_Sword.conf` | 左手側Kconfig |
 | `config/keymap/30_enhance_armament_base.dtsi` | 〈Enhance Armament〉武装完全支配術：基礎behavior |
