@@ -377,15 +377,17 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 |---|---|---|
 | zmk | zmkfirmware/zmk | ZMK 本体 |
 | zmk-pmw3610-driver | cardinal-sys/zmk-pmw3610-driver | PMW3610 トラックボールドライバー |
-| zmk-listeners | ssbb/zmk-listeners | レイヤーリスナー |
+| zmk-listeners | cardinal-sys/zmk-listeners | レイヤーリスナー |
 | zmk-mouse-gesture | cardinal-sys/zmk-mouse-gesture | マウスジェスチャー認識 |
-| zmk-scroll-snap | kot149/zmk-scroll-snap | スクロール軸スナップ（X/Y軸整列） |
-| zmk-rgbled-widget | caksoylar/zmk-rgbled-widget | RGB LED インジケーター |
-| zmk-pointing-acceleration-alpha | nuovotaka/zmk-pointing-acceleration-alpha | ポインタ加速度 |
-| zmk-behavior-insomnia | badjeff/zmk-behavior-insomnia | BLE 接続中スリープ防止 |
-| zmk-tri-state | urob/zmk-tri-state | アプリ切替スワッパー |
-| zmk-auto-layer | urob/zmk-auto-layer | Smart Num（数字入力で自動レイヤー維持） |
-| zmk-helpers | urob/zmk-helpers | キーマップ記述ヘルパーマクロ |
+| zmk-scroll-snap | cardinal-sys/zmk-scroll-snap | スクロール軸スナップ（X/Y軸整列） |
+| zmk-rgbled-widget | cardinal-sys/zmk-rgbled-widget | RGB LED インジケーター |
+| zmk-pointing-acceleration-alpha | cardinal-sys/zmk-pointing-acceleration-alpha | ポインタ加速度 |
+| zmk-behavior-insomnia | cardinal-sys/zmk-behavior-insomnia | BLE 接続中スリープ防止 |
+| zmk-tri-state | cardinal-sys/zmk-tri-state | アプリ切替スワッパー |
+| zmk-auto-layer | cardinal-sys/zmk-auto-layer | Smart Num（数字入力で自動レイヤー維持） |
+| zmk-helpers | cardinal-sys/zmk-helpers | キーマップ記述ヘルパーマクロ |
+
+> **[ CARDINAL ]** 8神器の依存モジュールは全て `cardinal-sys` 配下へ自前管理フォーク済み（〈Self-Governance Oath〉2026-09-18）。42キー版〈Cardinal〉と同一のフォーク・同一revisionを共有する。上流（ssbb / kot149 / caksoylar / nuovotaka / badjeff / urob）への参照は断ち切り、以後の更新は自らの意思で刻む。
 
 ══════════════════════════════════════════════
 
@@ -469,6 +471,7 @@ GitHub Personal Access Token（`repo` スコープ必須）をブラウザに入
 
 | DATE | ENTRY |
 |---|---|
+| 2026-09-18 | 〈Self-Governance Oath · Administrator Sync〉— 42キー版〈Cardinal〉で実施した外部依存8モジュール（`zmk-listeners` `zmk-scroll-snap` `zmk-rgbled-widget` `zmk-pointing-acceleration-alpha` `zmk-behavior-insomnia` `zmk-helpers` `zmk-tri-state` `zmk-auto-layer`）の自前管理フォーク移行を本リポジトリにも双子同期。`config/west.yml`の該当`remote`を上流（ssbb/kot149/caksoylar/nuovotaka/badjeff/urob）から`cardinal-sys`へ書き換え、未使用となった上流remote定義を削除。`revision`は変更なし——42キー版と全モジュール同一revisionだったため、新規フォーク作業は不要（既存のcardinal-sysフォークをそのまま参照）。`feature/self-managed-deps-migration`ブランチ上で作業。 |
 | 2026-09-17 | 〈Silent Vigil Recall · Administrator Sync〉— 42キー版〈Cardinal〉でユーザー報告「BLE再接続直後、トラックボールだけ無反応になり、ランダムなきっかけで復帰する（キー入力は正常）」の調査（PMW3610ドライバの割り込み再有効化経路、Zephyr input subsystem、ZMK本体のBLE HID通知経路を確認したが非対称な処理は見当たらず原因未確定）を受け、ユーザーへ確認したところ本リポジトリ（50キー版）でも同一症状を確認。Cardinal側で実施した一変数の切り分け実験（`force-awake`再有効化、PR #36でマージ済み・実機で改善傾向）に双子同期し、`Red_Rose_Sword.overlay`の`force-awake;`を再有効化。原因は未確定のまま、Cardinal側の暫定対処を追従する運用判断。効果がなければ再度無効化に戻すこと。実機検証待ち。 |
 | 2026-09-16 | 〈Idle Tax Removal · Bilateral Sync · Administrator Sync〉— 42キー版〈Cardinal〉で発覚した非対称を双子同期。2026-09-12〈Idle Tax Removal · Administrator Sync〉はR側（Red_Rose_Sword、当時Night_Sky_Sword）のみ`CONFIG_BT_PERIPHERAL_PREF_LATENCY=0`を撤去しており、L側（Blue_Rose_Sword）は最初から対象外だった（Cardinal側のように記録と実態の乖離があったわけではなく、単純にL側が未着手のまま残っていた）。この設定はホスト接続ではなくL-R間split linkに対するものであり、Cardinal側で報告された症状（PC負荷時のトラックボール操作中の再接続）との直接の因果は未確証だが、「左右完全一致」の方針に合わせL側も撤去。CHARACTER PARAMETERSを更新。実機検証待ち。 |
 | 2026-09-14 | 〈Pairing Sigil Purification · Deep Sleep Sigil Removal · Administrator Sync〉— 42キー版〈Cardinal〉でユーザー報告「2台目以降のペアリングがうまくいかないことが多い」を発端に判明・実機検証済みの2件の修正を双子リポジトリとして同時移植。**①BLEペアリング仕様違反の是正**: `CONFIG_BT_CONN_PARAM_UPDATE_TIMEOUT=1000`（Bluetooth Core仕様の5秒待機に違反、出典元ZMK本家Issue #3381も「非準拠・Zephyrデバイス間専用」と自認するスプリットリンク向けレシピの誤転用と判明）と`CONFIG_BT_CTLR_DATA_LENGTH_MAX=251`（Zephyr本家Issue #38782で既知のペアリング互換性問題と判明した値とほぼ同一）を撤去し、原型Cygnus-S-Lkeymouseと同じくZephyr既定へ委ねる。冗長だった明示`CONFIG_BT_GAP_AUTO_UPDATE_CONN_PARAMS=y`・`CONFIG_BT_CTLR_PHY_2M=y`・`CONFIG_BT_AUTO_PHY_UPDATE=y`（いずれもZephyr/原型の既定と同値で実効果ゼロと確認済み）も整理。**②ZMK Studio×DeepSleep既知バグの回避**: `CONFIG_ZMK_STUDIO=y`と`CONFIG_ZMK_SLEEP=y`の同時有効化がZMK本家Issue #3195の既知バグ条件（本リポジトリが固定するZephyrも42キー版と同じくちょうど4.1.0と確認済み）に一致していたため、`CONFIG_ZMK_SLEEP`/`CONFIG_ZMK_IDLE_SLEEP_TIMEOUT`を撤去し原型と同じ既定（Deep Sleep無効）へ。42キー版〈Cardinal〉は実機検証済み（Mac/iPad1・2台目のペア成功、ビルド成功）だが、本リポジトリ側は50キー実機での検証待ち。`Red_Rose_Sword.conf`/`Blue_Rose_Sword.conf`両側でコメントアウト、CHARACTER PARAMETERS（NERVE LINK STABILITY）を更新。なお42キー版側では追加でBT_SEL 2台目まで成功後の3台目ペアリング失敗（電源再投入で回避可能、根本原因未特定・運用回避でクローズ）も報告されているため、本リポジトリでも同型の症状が出た場合は同じ回避策（新規ペアリング前に電源再投入）を試すこと。 |
